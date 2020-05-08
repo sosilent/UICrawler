@@ -3,27 +3,22 @@ CRITICAL_ELEMENT:
 
   #Android
   #Android App测试时，需指定App包名和启动的Activity
-  ANDROID_PACKAGE: com.xes.jazhanghui.activity
-  ANDROID_MAIN_ACTIVITY: com.xes.jazhanghui.activity.mvp.start.StartActivity
+  ANDROID_PACKAGE: com.eg.android.AlipayGphone
+  ANDROID_MAIN_ACTIVITY: com.eg.android.AlipayGphone.AlipayLogin
   #通过xpath指定要点击的元素的属性要求， 注意值两侧要加单引号''
   ANDROID_CLICK_XPATH_HEADER: ' ( string-length(@text)<30  or contains(@text,"允许") ) '
   #若App顶、底UI含有TabBar ,需指定TabBar的id, 多个id时用or拼接: 如'@resource-id="id1" or @resource-id="id2"'
-  ANDROID_BOTTOM_TAB_BAR_ID: '@resource-id="com.xes.jazhanghui.activity:id/bottomBar"'
+  ANDROID_BOTTOM_TAB_BAR_ID: '@resource-id="com.eg.android.AlipayGphone:id/bottomBar"'
 
   #iOS
   #若执行iOS App测试，必需指定以下IOS_开头的内容
-  IOS_BUNDLE_ID: com.xes
+  IOS_BUNDLE_ID: com.eg.android.AlipayGphone
   #手机桌面上显示的APP的名字
-  IOS_BUNDLE_NAME: 学而思
+  IOS_BUNDLE_NAME: 支付宝
   #IPA名字的前缀
-  IOS_IPA_NAME: 学而思test
+  IOS_IPA_NAME: 支付宝test
   IOS_BOTTOM_TAB_BAR_TYPE: XCUIElementTypeTabBar
   IOS_CLICK_XPATH_HEADER: '@visible="true" and string-length(@value)<30'
-
-
-  #微信小程序
-  #微信小程序测试 使用参数 -y 时需指定小程序的名字
-  WECHAT_MINI_PROGRAM_NAME: 学而思营业厅
 
 #****************************************************Monkey测试时根据需要更改下面的值，调节事件发生概率****************************************************
 #每项为事件随机发生的次数，各项之和为100
@@ -224,7 +219,7 @@ GENERAL:
 #一些默认值
 DEFAULT_VALUE:
   #0.0.0.0代表Appium Server运行在本地
-  APPIUM_SERVER_IP: 0.0.0.0
+  APPIUM_SERVER_IP: 127.0.0.1
   #Appium端口
   PORT: 4723
   #IOS WDA_PORT

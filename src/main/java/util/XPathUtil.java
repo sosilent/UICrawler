@@ -19,54 +19,54 @@ public class XPathUtil {
     public static XPath xpath = XPathFactory.newInstance().newXPath();
     private static DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 
-    private static Map<String, Map<String, Long>> monkeyClickedMap = new HashMap<>();
-    private static Map<String, Long> clickedActivityMap = new HashMap<>();
-    private static HashSet<String> set = new LinkedHashSet<>();
-    private static DocumentBuilder builder;
-    private static boolean stop = false;
-    private static String appName;
-    private static String appNameXpath;
-    private static List<String> packageNameList;
-    private static List<String> nodeBlackList;
-    private static List<String> nodeWhiteList;
-    private static List<String> nodeNameExcludeList;
-    private static List<String> structureNodeNameExcludeList;
-    private static List<String> pressBackPackageList;
-    private static List<String> pressBackActivityList;
-    private static List<String> backKeyTriggerList;
-    private static List<String> xpathNotFoundElementList = new ArrayList<>();
-    private static List<String> clickFailureElementList = new ArrayList<>();
-    private static String clickXpath;
-    private static String tabBarXpath;
-    private static String firstLoginElemXpath;
-    private static ArrayList<Map> loginElemList;
-    private static Set<String> xpathBlackSet;
-    private static Set<String> nodeXpathBlackSet;
-    private static int scale;
-    private static boolean ignoreCrash;
-    private static boolean removedBounds = false;
-    private static boolean swipeVertical = ConfigUtil.getBooleanValue(ConfigUtil.ENABLE_VERTICAL_SWIPE);
-    private static long userLoginInterval;
-    private static long userLoginCount = 0;
+    protected static Map<String, Map<String, Long>> monkeyClickedMap = new HashMap<>();
+    protected static Map<String, Long> clickedActivityMap = new HashMap<>();
+    protected static HashSet<String> set = new LinkedHashSet<>();
+    protected static DocumentBuilder builder;
+    protected static boolean stop = false;
+    protected static String appName;
+    protected static String appNameXpath;
+    protected static List<String> packageNameList;
+    protected static List<String> nodeBlackList;
+    protected static List<String> nodeWhiteList;
+    protected static List<String> nodeNameExcludeList;
+    protected static List<String> structureNodeNameExcludeList;
+    protected static List<String> pressBackPackageList;
+    protected static List<String> pressBackActivityList;
+    protected static List<String> backKeyTriggerList;
+    protected static List<String> xpathNotFoundElementList = new ArrayList<>();
+    protected static List<String> clickFailureElementList = new ArrayList<>();
+    protected static String clickXpath;
+    protected static String tabBarXpath;
+    protected static String firstLoginElemXpath;
+    protected static ArrayList<Map> loginElemList;
+    protected static Set<String> xpathBlackSet;
+    protected static Set<String> nodeXpathBlackSet;
+    protected static int scale;
+    protected static boolean ignoreCrash;
+    protected static boolean removedBounds = false;
+    protected static boolean swipeVertical = ConfigUtil.getBooleanValue(ConfigUtil.ENABLE_VERTICAL_SWIPE);
+    protected static long userLoginInterval;
+    protected static long userLoginCount = 0;
 
     //按back键回到主屏后 重启app的次数
-    private static int pressBackCount = 3;
-    private static long clickCount = 0;
-    private static long maxDepth = 0;
-    private static String pic = null;
-    private static String backKeyXpath = null;
-    private static int deviceHeight;
-    private static int deviceWidth;
+    protected static int pressBackCount = 3;
+    protected static long clickCount = 0;
+    protected static long maxDepth = 0;
+    protected static String pic = null;
+    protected static String backKeyXpath = null;
+    protected static int deviceHeight;
+    protected static int deviceWidth;
 
     //Monkey related configuration
-    private static Map<String,Long> monkeyEventRatioMap = new HashMap<>();
-    private static Map<String,Long> monkeyEventSummaryRatioMap = new HashMap<>();
-    private static List<Point> specialPointList = new ArrayList<>();
-    private static List<Point> longPressPointList = new ArrayList<>();
-    private static List<String> xpathItemList = new ArrayList<>();
-    private static long runningTime;
-    private static long testStartTime;// = System.currentTimeMillis();
-    private static StringBuilder repoStep = new StringBuilder();
+    protected static Map<String,Long> monkeyEventRatioMap = new HashMap<>();
+    protected static Map<String,Long> monkeyEventSummaryRatioMap = new HashMap<>();
+    protected static List<Point> specialPointList = new ArrayList<>();
+    protected static List<Point> longPressPointList = new ArrayList<>();
+    protected static List<String> xpathItemList = new ArrayList<>();
+    protected static long runningTime;
+    protected static long testStartTime;// = System.currentTimeMillis();
+    protected static StringBuilder repoStep = new StringBuilder();
 
     public static HashSet<String> getSet() {
         return set;
@@ -107,7 +107,7 @@ public class XPathUtil {
         log.error("\n==============================");
     }
 
-    private static void initMonkey(){
+    protected static void initMonkey(){
         log.info("Method: initMonkey");
 
         testStartTime = System.currentTimeMillis();
@@ -153,7 +153,7 @@ public class XPathUtil {
         log.info("Monkey event list and ratio : \n" + monkeyEventRatioMap );
     }
 
-    private static Set<String> getBlackKeyXpathSet(List<String> list){
+    protected static Set<String> getBlackKeyXpathSet(List<String> list){
         Set<String> set = new HashSet<>();
 
         for(String item : list){
@@ -472,7 +472,7 @@ public class XPathUtil {
         return  page;
     }
 
-    private static Set<String> getBlackNodeXpathSet(Document document) {
+    protected static Set<String> getBlackNodeXpathSet(Document document) {
         String xpathStr = "";
         Set<String> nodeSet =  new HashSet<>();
 
@@ -822,13 +822,13 @@ public class XPathUtil {
     }
 
 
-    private static NodeList getNodeListByXpath(String xml, String xpathExpr) throws Exception{
+    protected static NodeList getNodeListByXpath(String xml, String xpathExpr) throws Exception{
         Document document = builder.parse(new ByteArrayInputStream(xml.getBytes()));
         return (NodeList) xpath.evaluate(xpathExpr, document, XPathConstants.NODESET);
     }
 
 
-    private static String getAppName(String xml){
+    protected static String getAppName(String xml){
         log.info("Method: getAPPName");
         String name = null;
         NodeList nodeList = null;
@@ -914,7 +914,7 @@ public class XPathUtil {
         return xml;
     }
 
-    private static void triggerElementAction(String xpath, String action, Object value){
+    protected static void triggerElementAction(String xpath, String action, Object value){
         MobileElement element = Driver.findElement(By.xpath(xpath));
 
         log.info("Trigger element : " + xpath + " action : " + action + " value : " + value );
@@ -953,7 +953,7 @@ public class XPathUtil {
         return ret;
     }
 
-    private static String getNodeXpath(Node node){
+    protected static String getNodeXpath(Node node){
         return getNodeXpath(node,false);
     }
 
@@ -1174,7 +1174,7 @@ public class XPathUtil {
         return clickCount;
     }
 
-    private static ArrayList<String> initEventMap(){
+    protected static ArrayList<String> initEventMap(){
         log.info("Method: initEventMap");
 
         ArrayList<String> array = new ArrayList<>();

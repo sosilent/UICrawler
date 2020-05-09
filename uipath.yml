@@ -1,0 +1,21 @@
+#UI path 配置
+UI_PATH:
+  1:
+    - activity_name: '1'
+      element_id: '11'
+
+    - activity_name: '2'
+      element_id: '22'
+    -
+      activity_name: '3'
+      element_id: '33'
+
+  2:
+    - activity_name: 'a'
+      element_id: 'aa'
+
+    - activity_name: 'b'
+      element_id: 'bb'
+    -
+      activity_name: 'c'
+      element_id: 'cc'

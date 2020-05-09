@@ -1,10 +1,14 @@
-package util;
+package util.uipath;
 
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import util.ConfigUtil;
+import util.Driver;
+import util.PackageStatus;
+import util.XPathUtil;
 
 import javax.xml.xpath.XPathConstants;
 import java.io.ByteArrayInputStream;
@@ -124,7 +128,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         showTabBarElement(currentXML,tabBarXpath);
 
-        UIPathNode node = uiPathNodeList.get((int) currentDepth);
+        UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth-1));
 
         //遍历UI内的Node元素
         while(--length >= 0 && !stop){
@@ -154,7 +158,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     break;
                 }
 
-                if (!elem.getId().equalsIgnoreCase(node.getElementId()))
+                if (!elem.getId().equalsIgnoreCase(uiPathNode.getElementId()))
                     continue;
 
                 currentXML = clickElement(elem,currentXML);

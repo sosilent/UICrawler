@@ -4,6 +4,9 @@ import org.apache.commons.collections.map.ListOrderedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.*;
+import util.uipath.SpecifiedXpathUtil;
+import util.uipath.UIPathConfigUtil;
+
 import java.io.File;
 import java.util.*;
 
@@ -18,6 +21,11 @@ public class Crawler {
     private static boolean isReported = false;
     private static String udid;
     private static String outputDir;
+
+    //ui遍历模式： 1, loop; 2, specified
+    private static int UI_LOOP_MODE = 1;
+    private static int UI_SPECIFIED_MODE = 2;
+    private static int loopMode = UI_LOOP_MODE;
 
     private static class CtrlCHandler extends Thread {
         @Override
@@ -291,6 +299,8 @@ public class Crawler {
         options.addOption("w", "wechat_mode", false, "run in wechat mode");
         options.addOption("x", "write_to_db", false, "write performance data to influxDB");
 
+        options.addOption("y", "uipath", true, "ui path config data");
+
         CommandLine commandLine = parser.parse(options, args);
         String configFile;
 
@@ -314,9 +324,10 @@ public class Crawler {
                             "    -t  Appium port\n" +
                             "    -u  Device serial\n" +
                             "    -v  Version\n" +
-                            "    -z  WDA port for ios\n" +
+                            "    -w  run in wechat mode" +
                             "    -x  Write data to influx db\n" +
-                            "    -w  run in wechat mode"
+                            "    -y  ui path config\n" +
+                            "    -z  WDA port for ios\n"
             );
             return;
         }
@@ -349,6 +360,17 @@ public class Crawler {
             log.info("System File Encoding: " + System.getProperty("file.encoding"));
             return;
         }
+
+        String uiPathConfigFile = null;
+        if (commandLine.hasOption("y")) {
+            uiPathConfigFile = System.getProperty("user.dir") + File.separator + commandLine.getOptionValue('y');
+            uiPathConfigFile = uiPathConfigFile.trim();
+            log.info(uiPathConfigFile);
+
+            loopMode = UI_SPECIFIED_MODE;
+        }
+        else
+            loopMode = UI_LOOP_MODE;
 
         if (commandLine.hasOption("o")) {
             outputDir = commandLine.getOptionValue('o').trim();
@@ -385,6 +407,10 @@ public class Crawler {
 
             //初始化配置文件
             ConfigUtil.initialize(configFile, udid);
+
+            if (loopMode == UI_SPECIFIED_MODE) {
+                UIPathConfigUtil.initialize(uiPathConfigFile);
+            }
 
             if (commandLine.hasOption("s")) {
                 ConfigUtil.setServerIp(commandLine.getOptionValue('s').trim());
@@ -461,7 +487,7 @@ public class Crawler {
 
             try {
                 //等待App完全启动,否则遍历不到元素
-                Driver.sleep(15);
+                Driver.sleep(5);
 
                 if (commandLine.hasOption("e") && Util.isAndroid()) {
                     PerfUtil.writeDataToFileAsync(writeToDB);
@@ -484,7 +510,17 @@ public class Crawler {
                 } else {
                     //开始遍历UI
                     log.info("------------Run in crawler mode----------------");
-                    XPathUtil.getNodesFromFile(pageSource, 0);
+                    if (loopMode == UI_LOOP_MODE)
+                        XPathUtil.getNodesFromFile(pageSource, 0);
+                    else {
+                        Map<Integer, List<SpecifiedXpathUtil.UIPathNode>> uiPathMap = UIPathConfigUtil.getUIPath();
+
+                        for (int index : uiPathMap.keySet())  {
+                            List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
+                            SpecifiedXpathUtil.getNodesFromFile(pageSource, nodeList, 0);
+                        }
+                    }
+
                     //Driver.getPageSource();
                     //String xpath = "//android.widget.Button[@text=\"允许\" and @scrollable=\"false\" and @resource-id=\"android:id/button1\" and @password=\"false\" and @package=\"com.lbe.security.miui\" and @long-clickable=\"false\" and @index=\"1\" and @focused=\"false\" and @focusable=\"true\" and @enabled=\"true\" and @clickable=\"true\" and @class=\"android.widget.Button\" and @checkable=\"false\"]";
                     //Driver.findElement(By.xpath(xpath));

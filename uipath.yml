@@ -1,21 +1,11 @@
 #UI path 配置
 UI_PATH:
   1:
-    - activity_name: '1'
-      element_id: '11'
-
-    - activity_name: '2'
-      element_id: '22'
-    -
-      activity_name: '3'
-      element_id: '33'
+    - activity_name: '.AlipayLogin'
 
   2:
-    - activity_name: 'a'
-      element_id: 'aa'
-
-    - activity_name: 'b'
-      element_id: 'bb'
-    -
-      activity_name: 'c'
-      element_id: 'cc'
+    - activity_name: '.AlipayLogin'
+#      element_id: 'aa'
+#
+#    - activity_name: 'com.alipay.mobile.scan.as.main.MainCaptureActivity'
+#      element_id: 'aa'

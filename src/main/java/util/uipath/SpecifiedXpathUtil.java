@@ -97,7 +97,13 @@ public class SpecifiedXpathUtil extends XPathUtil {
             }
         }
 
-        log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity() +"+++++++++++++++++++++++");
+        String currentActivity = Driver.getCurrentActivity();
+        log.info("++++++++++++++++++ Activity Name : " + currentActivity +"+++++++++++++++++++++++");
+
+        currentDepth++;
+        log.info("------Depth: " + currentDepth);
+
+        UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth-1));
 
         //1.检查当前UI的包名是否正确，一定要先查包名！因为其内部控制了stop的值, 包名不合法，-是否应该重启app?--
         if(PackageStatus.VALID != isValidPackageName(packageName,true)){
@@ -107,13 +113,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         // 2.检查Depth,超过预定值就返回
-        currentDepth++;
-        log.info("------Depth: " + currentDepth);
-        if(currentDepth == specialPointList.size()){
+        if(currentDepth == uiPathNodeList.size()){
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
             //Driver.pressBack(repoStep);
-            Driver.takeScreenShot();
+            if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity))
+                Driver.takeScreenShot();
 
             currentXML = Driver.getPageSource();
             return currentXML;
@@ -127,8 +132,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         showTabBarElement(currentXML,tabBarXpath);
-
-        UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth-1));
 
         //遍历UI内的Node元素
         while(--length >= 0 && !stop){

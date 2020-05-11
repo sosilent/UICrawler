@@ -517,6 +517,7 @@ public class Crawler {
 
                         for (int index : uiPathMap.keySet())  {
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
+                            SpecifiedXpathUtil.restart();
                             SpecifiedXpathUtil.getNodesFromFile(pageSource, nodeList, 0);
                         }
                     }

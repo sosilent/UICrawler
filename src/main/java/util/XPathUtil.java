@@ -318,6 +318,10 @@ public class XPathUtil {
 
     }
 
+    public static void restart() {
+        stop = false;
+    }
+
     //检查包名，返回false时 说明已经crash或跳出了当前app
     //此时如果ignoreCrash=true, stop会被重新设成false, 然后重启app
     //此时如果ignoreCrash=fasle, stop会被高成true，但不会重启app

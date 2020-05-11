@@ -18,7 +18,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
     public static class UIPathNode {
         private String activityName;
-        private String elementId;
+        private String resourceId;
+        private String text;
 
         public String getActivityName() {
             return activityName;
@@ -28,16 +29,24 @@ public class SpecifiedXpathUtil extends XPathUtil {
             this.activityName = activityName;
         }
 
-        public String getElementId() {
-            return elementId;
+        public String getResourceId() {
+            return resourceId;
         }
 
-        public void setElementId(String elementId) {
-            this.elementId = elementId;
+        public void setResourceId(String resourceId) {
+            this.resourceId = resourceId;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
         }
     }
 
-    public static String getNodesFromFile(String xml, List<UIPathNode> uiPathNodeList, long currentDepth) throws Exception{
+    public static String getNodesFromFile(String xml, int pathNodeIndex, List<UIPathNode> uiPathNodeList, long currentDepth) throws Exception{
         log.info("Method: getNodesFromFile");
 
         log.info("Context: " + Driver.driver.getContextHandles().toString());
@@ -118,7 +127,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             log.info("enter the target ui: depth, " + currentDepth);
             //Driver.pressBack(repoStep);
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity))
-                Driver.takeScreenShot();
+                Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
 
             currentXML = Driver.getPageSource();
             return currentXML;
@@ -131,15 +140,18 @@ public class SpecifiedXpathUtil extends XPathUtil {
             log.error("========!!!!!!!No UI node found in current page!!!!! Begin to find tab bar element... =====");
         }
 
-        showTabBarElement(currentXML,tabBarXpath);
+        showTabBarElement(currentXML, tabBarXpath);
 
         //遍历UI内的Node元素
-        while(--length >= 0 && !stop){
-            log.info("Element index is : " + length);
+        int iter = 0;
+        while(iter++ <length && !stop){
+            log.info("Element index is : " + iter);
 
-            Node tmpNode = nodes.item(length);
+            Node tmpNode = nodes.item(iter);
+            log.info("node name: " + tmpNode.getNodeName());
 
             String nodeXpath = getNodeXpath(tmpNode);
+            log.info("nodeXpath: " + nodeXpath);
 
             if(nodeXpath == null){
                 log.error("Null nodeXpath , continue.");
@@ -158,10 +170,15 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     //元素未找到，重新遍历当前页面
                     xpathNotFoundElementList.add(nodeXpath);
                     log.info("---------Node not found in current UI!!!!!!! Stop current iteration.-----------" );
-                    break;
+                    continue;
                 }
 
-                if (!elem.getId().equalsIgnoreCase(uiPathNode.getElementId()))
+                if (uiPathNode.getResourceId() == null)
+                    continue;
+                else if (uiPathNode.getText() == null && nodeXpath.indexOf(uiPathNode.getResourceId()) < 0)
+                    continue;
+                else if (uiPathNode.getText() != null
+                        && (nodeXpath.indexOf(uiPathNode.getResourceId()) < 0 || nodeXpath.indexOf(uiPathNode.getText()) < 0))
                     continue;
 
                 currentXML = clickElement(elem,currentXML);
@@ -181,7 +198,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     }
 
                     //遍历子UI
-                    getNodesFromFile(currentXML, uiPathNodeList, currentDepth);
+                    getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
 
                     //子页面返回后检查
                     // 1.包名是否合法
@@ -229,7 +246,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             return currentXML;
         }
 
-        log.info("node length after while is " + length);
+        log.info("node length after while is " + iter);
         log.info("========================================Complete iterating current UI with following elements: ");
         //log.info( "\n\n\n" + previousPageStructure + "\n\n\n");
         log.info("depth before return is " + currentDepth);

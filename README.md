@@ -4,7 +4,7 @@
 ![](https://github.com/lgxqf/UICrawler/blob/master/doc/pic/picToMov.gif)
 
 QQ 技术交流群 ： 728183683
- 
+
 作者提供有偿UI自动化培训、UI测试工具开发及Jenkins集成，有意者请联系群主
 
 环境搭建及基本使用说明： https://testerhome.com/topics/14490  （感谢网友harsayer 倾力之作）
@@ -75,17 +75,44 @@ v2.3版已支持 Appium 1.16.0, Java-client 7.3.0
 * 更改demo为Alipay
 * 报告中增加每个activity中click失败和成功的次数统计
 
+## 运行环境设置
+
+### 基础环境
+
+#### docker
+
+- apt install docker
+- apt install docker-compose up
+
+#### appium
+
+​	docker pull appium/appium
+
+## 配置
+
+### docker
+
+```yml
+version: '3'
+
+services:
+  appium:
+    image: appium/appium 
+    container_name: appium
+    restart: always
+    privileged: true
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ~/.android:/root/.android
+    ports:
+      - 4723:4723
+    environment:
+      - CONNECT_TO_GRID=true
+```
 
 
-## 运行工具
 
-### 1.下载Jar包
-[UICrawler.jar](https://pan.baidu.com/s/1mNci6SWNHPuLj_mvrfgIbg)
-
-### 2.下载配置文件
-[config.yml](https://github.com/lgxqf/UICrawler/blob/master/config.yml) 
-
-### 3.根据待测试App修改配置文件中下列各项的值 [详情见 Config.md](doc/Config.md)
+### 根据待测试App修改配置文件中下列各项的值 [详情见 Config.md](doc/Config.md)
   #### Android
   * ANDROID_PACKAGE
   * ANDROID_MAIN_ACTIVITY

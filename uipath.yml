@@ -5,7 +5,19 @@ UI_PATH:
 
   2:
     - activity_name: '.AlipayLogin'
-#      element_id: 'aa'
-#
-#    - activity_name: 'com.alipay.mobile.scan.as.main.MainCaptureActivity'
-#      element_id: 'aa'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saoyisao_tv'
+
+    - activity_name: 'com.alipay.mobile.scan.as.main.MainCaptureActivity'
+
+  3:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+
+  4:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+      text: "充值中心"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'

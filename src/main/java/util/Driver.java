@@ -37,7 +37,7 @@ public final class Driver {
     public static AppiumDriver driver;
     private static int deviceHeight;
     private static int deviceWidth;
-    private static final int APP_START_WAIT_TIME = 20;
+    private static final int APP_START_WAIT_TIME = 10;
     private static int screenshotCount = 0;
 
     public static void startPerfRecordiOS(){
@@ -123,13 +123,23 @@ public final class Driver {
 
     protected static String getScreenShortName(){
         String screenshotName = ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT + File.separator + Util.getDatetime() + ".png" ;
+        return  screenshotName;
+    }
+
+    protected static String getScreenShortName(String dir){
+        String screenshotName = ConfigUtil.getRootDir() + File.separator +
+                                    ConfigUtil.SCREEN_SHOT + File.separator +
+                                    dir + File.separator + Util.getDatetime() + ".png" ;
 
         return  screenshotName;
-
     }
 
     public static String takeScreenShot(){
         return  takeScreenShot(getScreenShortName());
+    }
+
+    public static String takeScreenShotWithSubDir(String dir){
+        return takeScreenShot(getScreenShortName(dir));
     }
 
     public static String takeScreenShot(String screenShotName) {
@@ -151,28 +161,6 @@ public final class Driver {
             log.info("screenShotName: " + screenShotName);
 
             FileUtils.copyFile(screenShot, new File(screenShotName));
-
-            if(++screenshotCount % 5 == 0) {
-                log.info("Screenshot count is " + screenshotCount);
-                String path = ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT;
-
-                File file = new File(path);
-
-                File[] array = file.listFiles();
-
-                if (array.length > ConfigUtil.getScreenshotCount()) {
-                    File delFile = array[0];
-
-                    for (File f : array) {
-                        if (f.getName().compareTo(delFile.getName()) < 0) {
-                            delFile = f;
-                        }
-                    }
-
-                    log.info(delFile.toString());
-                    delFile.delete();
-                }
-            }
         } catch (Exception e) {
             log.info("Fail to take screenshot!");
         }

@@ -3,7 +3,6 @@ package util.uipath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
-import util.Util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +18,8 @@ public class UIPathConfigUtil {
     private static String UI_PATH = "UI_PATH";
 
     private static String ACTIVITY_NAME = "activity_name";
-    private static String ELEMENT_ID = "element_id";
+    private static String ELEMENT_ID = "resource_id";
+    private static String TEXT = "text";
 
     private static UIPathConfigUtil configUtil;
     private static Map<Integer, List<SpecifiedXpathUtil.UIPathNode>> uiPath;
@@ -42,7 +42,6 @@ public class UIPathConfigUtil {
             uiPath = new HashMap<>();
             Set<Integer> keys = pathMap.keySet();
 
-
             for (int indexNo : keys) {
                 List<Map<String, String>> nodeMapList = (List<Map<String, String>>) pathMap.get(indexNo);
 
@@ -50,7 +49,8 @@ public class UIPathConfigUtil {
                 for (Map nodeMap : nodeMapList) {
                     SpecifiedXpathUtil.UIPathNode node = new SpecifiedXpathUtil.UIPathNode();
                     node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
-                    node.setElementId((String) nodeMap.get(ELEMENT_ID));
+                    node.setResourceId((String) nodeMap.get(ELEMENT_ID));
+                    node.setText((String) nodeMap.get(TEXT));
                     nodes.add(node);
                 }
                 uiPath.put(indexNo, nodes);

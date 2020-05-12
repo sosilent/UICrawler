@@ -121,7 +121,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             return currentXML;
         }
 
-        // 2.检查Depth,超过预定值就返回
+        // 2.如果是最后深度，截屏+保存page source
         if(currentDepth == uiPathNodeList.size()){
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
@@ -130,6 +130,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
 
             currentXML = Driver.getPageSource();
+            Driver.snapshotPageSource(Integer.toString(pathNodeIndex), currentXML);
+
             return currentXML;
         }
 

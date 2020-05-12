@@ -26,6 +26,7 @@ import javax.xml.xpath.XPathFactory;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.*;
@@ -129,7 +130,7 @@ public final class Driver {
     protected static String getScreenShortName(String dir){
         String screenshotName = ConfigUtil.getRootDir() + File.separator +
                                     ConfigUtil.SCREEN_SHOT + File.separator +
-                                    dir + File.separator + Util.getDatetime() + ".png" ;
+                                    dir + File.separator + "screenshot." + Util.getDatetime() + ".png" ;
 
         return  screenshotName;
     }
@@ -140,6 +141,19 @@ public final class Driver {
 
     public static String takeScreenShotWithSubDir(String dir){
         return takeScreenShot(getScreenShortName(dir));
+    }
+
+    public static void snapshotPageSource(String dir, String pageSource) {
+        String pageSourceName = ConfigUtil.getRootDir() + File.separator +
+                ConfigUtil.SCREEN_SHOT + File.separator +
+                dir + File.separator + "layout." + Util.getDatetime() + ".xml" ;
+
+        File file = new File(pageSourceName);
+        try {
+            FileUtils.write(file, pageSource, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String takeScreenShot(String screenShotName) {

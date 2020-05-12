@@ -1,13 +1,7 @@
 # UICrawler
 ## 基于Appium的App UI遍历 & Monkey 工具
 
-![](https://github.com/lgxqf/UICrawler/blob/master/doc/pic/picToMov.gif)
-
-QQ 技术交流群 ： 728183683
-
-作者提供有偿UI自动化培训、UI测试工具开发及Jenkins集成，有意者请联系群主
-
-环境搭建及基本使用说明： https://testerhome.com/topics/14490  （感谢网友harsayer 倾力之作）
+环境搭建及基本使用说明： https://testerhome.com/topics/14490
 
 v2.3版已支持 Appium 1.16.0, Java-client 7.3.0
 
@@ -110,8 +104,6 @@ services:
       - CONNECT_TO_GRID=true
 ```
 
-
-
 ### 根据待测试App修改配置文件中下列各项的值 [详情见 Config.md](doc/Config.md)
   #### Android
   * ANDROID_PACKAGE
@@ -122,33 +114,73 @@ services:
   * IOS_IPA_NAME
   #### Monkey配置项可选， 详情见 [Monkey配置](https://github.com/lgxqf/UICrawler/blob/master/doc/Config.md#monkey%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE)  
 
-### 4.启动appium
+### 启动appium
+
+进入docker-compose.yml 路径
+
 ```bash
-appium --session-override
--p 设定appium server的端口 , 不加参数默认为4723
+docker-compose up -d
 ```
 
-### 5.1 运行元素遍历
+### 链接设备
+
+- adb 链接设备
+  
+  ```
+adb devices
+  ```
+  
+  输出：
+  
+```
+  List of devices attached
+  CLB7N18519004319       device usb:4-2 product:EML-AL00 model:EML_AL00 device:HWEML transport_id:6
+  ```
+  
+- 基于tcp/ip调试，这里端口号用了6666，可指定
+  
+  ```
+adb -s CLB7N18519004319 tcpip 6666
+  ```
+  
+  输出：
+
+  ```
+  restarting in TCP mode port: 6666
+  ```
+  
+- 使用docker appium链接设备
+  
+  ```
+  docker exec -it appium adb connect 192.168.3.17:6666
+  ```
+  输出：
+
+  ```
+  connected to 192.168.3.17:6666
+  ```
+  
+- 确认设备链接状态（基于docker appium）
+  
+  ```
+  docker exec -it appium adb devices
+  ```
+  输出：
+  
+  ```
+  List of devices attached
+  192.168.3.17:6666	device
+  ```
+
+### 运行元素遍历
+
 ```aidl
-java -jar UICrawler.jar -u udid 
+java -jar UICrawler.jar -u udid -y uipath.yml 
 -u 指定设备udid
 -t 指定appium server的端口（此项为可选项，默认值是4723)
 -f 指定yml配置文件 若无此参数 默认为config.yml 
+-y UI路径
 ```
-
-### 5.2 运行 Monkey功能
-```aidl
-java -jar UICrawler.jar -u udid -m
-```
-
-### 5.3 运行微信小程序测试 -w 启动后会通过微信进入小程序
-```
-CRITICAL_ELEMENT:
-  MINI_PROGRAM_NAME: 此处值为待测的小程序的名字
-
-java -jar UICrawler.jar -u udid -w
-```
-
 
 ### 查看支持的参数
 ```aidl

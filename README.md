@@ -76,7 +76,7 @@ v2.3版已支持 Appium 1.16.0, Java-client 7.3.0
 #### docker
 
 - apt install docker
-- apt install docker-compose up
+- apt install docker-compose
 
 #### appium
 
@@ -124,7 +124,9 @@ docker-compose up -d
 
 ### 链接设备
 
-- adb 链接设备
+**注：**手机要处于开发者模式
+
+- adb 查看链接的设备列表
   
   ```
 adb devices
@@ -135,9 +137,9 @@ adb devices
 ```
   List of devices attached
   CLB7N18519004319       device usb:4-2 product:EML-AL00 model:EML_AL00 device:HWEML transport_id:6
-  ```
-  
-- 基于tcp/ip调试，这里端口号用了6666，可指定
+```
+
+- 改为基于tcp/ip调试，这里端口号用了6666，可指定
   
   ```
 adb -s CLB7N18519004319 tcpip 6666
@@ -149,7 +151,7 @@ adb -s CLB7N18519004319 tcpip 6666
   restarting in TCP mode port: 6666
   ```
   
-- 使用docker appium链接设备
+- 使用docker appium链接设备：ip地址为手机的ip地址（手机与电脑应该在同一个wifi网中）
   
   ```
   docker exec -it appium adb connect 192.168.3.17:6666
@@ -200,6 +202,7 @@ java -jar UICrawler.jar -h
     -z  WDA port for ios
     -x  Write data to influxDB
     -w  Run in wechat mode
+    -y  ui path config
 ```
 
 ### 一些常用命令

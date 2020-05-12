@@ -69,7 +69,7 @@ public class PictureUtil {
     }
 
     static String takeAndModifyScreenShot(int x, int y){
-        return takeAndModifyScreenShot(x,y,100);
+        return takeAndModifyScreenShot(x,y,10);
     }
 
     static String takeAndModifyScreenShot(int x, int y,int radius){

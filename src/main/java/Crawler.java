@@ -1,6 +1,7 @@
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.cli.*;
 import org.apache.commons.collections.map.ListOrderedMap;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.*;
@@ -8,6 +9,7 @@ import util.uipath.SpecifiedXpathUtil;
 import util.uipath.UIPathConfigUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -48,9 +50,9 @@ public class Crawler {
     private static void executeTask() {
         generateReport();
 
-//        if (ConfigUtil.isGenerateVideo()) {
-//            generateVideo();
-//        }
+        if (ConfigUtil.isGenerateVideo()) {
+            generateVideo();
+        }
 
         isReported = true;
     }
@@ -67,6 +69,16 @@ public class Crawler {
         } catch (Exception e) {
             log.error("Fail to generate full.mp4 file");
             e.printStackTrace();
+        }
+
+        String clickScreenShotDir = ConfigUtil.getScreenShotDir() + File.separator + "click-screenshot";
+        File clickScreenShotDirFile = new File(clickScreenShotDir);
+        for (String path : fullList) {
+            try {
+                FileUtils.moveFileToDirectory(new File(path), clickScreenShotDirFile, true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         //Generate crash video

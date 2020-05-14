@@ -318,7 +318,7 @@ public class XPathUtil {
 
     }
 
-    public static void restart() {
+    public static void reset() {
         stop = false;
         set.clear();
     }

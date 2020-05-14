@@ -18,7 +18,16 @@ import java.util.Map;
 
 public class SpecifiedXpathUtil extends XPathUtil {
 
-    public static Map<String, String> pageSourceCache = new HashMap<>();
+    private static String initialActivity;
+    private static Map<String, String> pageSourceCache = new HashMap<>();
+
+    public static String getInitialActivity() {
+        return initialActivity;
+    }
+
+    public static void setInitialActivity(String initialActivity) {
+        SpecifiedXpathUtil.initialActivity = initialActivity;
+    }
 
     public static class UIPathNode {
         private String activityName;
@@ -150,6 +159,15 @@ public class SpecifiedXpathUtil extends XPathUtil {
             else {
                 log.error("target activity name: " + uiPathNode.getActivityName() + "; current activity name: " + currentActivity);
                 log.error("page source:\n" + currentXML);
+            }
+
+            String curActivity = Driver.getCurrentActivity();
+            log.info("cur activity before press back: " + curActivity);
+            while (--currentDepth >= 1) {
+                log.info("current depth and press back: " + currentDepth);
+                Driver.pressBack();
+
+                curActivity = Driver.getCurrentActivity();
             }
 
             return currentXML;

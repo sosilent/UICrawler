@@ -529,10 +529,15 @@ public class Crawler {
 
                         for (int index : uiPathMap.keySet())  {
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
-                            Driver.appRelaunch();
-                            SpecifiedXpathUtil.restart();
 
                             log.info("-----------------start screenshot " + index + "--------------------");
+                            SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
+
+                            String curActivity = Driver.getCurrentActivity();
+                            if (!curActivity.equalsIgnoreCase(SpecifiedXpathUtil.getInitialActivity()))
+                                Driver.appRelaunch();
+
+                            SpecifiedXpathUtil.reset();
                             SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                         }
                     }

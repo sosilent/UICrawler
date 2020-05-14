@@ -531,6 +531,8 @@ public class Crawler {
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
                             Driver.appRelaunch();
                             SpecifiedXpathUtil.restart();
+
+                            log.info("-----------------start screenshot " + index + "--------------------");
                             SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                         }
                     }

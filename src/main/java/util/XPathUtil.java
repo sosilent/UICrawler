@@ -320,6 +320,7 @@ public class XPathUtil {
 
     public static void restart() {
         stop = false;
+        set.clear();
     }
 
     //检查包名，返回false时 说明已经crash或跳出了当前app

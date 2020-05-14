@@ -15,9 +15,27 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
 
-  4:
+  42:
     - activity_name: '.AlipayLogin'
       resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
       text: "充值中心"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  59:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
+
+  60:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
+      resource_id: 'com.alipay.mobile.onsitepay:id/open_btn'
+      text: '立即开启'
+
+    - activity_name: 'com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity'

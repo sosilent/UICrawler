@@ -161,13 +161,22 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 log.error("page source:\n" + currentXML);
             }
 
-            String curActivity = Driver.getCurrentActivity();
-            log.info("cur activity before press back: " + curActivity);
-            while (--currentDepth >= 1) {
-                log.info("current depth and press back: " + currentDepth);
-                Driver.pressBack();
+            try {
+                String curActivity = Driver.getCurrentActivity();
+                log.info("cur activity before press back: " + curActivity);
+                while (--currentDepth >= 1) {
+                    log.info("current depth and press back: " + currentDepth);
+                    Driver.pressBack();
+                }
 
                 curActivity = Driver.getCurrentActivity();
+                //有的页面（例如需输入密码的页面）会带出输入界面，因此后退深度+1
+                //这里做一个预检，防止回退错误发生
+                if (!curActivity.equalsIgnoreCase(SpecifiedXpathUtil.getInitialActivity()))
+                    Driver.pressBack();
+            }
+            catch (Exception e) {
+                log.error("when pressing back, some errors: \n" + e.getMessage());
             }
 
             return currentXML;
@@ -205,25 +214,23 @@ public class SpecifiedXpathUtil extends XPathUtil {
             //Comment this if not in test mode
             //nodeXpath = showNodes(currentXML,nodeXpath);
 
+            if (uiPathNode.getResourceId() == null)
+                continue;
+            else if (uiPathNode.getText() == null && nodeXpath.indexOf(uiPathNode.getResourceId()) < 0)
+                continue;
+            else if (uiPathNode.getText() != null
+                    && (nodeXpath.indexOf(uiPathNode.getResourceId()) < 0 || nodeXpath.indexOf(uiPathNode.getText()) < 0))
+                continue;
+
             //判断当前元素是否点击过
             if(set.add(nodeXpath)){
-
                 MobileElement elem = Driver.findElementWithoutException(By.xpath(nodeXpath));
-
                 if(null == elem){
                     //元素未找到，重新遍历当前页面
                     xpathNotFoundElementList.add(nodeXpath);
                     log.info("---------Node not found in current UI!!!!!!! Stop current iteration.-----------" );
                     continue;
                 }
-
-                if (uiPathNode.getResourceId() == null)
-                    continue;
-                else if (uiPathNode.getText() == null && nodeXpath.indexOf(uiPathNode.getResourceId()) < 0)
-                    continue;
-                else if (uiPathNode.getText() != null
-                        && (nodeXpath.indexOf(uiPathNode.getResourceId()) < 0 || nodeXpath.indexOf(uiPathNode.getText()) < 0))
-                    continue;
 
                 currentXML = clickElement(elem, currentXML);
                 afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);

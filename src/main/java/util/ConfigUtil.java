@@ -27,6 +27,7 @@ public class ConfigUtil {
     private static boolean generateVideo = true;
     private static boolean videoVertical = true;
 
+    private static String appiumDockerId = null;
 
     private static boolean runInWechatMode = false;
     private static long clickCount;
@@ -413,4 +414,12 @@ public class ConfigUtil {
 //        log.info("Config : " + key + " = " + map);
 //        return map;
 //    }
+
+    public static String getAppiumDockerId() {
+        return appiumDockerId;
+    }
+
+    public static void setAppiumDockerId(String appiumDockerId) {
+        ConfigUtil.appiumDockerId = appiumDockerId;
+    }
 }

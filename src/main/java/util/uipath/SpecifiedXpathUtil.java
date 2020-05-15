@@ -5,21 +5,15 @@ import org.openqa.selenium.By;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import util.ConfigUtil;
-import util.Driver;
-import util.PackageStatus;
-import util.XPathUtil;
+import util.*;
 
 import javax.xml.xpath.XPathConstants;
 import java.io.ByteArrayInputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SpecifiedXpathUtil extends XPathUtil {
 
     private static String initialActivity;
-    private static Map<String, String> pageSourceCache = new HashMap<>();
 
     public static String getInitialActivity() {
         return initialActivity;
@@ -130,12 +124,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         //1.检查当前UI的包名是否正确，一定要先查包名！因为其内部控制了stop的值, 包名不合法，-是否应该重启app?--
         if(PackageStatus.VALID != isValidPackageName(packageName,true)){
             log.info("=====================package: "+ packageName + " is invalid, return ....==============================");
-            if (pageSourceCache.containsKey(currentActivity)) {
-                currentXML = Driver.getPageSource();
-                pageSourceCache.put(currentActivity, currentXML);
-            }
-            else
-                currentXML = pageSourceCache.get(currentActivity);
+            currentXML = PageSourceCache.getPageSource(currentActivity);
 
             return currentXML;
         }
@@ -145,12 +134,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
             //Driver.pressBack(repoStep);
-            if (pageSourceCache.containsKey(currentActivity))
-                currentXML = pageSourceCache.get(currentActivity);
-            else {
-                currentXML = Driver.getPageSource();
-                pageSourceCache.put(currentActivity, currentXML);
-            }
+            currentXML = PageSourceCache.getPageSource(currentActivity);
 
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
@@ -246,13 +230,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
 
                     if(PackageStatus.VALID != isValidPackageName(packageName)){
-                        if (pageSourceCache.containsKey(newActivity))
-                            currentXML = pageSourceCache.get(newActivity);
-                        else {
-                            currentXML = Driver.getPageSource();
-                            pageSourceCache.put(newActivity, currentXML);
-                        }
-
+                        currentXML = PageSourceCache.getPageSource(newActivity);
                         afterPageStructure = Driver.getPageStructure(currentXML,clickXpath);
                         break;
                     }
@@ -272,20 +250,15 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     //从子UI返回后，检查包名
                     newActivity = Driver.getCurrentActivity();
                     log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
+                    currentXML = PageSourceCache.getPageSource(newActivity);
 
-                    if (pageSourceCache.containsKey(newActivity))
-                        currentXML = pageSourceCache.get(newActivity);
-                    else {
-                        currentXML = Driver.getPageSource();
-                        pageSourceCache.put(newActivity, currentXML);
-                    }
                     packageName = getAppName(currentXML);
                     if(PackageStatus.VALID != isValidPackageName(packageName,false)){
                         break;
                     }
 
                     //判断从子页面返回后，父页面是否发生了变化
-                    afterPageStructure = Driver.getPageStructure(currentXML,clickXpath);
+                    afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
 
                     if(isSamePage(previousPageStructure,afterPageStructure)){
                         log.info("Parent page stay the same after returning from child page");

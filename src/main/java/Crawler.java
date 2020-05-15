@@ -312,6 +312,7 @@ public class Crawler {
         options.addOption("x", "write_to_db", false, "write performance data to influxDB");
 
         options.addOption("y", "uipath", true, "ui path config data");
+        options.addOption("n", "docker_appium_id", true, "docker appium id");
 
         CommandLine commandLine = parser.parse(options, args);
         String configFile;
@@ -329,6 +330,7 @@ public class Crawler {
                             "    -i  Ignore crash\n" +
                             //"    -l  Execution loop count\n" +
                             "    -m  Run monkey\n" +
+                            "    -n  docker appium id\n" +
                             "    -o  Output directory" +
                             "    -p  Android package name\n" +
                             //"    -r  Crawler running time\n" +
@@ -383,6 +385,10 @@ public class Crawler {
         }
         else
             loopMode = UI_LOOP_MODE;
+
+        if (commandLine.hasOption('n')) {
+            ConfigUtil.setAppiumDockerId(commandLine.getOptionValue('n').trim());
+        }
 
         if (commandLine.hasOption("o")) {
             outputDir = commandLine.getOptionValue('o').trim();

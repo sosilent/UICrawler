@@ -856,7 +856,9 @@ public final class Driver {
         capabilities.setCapability("appPackage", appPackage);
 
         //Android 7要用 uiautomator2
-        if(getSDKVersion(udid) > 23){
+        int sdkVersion = getSDKVersion(udid, ConfigUtil.getAppiumDockerId());
+
+        if(sdkVersion > 23){
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
             log.info("Using uiautomator2");
         }
@@ -1002,15 +1004,22 @@ public final class Driver {
         return packageName;
     }
 
-    public static int getSDKVersion(String udid){
+    public static int getSDKVersion(String udid, String dockerId){
         int sdkversion = 28;
         String findCmd = Util.getGrep();
 
-        String cmd = "adb -s " + udid + " shell getprop | " + findCmd + " version.sdk";
+        String cmd;
+        if (dockerId == null)
+            cmd = "adb -s " + udid + " shell getprop | " + findCmd + " version.sdk";
+        else
+            cmd = "docker exec " + dockerId + " adb -s " + udid + " shell getprop | " + findCmd + " version.sdk";
+
         ArrayList<String> cmdList = new ArrayList<>();
         cmdList.add(cmd);
+
+        String[] cmds = cmdList.toArray(new String[0]);
         //[ro.build.version.sdk]: [25]
-        String res = Util.exeCmd(cmdList);
+        String res = Util.exeCmd(cmds);
 
         if(res == null ||res.length() < 5){
 

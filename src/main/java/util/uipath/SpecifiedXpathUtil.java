@@ -124,7 +124,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         //1.检查当前UI的包名是否正确，一定要先查包名！因为其内部控制了stop的值, 包名不合法，-是否应该重启app?--
         if(PackageStatus.VALID != isValidPackageName(packageName,true)){
             log.info("=====================package: "+ packageName + " is invalid, return ....==============================");
-            currentXML = PageSourceCache.getPageSource(currentActivity);
+            currentXML = Driver.getPageSource();
 
             return currentXML;
         }
@@ -134,7 +134,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
             //Driver.pressBack(repoStep);
-            currentXML = PageSourceCache.getPageSource(currentActivity);
+            currentXML = Driver.getPageSource();
 
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
@@ -230,7 +230,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
 
                     if(PackageStatus.VALID != isValidPackageName(packageName)){
-                        currentXML = PageSourceCache.getPageSource(newActivity);
+                        currentXML = Driver.getPageSource();
                         afterPageStructure = Driver.getPageStructure(currentXML,clickXpath);
                         break;
                     }
@@ -250,7 +250,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     //从子UI返回后，检查包名
                     newActivity = Driver.getCurrentActivity();
                     log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
-                    currentXML = PageSourceCache.getPageSource(newActivity);
+                    currentXML = Driver.getPageSource();
 
                     packageName = getAppName(currentXML);
                     if(PackageStatus.VALID != isValidPackageName(packageName,false)){

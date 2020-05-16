@@ -51,7 +51,8 @@ public final class Util {
             log.info("Method exeCmd : " + Arrays.asList(commandStr));
         }
 
-        BufferedReader br = null;
+        LineNumberReader br = null;
+        LineNumberReader ebr = null;
         String res = "";
 
         try {
@@ -62,13 +63,14 @@ public final class Util {
                 p = Runtime.getRuntime().exec(commandStr);
             }
 
-            //br = new BufferedReader(new InputStreamReader(p.getInputStream(), Charset.forName(“GBK”)));
-            br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line;
-            StringBuilder output = new StringBuilder();
+            br = new LineNumberReader(new InputStreamReader(p.getInputStream()));
 
-            while ((line = br.readLine()) != null) {
-                output.append(line + "\n");
+            StringBuilder output = new StringBuilder();
+            {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    output.append(line + "\n");
+                }
             }
 
             res = output.toString().trim();
@@ -77,16 +79,32 @@ public final class Util {
                 log.info(Arrays.asList(commandStr) + "  ---output is : " + res);
             }
 
+            ebr = new LineNumberReader(new InputStreamReader(p.getErrorStream()));
+            {
+                String line;
+                while ((line = ebr.readLine()) != null) {
+                    log.error(line);
+                }
+            }
+
             p.waitFor();
             p.destroy();
         } catch (Exception e) {
-            log.info(commandStr + "fail to execute : " + e.getMessage());
+            log.error(commandStr + " fail to execute : " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (ebr != null) {
+                try {
+                    ebr.close();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -158,7 +176,11 @@ public final class Util {
 
         //Android
         if(Util.isAndroid(udid)){
-            String res = exeCmd("adb -s " + udid + " shell ps | "  + findCmd + "  " + processName);
+            String cmd = ConfigUtil.getAppiumDockerId() == null
+                    ? "adb -s " + udid + " shell ps | "  + findCmd + "  " + processName
+                    : "docker exec appium adb -s " + udid + " shell ps | "  + findCmd + "  " + processName;
+
+            String res = exeCmd(cmd);
 
             if( !res.endsWith(processName) && !res.contains(processName + "\n") ){
                 //在进程中未找到包名,说明crash了

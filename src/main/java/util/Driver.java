@@ -856,7 +856,7 @@ public final class Driver {
         capabilities.setCapability("appPackage", appPackage);
 
         //Android 7要用 uiautomator2
-        int sdkVersion = getSDKVersion(udid, ConfigUtil.getAppiumDockerId());
+        int sdkVersion = getSDKVersion();
 
         if(sdkVersion > 23){
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
@@ -1004,26 +1004,19 @@ public final class Driver {
         return packageName;
     }
 
-    public static int getSDKVersion(String udid, String dockerId){
+    public static int getSDKVersion(){
         int sdkversion = 28;
         String findCmd = Util.getGrep();
 
-        String cmd;
-        if (dockerId == null)
-            cmd = "adb -s " + udid + " shell getprop | " + findCmd + " version.sdk";
-        else
-            cmd = "docker exec " + dockerId + " adb -s " + udid + " shell getprop | " + findCmd + " version.sdk";
+        String cmd = ConfigUtil.getAppiumDockerId() == null ?
+                    "adb -s " + ConfigUtil.getUdid() + " shell getprop | " + findCmd + " version.sdk"
+                    : "docker exec " + ConfigUtil.getAppiumDockerId() + " adb -s " + ConfigUtil.getUdid() + " shell getprop | " + findCmd + " version.sdk";
 
-        ArrayList<String> cmdList = new ArrayList<>();
-        cmdList.add(cmd);
-
-        String[] cmds = cmdList.toArray(new String[0]);
-        //[ro.build.version.sdk]: [25]
-        String res = Util.exeCmd(cmds);
+        String res = Util.exeCmd(cmd);
 
         if(res == null ||res.length() < 5){
 
-            log.error("\n\nERROR:Fail to get sdk version!!!! The specified device udid : "+ udid + " is not found \n");
+            log.error("\n\nERROR:Fail to get sdk version!!!! The specified device udid : "+ ConfigUtil.getUdid() + " is not found \n");
             String deviceList = Util.exeCmd("adb devices",false);
             String output ="List of devices attached";
 
@@ -1049,15 +1042,19 @@ public final class Driver {
 
         Runnable newRunnable = () -> {
 
-            ArrayList<String> cmd = new ArrayList<>();
+            ArrayList<String> cmds = new ArrayList<>();
 
+            String cmd;
             if(Util.isAndroid()){
-                cmd.add("adb -s " + ConfigUtil.getUdid() + " logcat > " + logName);
+                cmd = ConfigUtil.getAppiumDockerId() == null ?
+                        "adb -s " + ConfigUtil.getUdid() + " logcat > " + logName
+                        : "docker exec " + ConfigUtil.getAppiumDockerId() + " adb -s " + ConfigUtil.getUdid() + " logcat > " + logName;
             }else{
-                cmd.add("idevicesyslog -u " + ConfigUtil.getUdid() + " > " + logName);
+                cmd = "idevicesyslog -u " + ConfigUtil.getUdid() + " > " + logName;
             }
+            cmds.add(cmd);
 
-            Util.exeCmd(cmd);
+            Util.exeCmd(cmds);
         };
 
         Thread thread = new Thread(newRunnable);
@@ -1072,7 +1069,10 @@ public final class Driver {
 
     public static String getPlatformVersion(){
         if(Util.isAndroid()){
-            return Util.exeCmd("adb -s " + ConfigUtil.getUdid() + " shell getprop ro.build.version.release");
+            String cmd = ConfigUtil.getAppiumDockerId() == null ?
+                        "adb -s " + ConfigUtil.getUdid() + " shell getprop ro.build.version.release" :
+                        "docker exec appium adb -s " + ConfigUtil.getUdid() + " shell getprop ro.build.version.release";
+            return Util.exeCmd(cmd);
         }else {
             return Util.exeCmd("ideviceinfo  -u "+ ConfigUtil.getUdid()+" -k ProductVersion");
         }

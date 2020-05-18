@@ -867,6 +867,7 @@ public final class Driver {
         capabilities.setCapability(MobileCapabilityType.NO_RESET, true); //Don't delete app data
         capabilities.setCapability("unicodeKeyboard",true); //支持中文输入
         capabilities.setCapability("resetKeyboard",true); //重置输入法为系统默认
+        capabilities.setCapability("noSign", true);
 
         String url = "http://"+ ConfigUtil.getServerIp() +":" + port+"/wd/hub";
         log.info(url);

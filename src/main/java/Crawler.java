@@ -483,6 +483,8 @@ public class Crawler {
             }
             Util.createDir(ConfigUtil.getRootDir());
 
+            logName = Driver.startLogRecord();
+
             AppiumDriver appiumDriver;
 
             //启动Appium
@@ -497,8 +499,6 @@ public class Crawler {
                 log.error("Fail to start appium server!");
                 return;
             }
-
-            logName = Driver.startLogRecord();
 
             initReport();
             Runtime.getRuntime().addShutdownHook(new CtrlCHandler());

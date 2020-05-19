@@ -137,6 +137,10 @@ public class SpecifiedXpathUtil extends XPathUtil {
             currentXML = Driver.getPageSource();
 
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
+                StringBuilder metadata = new StringBuilder();
+                metadata.append("activity_name: ").append(currentActivity).append("\n");
+                Driver.snapshotCurrentStatus(Integer.toString(pathNodeIndex), metadata.toString());
+
                 Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
                 Driver.snapshotPageSource(Integer.toString(pathNodeIndex), currentXML);
             }

@@ -144,13 +144,26 @@ public final class Driver {
     }
 
     public static void snapshotPageSource(String dir, String pageSource) {
-        String pageSourceName = ConfigUtil.getRootDir() + File.separator +
+        String fileName = ConfigUtil.getRootDir() + File.separator +
                 ConfigUtil.SCREEN_SHOT + File.separator +
                 dir + File.separator + "layout." + Util.getDatetime() + ".xml" ;
 
-        File file = new File(pageSourceName);
+        File file = new File(fileName);
         try {
             FileUtils.write(file, pageSource, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void snapshotCurrentStatus(String dir, String metadata) {
+        String fileName = ConfigUtil.getRootDir() + File.separator +
+                ConfigUtil.SCREEN_SHOT + File.separator +
+                dir + File.separator + "metadata.yml" ;
+
+        File file = new File(fileName);
+        try {
+            FileUtils.write(file, metadata, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }

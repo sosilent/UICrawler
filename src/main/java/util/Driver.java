@@ -130,7 +130,7 @@ public final class Driver {
     protected static String getScreenShortName(String dir){
         String screenshotName = ConfigUtil.getRootDir() + File.separator +
                                     ConfigUtil.SCREEN_SHOT + File.separator +
-                                    dir + File.separator + "screenshot." + Util.getDatetime() + ".png" ;
+                                    dir + File.separator + Util.getDatetime() + ".screenshot." + ".png" ;
 
         return  screenshotName;
     }

@@ -60,25 +60,49 @@ public class Crawler {
     private static void generateVideo() {
         log.info("Method : generateVideo()");
 
-        List<String> fullList = Util.getFileList(ConfigUtil.getScreenShotDir(), ".png", true);
+        String PNG_SUFFIX = ".png";
 
-        //Generate full video
-        try {
-            log.info("Generating full video file, please wait...");
-            PictureUtil.picToVideo(ConfigUtil.getRootDir() + File.separator + "testing_steps.mp4", fullList);
-        } catch (Exception e) {
-            log.error("Fail to generate full.mp4 file");
-            e.printStackTrace();
+        File screenShotDir = new File(ConfigUtil.getScreenShotDir());
+        if (!screenShotDir.exists()) {
+            log.error(ConfigUtil.getScreenShotDir() + " not existed!!!");
+            return;
         }
 
         String clickScreenShotDir = ConfigUtil.getScreenShotDir() + File.separator + "click-screenshot";
         File clickScreenShotDirFile = new File(clickScreenShotDir);
-        for (String path : fullList) {
-            try {
-                FileUtils.moveFileToDirectory(new File(path), clickScreenShotDirFile, true);
-            } catch (IOException e) {
-                e.printStackTrace();
+
+        for (File file : screenShotDir.listFiles()) {
+            if (file.isFile() && file.getName().toLowerCase().endsWith(PNG_SUFFIX)) {
+                try {
+                    FileUtils.moveFileToDirectory(file, clickScreenShotDirFile, true);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+            else {
+                for (File subFile : file.listFiles()) {
+                    if (subFile.getName().toLowerCase().endsWith(".png")) {
+                        try {
+                            FileUtils.copyFileToDirectory(subFile, clickScreenShotDirFile, true);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+
+        List<String> fullList = Util.getFileList(clickScreenShotDir, PNG_SUFFIX, true);
+
+        //Generate full video
+        try {
+            log.info("Generating full video file, please wait...");
+            PictureUtil.picToVideo(ConfigUtil.getScreenShotDir() + File.separator + "testing_steps.mp4", fullList);
+
+            FileUtils.deleteDirectory(clickScreenShotDirFile);
+        } catch (Exception e) {
+            log.error("Fail to generate full.mp4 file");
+            e.printStackTrace();
         }
 
         //Generate crash video

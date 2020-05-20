@@ -1,16 +1,16 @@
 #UI path 配置
 UI_PATH:
 
-  47:
-    - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
-      text: "收钱"
-
-    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
-      resource_id: 'com.alipay.mobile.payee:id/payee_QRCodePayModifyMoney'
-      text: '设置金额'
-
-    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRSetMoneyActivity'
+#  47:
+#    - activity_name: '.AlipayLogin'
+#      resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+#      text: "收钱"
+#
+#    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+#      resource_id: 'com.alipay.mobile.payee:id/payee_QRCodePayModifyMoney'
+#      text: '设置金额'
+#
+#    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRSetMoneyActivity'
 
 #    54:
 #      - activity_name: '.AlipayLogin'
@@ -50,7 +50,13 @@ UI_PATH:
 #      text: "确认收款"
 #
 #    - activity_name: 'com.alipay.mobile.payee.ui.PayeeActivityNew'
+
+#  61:
+#    - activity_name: '.AlipayLogin'
+#      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+#      text: "付钱"
 #
+#    - activity_name: '.AlipayLogin'
 #
 #  65:
 #    - activity_name: '.AlipayLogin'
@@ -337,21 +343,6 @@ UI_PATH:
 #      text: "问题反馈"
 #
 #    - activity_name: 'com.alipay.mobile.about.ui.FeedbackInfoActivity'
-#
-#  204:
-#    - activity_name: '.AlipayLogin'
-#      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
-#      text: "付钱"
-#
-#    - activity_name: '.AlipayLogin'
-#      resource_id: 'com.alipay.mobile.onsitepay:id/more_img'
-#      text: ""
-#
-#    - activity_name: '.AlipayLogin'
-#      resource_id: 'com.alipay.mobile.ui:id/item_name'
-#      text: "创建桌面快捷付款"
-#
-#    - activity_name: '.AlipayLogin'
 #
 #  204:
 #    - activity_name: '.AlipayLogin'

@@ -136,32 +136,52 @@ public class SpecifiedXpathUtil extends XPathUtil {
             //Driver.pressBack(repoStep);
             currentXML = Driver.getPageSource();
 
+            int index = 1;
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
-                Driver.takeScreenShotWithSubDir(Integer.toString(pathNodeIndex));
-                Driver.snapshotPageSource(Integer.toString(pathNodeIndex), currentXML);
+                Driver.snapshotCurStatus(Integer.toString(pathNodeIndex), MetadataUtil.genMetadata(currentActivity));
+
+                String timeStr = index++ + "." + Util.getDatetime();
+                Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
+                Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
+
+                //screenshot 5 screens at most
+                for (int i=0; i<5; i++) {
+                    Driver.swipeVertical(false);
+
+                    String pageSource = Driver.getPageSource();
+
+                    if (currentXML.equalsIgnoreCase(pageSource))
+                        break;
+
+                    currentXML = pageSource;
+
+                    timeStr = index++ + "." + Util.getDatetime();
+                    Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
+                    Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
+                }
             }
             else {
                 log.error("target activity name: " + uiPathNode.getActivityName() + "; current activity name: " + currentActivity);
                 log.error("page source:\n" + currentXML);
             }
 
-            try {
-                String curActivity = Driver.getCurrentActivity();
-                log.info("cur activity before press back: " + curActivity);
-                while (--currentDepth >= 1) {
-                    log.info("current depth and press back: " + currentDepth);
-                    Driver.pressBack();
-                }
-
-                curActivity = Driver.getCurrentActivity();
-                //有的页面（例如需输入密码的页面）会带出输入界面，因此后退深度+1
-                //这里做一个预检，防止回退错误发生
-                if (!curActivity.equalsIgnoreCase(SpecifiedXpathUtil.getInitialActivity()))
-                    Driver.pressBack();
-            }
-            catch (Exception e) {
-                log.error("when pressing back, some errors: \n" + e.getMessage());
-            }
+//            try {
+//                String curActivity = Driver.getCurrentActivity();
+//                log.info("cur activity before press back: " + curActivity);
+//                while (--currentDepth >= 1) {
+//                    log.info("current depth and press back: " + currentDepth);
+//                    Driver.pressBack();
+//                }
+//
+//                curActivity = Driver.getCurrentActivity();
+//                //有的页面（例如需输入密码的页面）会带出输入界面，因此后退深度+1
+//                //这里做一个预检，防止回退错误发生
+//                if (!curActivity.equalsIgnoreCase(SpecifiedXpathUtil.getInitialActivity()))
+//                    Driver.pressBack();
+//            }
+//            catch (Exception e) {
+//                log.error("when pressing back, some errors: \n" + e.getMessage());
+//            }
 
             return currentXML;
         }

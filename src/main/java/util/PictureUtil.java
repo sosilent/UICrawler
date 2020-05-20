@@ -240,8 +240,6 @@ public class PictureUtil {
         setLocalColor(x,y,color);
     }
 
-
-
     public static void picToVideo(String fileName, List<String> list){
         SeekableByteChannel out = null;
         AWTSequenceEncoder encoder = null;

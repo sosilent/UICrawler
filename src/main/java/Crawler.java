@@ -83,7 +83,12 @@ public class Crawler {
                 for (File subFile : file.listFiles()) {
                     if (subFile.getName().toLowerCase().endsWith(".png")) {
                         try {
-                            FileUtils.copyFileToDirectory(subFile, clickScreenShotDirFile, true);
+                            String fileName = subFile.getName();
+                            fileName = fileName.substring(fileName.indexOf(".")+1);
+
+                            File destFile = new File(clickScreenShotDir + File.separator + fileName);
+                            FileUtils.copyFile(subFile, destFile);
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -563,11 +568,9 @@ public class Crawler {
                             log.info("-----------------start screenshot " + index + "--------------------");
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
 
-                            String curActivity = Driver.getCurrentActivity();
-                            if (!curActivity.equalsIgnoreCase(SpecifiedXpathUtil.getInitialActivity()))
-                                Driver.appRelaunch();
-
+                            Driver.appRelaunch();
                             SpecifiedXpathUtil.reset();
+
                             SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                         }
                     }

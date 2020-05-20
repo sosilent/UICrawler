@@ -3,6 +3,7 @@ package util;
 import io.appium.java_client.*;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.functions.AppiumFunction;
@@ -35,7 +36,7 @@ import java.util.*;
 public final class Driver {
     public static org.slf4j.Logger log = LoggerFactory.getLogger(Driver.class);
 
-    public static AppiumDriver driver;
+    public static AppiumDriver<AndroidElement> driver;
     private static int deviceHeight;
     private static int deviceWidth;
     private static final int APP_START_WAIT_TIME = 10;
@@ -127,26 +128,22 @@ public final class Driver {
         return  screenshotName;
     }
 
-    protected static String getScreenShortName(String dir){
-        String screenshotName = ConfigUtil.getRootDir() + File.separator +
-                                    ConfigUtil.SCREEN_SHOT + File.separator +
-                                    dir + File.separator + Util.getDatetime() + ".screenshot." + ".png" ;
-
-        return  screenshotName;
-    }
-
     public static String takeScreenShot(){
         return  takeScreenShot(getScreenShortName());
     }
 
-    public static String takeScreenShotWithSubDir(String dir){
-        return takeScreenShot(getScreenShortName(dir));
+    public static String snapshotScreen(String dir, String timeStr){
+        String screenshotName = ConfigUtil.getRootDir() + File.separator +
+                ConfigUtil.SCREEN_SHOT + File.separator +
+                dir + File.separator + timeStr + ".screenshot" + ".png" ;
+
+        return takeScreenShot(screenshotName);
     }
 
-    public static void snapshotPageSource(String dir, String pageSource) {
+    public static void snapshotPageSource(String dir, String timeStr, String pageSource) {
         String fileName = ConfigUtil.getRootDir() + File.separator +
                 ConfigUtil.SCREEN_SHOT + File.separator +
-                dir + File.separator + "layout." + Util.getDatetime() + ".xml" ;
+                dir + File.separator + timeStr + ".pagesource" + ".xml" ;
 
         File file = new File(fileName);
         try {
@@ -156,7 +153,7 @@ public final class Driver {
         }
     }
 
-    public static void snapshotCurrentStatus(String dir, String metadata) {
+    public static void snapshotCurStatus(String dir, String metadata) {
         String fileName = ConfigUtil.getRootDir() + File.separator +
                 ConfigUtil.SCREEN_SHOT + File.separator +
                 dir + File.separator + "metadata.yml" ;

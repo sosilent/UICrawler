@@ -1258,6 +1258,12 @@ public final class Driver {
 
     public static void  swipeVertical(boolean scrollDown) {
         swipeVertical(scrollDown,null);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void  swipeVertical(boolean scrollDown, StringBuilder builder) {

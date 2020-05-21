@@ -565,7 +565,7 @@ public class Crawler {
                         for (int index : uiPathMap.keySet())  {
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
 
-                            log.info("-----------------start screenshot " + index + "--------------------");
+                            log.info("\n\n-----------------start screenshot " + index + "--------------------");
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
 
                             Driver.appRelaunch();

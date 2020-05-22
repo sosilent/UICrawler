@@ -1,5 +1,6 @@
 package util.uipath;
 
+import com.google.common.base.Strings;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.w3c.dom.Document;
@@ -325,11 +326,11 @@ public class SpecifiedXpathUtil extends XPathUtil {
             log.info("ui path node: id, " + uiPathNode.getResourceId() + "; text, " + uiPathNode.getText());
             log.info("xpath node: id, " + resourceId + "; tex, " + text);
 
-            if (uiPathNode.getResourceId() == null)
+            if (uiPathNode.getResourceId() == null || (resourceId == null && text == null))
                 continue;
-            else if (uiPathNode.getText() == null && !uiPathNode.getResourceId().equalsIgnoreCase(resourceId))
+            else if (Strings.isNullOrEmpty(uiPathNode.getText()) && !uiPathNode.getResourceId().equalsIgnoreCase(resourceId))
                 continue;
-            else if (uiPathNode.getText() != null
+            else if (!Strings.isNullOrEmpty(uiPathNode.getText())
                     && (!uiPathNode.getResourceId().equalsIgnoreCase(resourceId) || !uiPathNode.getText().equalsIgnoreCase(text)))
                 continue;
 

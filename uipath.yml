@@ -271,7 +271,7 @@ UI_PATH:
   172:
     - activity_name: '.AlipayLogin'
       resource_id: 'com.alipay.android.phone.openplatform:id/more_app_text'
-      text: "全部"
+      text: "更多"
 
     - activity_name: 'com.alipay.android.phone.homemarket.marketnew.AppManageActivity'
 
@@ -295,7 +295,7 @@ UI_PATH:
       text: "朋友"
 
     - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+      resource_id: 'com.alipay.mobile.socialwidget:id/title_more_menu_button'
       text: "更多操作"
 
     - activity_name: '.AlipayLogin'
@@ -306,7 +306,7 @@ UI_PATH:
       text: "朋友"
 
     - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+      resource_id: 'com.alipay.mobile.socialwidget:id/title_more_menu_button'
       text: "更多操作"
 
     - activity_name: '.AlipayLogin'
@@ -426,6 +426,7 @@ UI_PATH:
       text: "扣款顺序"
 
     - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+
   200:
     - activity_name: '.AlipayLogin'
       resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'

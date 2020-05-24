@@ -45,6 +45,11 @@
             <version>1.20</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>io.humble</groupId>-->
         <!--<artifactId>humble-video-all</artifactId>-->
@@ -66,11 +71,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>utf8</encoding>
+                    <release>14</release>
                 </configuration>
             </plugin>
 

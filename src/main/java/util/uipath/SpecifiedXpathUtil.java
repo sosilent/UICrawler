@@ -406,6 +406,9 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         log.info("\n\n\n!!!!!!!!!!!!!Done!!!!!!!!!!!!!!! stop: " + stop +"\n\n\n");
+        log.info("\n--------------page source---------------\n" + currentXML);
+        Thread.sleep(5000);
+        log.info("\n--------------page source after closing fullscreen adver---------------\n" + Driver.getPageSource());
 
         //currentDepth --;
 

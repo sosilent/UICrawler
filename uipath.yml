@@ -3,6 +3,9 @@ UI_PATH:
 
   1:
     - activity_name: '.AlipayLogin'
+      ad:
+        - layout_re: "<android.widget.RelativeLayout .*? content-desc=\"全屏广告\" .*?/android.widget.RelativeLayout>"
+          clickable_widget_re: "<android.widget.ImageView .*? content-desc=\"关闭\" .*? />"
 
   #  location:
   #    - activity_name: '.AlipayLogin'

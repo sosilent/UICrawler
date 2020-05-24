@@ -13,6 +13,8 @@ import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SpecifiedXpathUtil extends XPathUtil {
 
@@ -26,10 +28,33 @@ public class SpecifiedXpathUtil extends XPathUtil {
         SpecifiedXpathUtil.initialActivity = initialActivity;
     }
 
+    public static class AdPopoutRe {
+        private String layout_re;
+        private String clickable_widget_re;
+
+        public String getLayout_re() {
+            return layout_re;
+        }
+
+        public void setLayout_re(String layout_re) {
+            this.layout_re = layout_re;
+        }
+
+        public String getClickable_widget_re() {
+            return clickable_widget_re;
+        }
+
+        public void setClickable_widget_re(String clickable_widget_re) {
+            this.clickable_widget_re = clickable_widget_re;
+        }
+    }
+
     public static class UIPathNode {
         private String activityName;
         private String resourceId;
         private String text;
+
+        private AdPopoutRe adPopoutRe;
 
         public String getActivityName() {
             return activityName;
@@ -53,6 +78,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         public void setText(String text) {
             this.text = text;
+        }
+
+        public AdPopoutRe getAdPopoutRe() {
+            return adPopoutRe;
+        }
+
+        public void setAdPopoutRe(AdPopoutRe adPopoutRe) {
+            this.adPopoutRe = adPopoutRe;
         }
     }
 
@@ -211,6 +244,23 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
             int index = 1;
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
+                //check if there is a ad pop out
+                //and close the pop out by clicking it
+                if (uiPathNode.getAdPopoutRe() != null) {
+                    Pattern pattern = Pattern.compile(uiPathNode.getAdPopoutRe().getLayout_re());
+                    Matcher matcher = pattern.matcher(currentXML);
+                    if (matcher.find()) {
+                        int start = matcher.start();
+                        int end = matcher.end();
+
+                        String clickableWidgetPath = currentXML.substring(start, end);
+                        MobileElement elem = Driver.findElementWithoutException(By.xpath(clickableWidgetPath));
+                        if (elem != null) {
+                            currentXML = clickElement(elem, currentXML);
+                        }
+                    }
+                }
+
                 Driver.snapshotCurStatus(Integer.toString(pathNodeIndex), MetadataUtil.genMetadata(currentActivity));
 
                 String timeStr = index++ + "." + Util.getDatetime();

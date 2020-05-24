@@ -21,6 +21,10 @@ public class UIPathConfigUtil {
     private static String ELEMENT_ID = "resource_id";
     private static String TEXT = "text";
 
+    private static String AD = "ad";
+    private static String LAYOUT_RE = "layout_re";
+    private static String CLICKABLE_WIDGET_RE = "clickable_widget_re";
+
     private static UIPathConfigUtil configUtil;
     private static Map<Integer, List<SpecifiedXpathUtil.UIPathNode>> uiPath;
 
@@ -51,6 +55,14 @@ public class UIPathConfigUtil {
                     node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
                     node.setResourceId((String) nodeMap.get(ELEMENT_ID));
                     node.setText((String) nodeMap.get(TEXT));
+
+                    if (nodeMap.containsKey(AD)) {
+                        SpecifiedXpathUtil.AdPopoutRe re = new SpecifiedXpathUtil.AdPopoutRe();
+                        re.setLayout_re((String) nodeMap.get(LAYOUT_RE));
+                        re.setClickable_widget_re((String) nodeMap.get(CLICKABLE_WIDGET_RE));
+                        node.setAdPopoutRe(re);
+                    }
+
                     nodes.add(node);
                 }
                 uiPath.put(indexNo, nodes);

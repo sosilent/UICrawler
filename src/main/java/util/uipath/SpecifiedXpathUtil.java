@@ -28,9 +28,11 @@ public class SpecifiedXpathUtil extends XPathUtil {
         SpecifiedXpathUtil.initialActivity = initialActivity;
     }
 
-    public static class AdPopoutRe {
+    public static class AdPopoutConfig {
         private String layout_re;
-        private String clickable_widget_re;
+        private String widget_res_id;
+        private String widget_class;
+        private String widget_text;
 
         public String getLayout_re() {
             return layout_re;
@@ -40,12 +42,28 @@ public class SpecifiedXpathUtil extends XPathUtil {
             this.layout_re = layout_re;
         }
 
-        public String getClickable_widget_re() {
-            return clickable_widget_re;
+        public String getWidget_res_id() {
+            return widget_res_id;
         }
 
-        public void setClickable_widget_re(String clickable_widget_re) {
-            this.clickable_widget_re = clickable_widget_re;
+        public void setWidget_res_id(String widget_res_id) {
+            this.widget_res_id = widget_res_id;
+        }
+
+        public String getWidget_class() {
+            return widget_class;
+        }
+
+        public void setWidget_class(String widget_class) {
+            this.widget_class = widget_class;
+        }
+
+        public String getWidget_text() {
+            return widget_text;
+        }
+
+        public void setWidget_text(String widget_text) {
+            this.widget_text = widget_text;
         }
     }
 
@@ -54,7 +72,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         private String resourceId;
         private String text;
 
-        private AdPopoutRe adPopoutRe;
+        private AdPopoutConfig adPopoutConfig;
 
         public String getActivityName() {
             return activityName;
@@ -80,12 +98,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
             this.text = text;
         }
 
-        public AdPopoutRe getAdPopoutRe() {
-            return adPopoutRe;
+        public AdPopoutConfig getAdPopoutConfig() {
+            return adPopoutConfig;
         }
 
-        public void setAdPopoutRe(AdPopoutRe adPopoutRe) {
-            this.adPopoutRe = adPopoutRe;
+        public void setAdPopoutConfig(AdPopoutConfig adPopoutConfig) {
+            this.adPopoutConfig = adPopoutConfig;
         }
     }
 
@@ -241,20 +259,26 @@ public class SpecifiedXpathUtil extends XPathUtil {
         if(currentDepth == uiPathNodeList.size()){
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
+            log.debug("----page source-----\n" + currentXML);
 
             int index = 1;
             if (uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 //check if there is a ad pop out
                 //and close the pop out by clicking it
-                if (uiPathNode.getAdPopoutRe() != null) {
-                    Pattern pattern = Pattern.compile(uiPathNode.getAdPopoutRe().getLayout_re());
+                if (uiPathNode.getAdPopoutConfig() != null) {
+                    Pattern pattern = Pattern.compile(uiPathNode.getAdPopoutConfig().getLayout_re(), Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
                     Matcher matcher = pattern.matcher(currentXML);
                     if (matcher.find()) {
-                        int start = matcher.start();
-                        int end = matcher.end();
+                        String resId = uiPathNode.getAdPopoutConfig().getWidget_res_id();
+                        String wClass = uiPathNode.getAdPopoutConfig().getWidget_class();
+                        String text = uiPathNode.getAdPopoutConfig().getWidget_text();
 
-                        String clickableWidgetPath = currentXML.substring(start, end);
-                        MobileElement elem = Driver.findElementWithoutException(By.xpath(clickableWidgetPath));
+                        MobileElement elem = null;
+                        if (resId != null)
+                            elem = Driver.findElemByIdWithoutException(resId);
+                        else
+                            elem = Driver.findElementByClassAndTextWithoutException(wClass, text);
+
                         if (elem != null) {
                             currentXML = clickElement(elem, currentXML);
                         }

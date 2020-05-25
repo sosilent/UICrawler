@@ -17,6 +17,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
@@ -744,6 +745,30 @@ public final class Driver {
     public static MobileElement findElementByClassAndText(String className, String str){
         str = "//*[@class=\"" + className + "\" and @text=\""+ str +"\"]";
         return findElement(By.xpath(str));
+    }
+
+    public static MobileElement findElementByClassAndTextWithoutException(String className, String str){
+        try {
+            String xpath = "//*[@class=\"" + className + "\" and @text=\"" + str + "\"]";
+            MobileElement element = findElement(By.xpath(xpath));
+            return element;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            log.info("failed to find element by: class, " + className + "; text, " + str);
+        }
+
+        try {
+            String xpath = "//*[@class=\"" + className + "\" and @content-desc=\""+ str +"\"]";
+            MobileElement element = findElement(By.xpath(xpath));
+            return element;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            log.info("failed to find element by: class, " + className + "; content desc, " + str);
+        }
+
+        return null;
     }
 
     //IOS only

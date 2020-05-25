@@ -4,8 +4,12 @@ UI_PATH:
   1:
     - activity_name: '.AlipayLogin'
       ad:
-        - layout_re: "<android.widget.RelativeLayout .*? content-desc=\"全屏广告\" .*?/android.widget.RelativeLayout>"
-          clickable_widget_re: "<android.widget.ImageView .*? content-desc=\"关闭\" .*? />"
+        layout_re: "text=\"更多服务在这里\".*?</android.widget.LinearLayout>"
+        clickable_widget:
+          resource_id: "com.alipay.mobile.antui:id/closeButton"
+# 通常来说，resource_id 与 text class 数据秩序需要设置一组
+#          text: "关闭"
+#          class: "android.widget.FrameLayout"
 
   #  location:
   #    - activity_name: '.AlipayLogin'

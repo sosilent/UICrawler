@@ -1,0 +1,151 @@
+#UI path 配置
+UI_PATH:
+
+  65:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+
+  68:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+      text: "转到支付宝账户"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+
+  93:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "充值中心"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  97:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "充值中心"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      resource_id: 'com.alipay.mobile.nebula:id/h5_bt_text'
+      text: "充值记录"
+
+    - activity_name: 'com.alipay.mobile.bill.list.ui.BillMainListActivity'
+
+  135:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+      text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+
+  136:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+      text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      resource_id: 'com.alipay.mobile.ui:id/table_right_text'
+      text: "请选择银行"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.BankSelectActivity_'
+
+  201:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+      text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+
+  206:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+
+  2061:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "使用帮助"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+
+  207:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "延时转账服务"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  208:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "安全小贴士"
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  209:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text_multi_line'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "极简卡片转账"
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'

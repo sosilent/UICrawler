@@ -165,7 +165,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         if (startPos >= 0) {
             int endPos = path.indexOf("\"", startPos + NODE_RESOURCE_ID.length());
             if (endPos > 0)
-                return path.substring(startPos+ NODE_RESOURCE_ID.length(), endPos);
+                return path.substring(startPos + NODE_RESOURCE_ID.length(), endPos);
         }
 
         return null;
@@ -179,27 +179,26 @@ public class SpecifiedXpathUtil extends XPathUtil {
         if (startPos >= 0) {
             int endPos = path.indexOf("\"", startPos + NODE_TEXT.length());
             if (endPos > 0)
-                return path.substring(startPos+ NODE_TEXT.length(), endPos);
-        }
-        else {
+                return path.substring(startPos + NODE_TEXT.length(), endPos);
+        } else {
             startPos = path.indexOf(NODE_CONTENT_DESC);
             if (startPos >= 0) {
                 int endPos = path.indexOf("\"", startPos + NODE_CONTENT_DESC.length());
                 if (endPos > 0)
-                    return path.substring(startPos+ NODE_CONTENT_DESC.length(), endPos);
+                    return path.substring(startPos + NODE_CONTENT_DESC.length(), endPos);
             }
         }
 
         return null;
     }
 
-    public static String getNodesFromFile(String xml, int pathNodeIndex, List<UIPathNode> uiPathNodeList, long currentDepth) throws Exception{
+    public static String getNodesFromFile(String xml, int pathNodeIndex, List<UIPathNode> uiPathNodeList, long currentDepth) throws Exception {
         log.info("Method: getNodesFromFile");
 
         log.info("Context: " + Driver.driver.getContextHandles().toString());
 
         String currentActivity = Driver.getCurrentActivity();
-        log.info("++++++++++++++++++ Activity Name : " + currentActivity +"+++++++++++++++++++++++");
+        log.info("++++++++++++++++++ Activity Name : " + currentActivity + "+++++++++++++++++++++++");
 
         if (ConfigUtil.isAutoLoginEnabled()) {
             try {
@@ -217,21 +216,21 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         String currentXML = xml;
         //检查stop为true时快速退出
-        if(stop){
+        if (stop) {
             log.info("-----stop=true, Fast exit");
             return currentXML;
         }
 
         if (currentXML == null) {
-            log.error("----------!!! failed to get page sourcde and stopped");
+            log.error("----------!!! failed to get page source and stopped");
             return null;
         }
 
         //检查运行时间
         long endTime = System.currentTimeMillis();
 
-        if((endTime - testStartTime) > ( runningTime * 60 * 1000)) {
-            log.info("已运行" + (endTime - testStartTime)/60/1000 + "分钟，任务即将结束");
+        if ((endTime - testStartTime) > (runningTime * 60 * 1000)) {
+            log.info("已运行" + (endTime - testStartTime) / 60 / 1000 + "分钟，任务即将结束");
             stop = true;
             return currentXML;
         }
@@ -246,17 +245,17 @@ public class SpecifiedXpathUtil extends XPathUtil {
         String packageName = getAppName(currentXML);
 
         //1.检查当前UI的包名是否正确，一定要先查包名！因为其内部控制了stop的值, 包名不合法，-是否应该重启app?--
-        if(PackageStatus.VALID != isValidPackageName(packageName,true)){
-            log.info("=====================package: "+ packageName + " is invalid, return ....==============================");
+        if (PackageStatus.VALID != isValidPackageName(packageName, true)) {
+            log.info("=====================package: " + packageName + " is invalid, return ....==============================");
             currentXML = Driver.getPageSource();
 
             return currentXML;
         }
 
-        UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth-1));
+        UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth - 1));
 
         // 2.如果是最后深度，截屏+保存page source
-        if(currentDepth == uiPathNodeList.size()){
+        if (currentDepth == uiPathNodeList.size()) {
             stop = true;
             log.info("enter the target ui: depth, " + currentDepth);
             log.debug("----page source-----\n" + currentXML);
@@ -295,7 +294,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 NodeList nodes = (NodeList) xpath.evaluate(clickXpath, document, XPathConstants.NODESET);
 
                 //screenshot 5 screens at most
-                for (int i=0; i<5; i++) {
+                for (int i = 0; i < 5; i++) {
                     Driver.swipeVertical(false);
 
                     String pageSource = Driver.getPageSource();
@@ -317,8 +316,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
                     Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
                 }
-            }
-            else {
+            } else {
                 log.error("target activity name: " + uiPathNode.getActivityName() + "; current activity name: " + currentActivity);
                 log.info("page source:\n" + currentXML);
             }
@@ -340,7 +338,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
 //            catch (Exception e) {
 //                log.error("when pressing back, some errors: \n" + e.getMessage());
 //            }
-
             return currentXML;
         }
 
@@ -354,8 +351,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
         String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
         String afterPageStructure = previousPageStructure;
 
-        if (packageName.equals("com.tencent.mm") || packageName.equals("com.tencent.xin")){
-            if(currentXML.contains("附近的小程序")){
+        if (packageName.equals("com.tencent.mm") || packageName.equals("com.tencent.xin")) {
+            if (currentXML.contains("附近的小程序")) {
                 log.info("已遍历完小程序，跳转到了小程序主页面，遍历停止");
                 stop = true;
 
@@ -366,7 +363,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         log.info("node length is " + length);
 
         //3.检查页面内有没有可以遍历的元素, 跳过循环，然后查找是否有TabBar元素，此处不可用return，不然tabBar不会被遍历
-        if(length == 0){
+        if (length == 0) {
             log.error("========!!!!!!!No UI node found in current page!!!!! Begin to find tab bar element... =====");
         }
 
@@ -374,7 +371,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         //遍历UI内的Node元素
         int iter = 0;
-        while(iter < length && !stop){
+        while (iter < length && !stop) {
             log.info("Element index is : " + iter);
 
             Node tmpNode = nodes.item(iter++);
@@ -387,7 +384,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             String nodeXpath = getNodeXpath(tmpNode);
             log.info("nodeXpath: " + nodeXpath);
 
-            if(nodeXpath == null){
+            if (nodeXpath == null) {
                 log.error("Null nodeXpath , continue.");
                 continue;
             }
@@ -398,23 +395,31 @@ public class SpecifiedXpathUtil extends XPathUtil {
             String text = getTextByNodePath(nodeXpath);
 
             log.info("ui path node: id, " + uiPathNode.getResourceId() + "; text, " + uiPathNode.getText());
-            log.info("xpath node: id, " + resourceId + "; tex, " + text);
+            log.info("xpath node: id, " + resourceId + "; text, " + text);
 
-            if (uiPathNode.getResourceId() == null || (resourceId == null && text == null))
+            if (Strings.isNullOrEmpty(uiPathNode.getText()) && Strings.isNullOrEmpty(uiPathNode.getResourceId()))
                 continue;
-            else if (Strings.isNullOrEmpty(uiPathNode.getText()) && !uiPathNode.getResourceId().equalsIgnoreCase(resourceId))
-                continue;
-            else if (!Strings.isNullOrEmpty(uiPathNode.getText())
-                    && (!uiPathNode.getResourceId().equalsIgnoreCase(resourceId) || !uiPathNode.getText().equalsIgnoreCase(text)))
-                continue;
+            else if (Strings.isNullOrEmpty(uiPathNode.getText())) {
+                //only check resourceId
+                if (!uiPathNode.getResourceId().equalsIgnoreCase(resourceId))
+                    continue;
+            } else if (Strings.isNullOrEmpty(uiPathNode.getResourceId())) {
+                //only check text if is equal
+                if (!uiPathNode.getText().equalsIgnoreCase(text))
+                    continue;
+            } else {
+                //check resourceId and text
+                if (!uiPathNode.getResourceId().equalsIgnoreCase(resourceId) || !uiPathNode.getText().equalsIgnoreCase(text))
+                    continue;
+            }
 
             //判断当前元素是否点击过
-            if(set.add(nodeXpath)){
+            if (set.add(nodeXpath)) {
                 MobileElement elem = Driver.findElementWithoutException(By.xpath(nodeXpath));
-                if(null == elem){
+                if (null == elem) {
                     //元素未找到，重新遍历当前页面
                     xpathNotFoundElementList.add(nodeXpath);
-                    log.info("---------Node not found in current UI!!!!!!! Stop current iteration.-----------" );
+                    log.info("---------Node not found in current UI!!!!!!! Stop current iteration.-----------");
                     continue;
                 }
 
@@ -422,7 +427,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
 
                 //点击后进入到了新的页面
-                if(!stop && !isSamePage(previousPageStructure,afterPageStructure)) {
+                if (!stop && !isSamePage(previousPageStructure, afterPageStructure)) {
                     log.info("========================================New Child UI================================");
 
                     //遍历子UI前 先检查包名是否合法
@@ -431,9 +436,9 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     String newActivity = Driver.getCurrentActivity();
                     log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
 
-                    if(PackageStatus.VALID != isValidPackageName(packageName)){
+                    if (PackageStatus.VALID != isValidPackageName(packageName)) {
                         currentXML = Driver.getPageSource();
-                        afterPageStructure = Driver.getPageStructure(currentXML,clickXpath);
+                        afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
                         break;
                     }
 
@@ -445,41 +450,41 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     // 2.stop是否在子页面中设置为了true
 
                     //在子页面中发现了包名变化， 停止当前遍历
-                    if(stop){
+                    if (stop) {
                         break;
                     }
 
                     //从子UI返回后，检查包名
                     newActivity = Driver.getCurrentActivity();
-                    log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
+                    log.info("previous activity: " + currentActivity + ";    current activity: " + newActivity);
                     currentXML = Driver.getPageSource();
 
                     packageName = getAppName(currentXML);
-                    if(PackageStatus.VALID != isValidPackageName(packageName,false)){
+                    if (PackageStatus.VALID != isValidPackageName(packageName, false)) {
                         break;
                     }
 
                     //判断从子页面返回后，父页面是否发生了变化
                     afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
 
-                    if(isSamePage(previousPageStructure,afterPageStructure)){
+                    if (isSamePage(previousPageStructure, afterPageStructure)) {
                         log.info("Parent page stay the same after returning from child page");
                         //页面未变化， 继续遍历
-                    }else{
+                    } else {
                         log.info("Parent page changed after returning from child page");
                         //从子页面返回后 父页面发了生变化 停止遍历当前页面
                         break;
                     }
-                }else{
+                } else {
                     log.info("========================================Same UI");
                 }
-            }else {
+            } else {
                 //元素已经点击过
                 log.info("---existed--- " + nodeXpath + "\n");
             }
         }
 
-        log.info("\n\n\n!!!!!!!!!!!!!Done!!!!!!!!!!!!!!! stop: " + stop +"\n\n\n");
+        log.info("\n\n\n!!!!!!!!!!!!!Done!!!!!!!!!!!!!!! stop: " + stop + "\n\n\n");
         log.info("\n--------------page source---------------\n" + currentXML);
         Thread.sleep(5000);
         log.info("\n--------------page source after closing fullscreen adver---------------\n" + Driver.getPageSource());
@@ -487,8 +492,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
         //currentDepth --;
 
         //包名发生变化退出遍历
-        if(stop){
-            log.info("\n\n\nPackage name changed: "+ packageName + " set stop to true and return!!!!!!\n\n\n");
+        if (stop) {
+            log.info("\n\n\nPackage name changed: " + packageName + " set stop to true and return!!!!!!\n\n\n");
             return currentXML;
         }
 

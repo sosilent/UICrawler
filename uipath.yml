@@ -157,6 +157,28 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
 
+  70:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+      text: "转到支付宝账户"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      resource_id: '' #click icon of friend
+      text: ""
+
+    ########## need a friend account #########
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      resource_id: '' #select a friend
+      text: ""
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'
+
+
+
   93:
     - activity_name: '.AlipayLogin'
       resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
@@ -187,32 +209,6 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-  110:
-    - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
-      text: "更多操作"
-
-    - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.antui:id/item_name'
-      text: "乘车码"
-
-    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
-
-  111:
-    - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
-      text: "更多操作"
-
-    - activity_name: '.AlipayLogin'
-      resource_id: 'com.alipay.mobile.antui:id/item_name'
-      text: "乘车码"
-
-    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
-      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-      text: "更多"
-
-    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
-
   112:
     - activity_name: '.AlipayLogin'
       resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
@@ -222,16 +218,14 @@ UI_PATH:
       resource_id: 'com.alipay.mobile.antui:id/item_name'
       text: "乘车码"
 
-    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
-      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-      text: "更多"
-
-    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
-      resource_id: 'com.alipay.mobile.antui:id/item_name'
-      text: "添加新卡"
-
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
+  134:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+      text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
 
   135:
     - activity_name: '.AlipayLogin'
@@ -607,4 +601,3 @@ UI_PATH:
       text: '向微信/QQ朋友收款'
 
     - activity_name: 'com.alipay.android.phone.wallet.sharetoken.ui.SendTextTokenActivity'
-

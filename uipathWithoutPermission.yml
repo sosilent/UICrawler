@@ -1,0 +1,128 @@
+#UI path 配置
+UI_PATH:
+
+##################### need to set up bus code #################
+  110:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+      text: "更多操作"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "乘车码"
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+
+  111:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+      text: "更多操作"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "乘车码"
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: "更多"
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+
+  112:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+      text: "更多操作"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "乘车码"
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+      text: "更多"
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      resource_id: 'com.alipay.mobile.antui:id/item_name'
+      text: "添加新卡"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+##################### need to set up payment code #################
+  61:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+
+  157:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.onsitepay:id/display_channel_tips'
+      text: "优先使用此付款方式"
+
+    - activity_name: '.AlipayLogin'
+
+  200:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.onsitepay:id/more_img'
+      text: ""
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.ui:id/item_name'
+      text: "使用说明"
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  202:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.onsitepay:id/more_img'
+      text: ""
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.ui:id/item_name'
+      text: "暂停使用"
+
+    - activity_name: '.AlipayLogin'
+
+  203:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.onsitepay:id/more_img'
+      text: ""
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.ui:id/item_name'
+      text: "问题反馈"
+
+    - activity_name: 'com.alipay.mobile.about.ui.FeedbackInfoActivity'
+
+  204:
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
+      text: "付钱"
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.onsitepay:id/more_img'
+      text: ""
+
+    - activity_name: '.AlipayLogin'
+      resource_id: 'com.alipay.mobile.ui:id/item_name'
+      text: "创建桌面快捷付款"
+
+    - activity_name: '.AlipayLogin'
+

@@ -379,7 +379,7 @@ public class XPathUtil {
         return isValid;
     }
 
-    public static String clickElement(MobileElement elem, String xml){
+    public static String clickElement(MobileElement elem, String xml) {
         log.info("Method: clickElement");
 
         String page = xml;

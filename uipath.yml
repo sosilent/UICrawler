@@ -204,7 +204,7 @@ UI_PATH:
       text: "充值中心"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
-      resource_id: ''
+      class: 'android.view.View'
       text: "充流量 充流量"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'

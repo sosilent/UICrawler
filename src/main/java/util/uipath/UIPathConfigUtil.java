@@ -56,6 +56,7 @@ public class UIPathConfigUtil {
                     node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
                     node.setResourceId((String) nodeMap.get(ELEMENT_ID));
                     node.setText((String) nodeMap.get(TEXT));
+                    node.setClassName((String) nodeMap.get(CLASS));
 
                     if (nodeMap.containsKey(AD)) {
                         SpecifiedXpathUtil.AdPopoutConfig adPopoutConfig = new SpecifiedXpathUtil.AdPopoutConfig();

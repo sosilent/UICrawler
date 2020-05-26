@@ -508,7 +508,7 @@ public final class Driver {
             int size = list.size();
 
             if(0 == size){
-                list= null;
+                list= Collections.emptyList();
                 log.info(by.toString() + " list size is 0");
             }else {
                 log.info(by.toString() + " list size is " + size);

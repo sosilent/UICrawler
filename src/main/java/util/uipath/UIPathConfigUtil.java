@@ -18,13 +18,20 @@ public class UIPathConfigUtil {
     private static String UI_PATH = "UI_PATH";
 
     private static String ACTIVITY_NAME = "activity_name";
-    private static String ELEMENT_ID = "resource_id";
+    private static String RESOURCE_ID = "resource_id";
     private static String TEXT = "text";
     private static String CLASS = "class";
+    private static String CONTENT_DESC = "content_desc";
 
+    //fullscreen ad popout
     private static String AD = "ad";
     private static String LAYOUT_RE = "layout_re";
     private static String CLICKABLE_WIDGET = "clickable_widget";
+
+    //action
+    private static String ACTIONS = "actions";
+    private static String ACTION = "action";
+    private static String VALUE = "value";
 
     private static UIPathConfigUtil configUtil;
     private static Map<Integer, List<SpecifiedXpathUtil.UIPathNode>> uiPath;
@@ -54,9 +61,6 @@ public class UIPathConfigUtil {
                 for (Map nodeMap : nodeMapList) {
                     SpecifiedXpathUtil.UIPathNode node = new SpecifiedXpathUtil.UIPathNode();
                     node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
-                    node.setResourceId((String) nodeMap.get(ELEMENT_ID));
-                    node.setText((String) nodeMap.get(TEXT));
-                    node.setClassName((String) nodeMap.get(CLASS));
 
                     if (nodeMap.containsKey(AD)) {
                         SpecifiedXpathUtil.AdPopoutConfig adPopoutConfig = new SpecifiedXpathUtil.AdPopoutConfig();
@@ -65,12 +69,29 @@ public class UIPathConfigUtil {
 
                         Map<String, String> widgetMap = (Map<String, String>) reMap.get(CLICKABLE_WIDGET);
                         if (widgetMap != null) {
-                            adPopoutConfig.setWidget_res_id(widgetMap.get(ELEMENT_ID));
-                            adPopoutConfig.setWidget_text(widgetMap.get(TEXT));
-                            adPopoutConfig.setWidget_class(widgetMap.get(CLASS));
+                            adPopoutConfig.setRes_id(widgetMap.get(RESOURCE_ID));
+                            adPopoutConfig.setText(widgetMap.get(TEXT));
+                            adPopoutConfig.setClass_name(widgetMap.get(CLASS));
                         }
 
                         node.setAdPopoutConfig(adPopoutConfig);
+                    }
+
+                    if (nodeMap.containsKey(ACTIONS)) {
+                        List<SpecifiedXpathUtil.ActionConfig> actionConfigList = new ArrayList<>();
+                        List<Map<String, String>> actionMapList = (List<Map<String, String>>) nodeMap.get(ACTIONS);
+                        for (Map<String, String> actionMap : actionMapList) {
+                            SpecifiedXpathUtil.ActionConfig actionConfig = new SpecifiedXpathUtil.ActionConfig();
+                            actionConfig.setRes_id(actionMap.get(RESOURCE_ID));
+                            actionConfig.setClass_name(actionMap.get(CLASS));
+                            actionConfig.setText(actionMap.get(TEXT));
+                            actionConfig.setContent_desc(actionMap.get(CONTENT_DESC));
+                            actionConfig.setAction(actionMap.get(ACTION));
+                            actionConfig.setValue(actionMap.get(VALUE));
+
+                            actionConfigList.add(actionConfig);
+                        }
+                        node.setActionConfigList(actionConfigList);
                     }
 
                     nodes.add(node);

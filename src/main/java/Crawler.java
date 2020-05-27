@@ -565,14 +565,11 @@ public class Crawler {
                         log.info("\n\n-----------------ui crawler count: " + uiPathMap.size() + " --------------------");
 
                         List<Integer> ids = new ArrayList<>(uiPathMap.keySet());
-                        ids.sort(new Comparator<Integer>() {
-                            @Override
-                            public int compare(Integer left, Integer right) {
-                                if (left < right)
-                                    return -1;
-                                else
-                                    return 1;
-                            }
+                        ids.sort((left, right) -> {
+                            if (left < right)
+                                return -1;
+                            else
+                                return 1;
                         });
 
                         for (int index : ids)  {
@@ -583,6 +580,7 @@ public class Crawler {
 
                             Driver.appRelaunch();
                             SpecifiedXpathUtil.reset();
+                            pageSource = Driver.getPageSource();
 
                             SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                         }

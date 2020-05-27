@@ -30,9 +30,10 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
     public static class AdPopoutConfig {
         private String layout_re;
-        private String widget_res_id;
-        private String widget_class;
-        private String widget_text;
+        private String res_id;
+        private String class_name;
+        private String text;
+        private String content_desc;
 
         public String getLayout_re() {
             return layout_re;
@@ -42,61 +43,20 @@ public class SpecifiedXpathUtil extends XPathUtil {
             this.layout_re = layout_re;
         }
 
-        public String getWidget_res_id() {
-            return widget_res_id;
+        public String getRes_id() {
+            return res_id;
         }
 
-        public void setWidget_res_id(String widget_res_id) {
-            this.widget_res_id = widget_res_id;
+        public void setRes_id(String res_id) {
+            this.res_id = res_id;
         }
 
-        public String getWidget_class() {
-            return widget_class;
+        public String getClass_name() {
+            return class_name;
         }
 
-        public void setWidget_class(String widget_class) {
-            this.widget_class = widget_class;
-        }
-
-        public String getWidget_text() {
-            return widget_text;
-        }
-
-        public void setWidget_text(String widget_text) {
-            this.widget_text = widget_text;
-        }
-    }
-
-    public static class UIPathNode {
-        private String activityName;
-        private String resourceId;
-        private String className;
-        private String text;
-
-        private AdPopoutConfig adPopoutConfig;
-
-        public String getActivityName() {
-            return activityName;
-        }
-
-        public void setActivityName(String activityName) {
-            this.activityName = activityName;
-        }
-
-        public String getResourceId() {
-            return resourceId;
-        }
-
-        public void setResourceId(String resourceId) {
-            this.resourceId = resourceId;
-        }
-
-        public String getClassName() {
-            return className;
-        }
-
-        public void setClassName(String className) {
-            this.className = className;
+        public void setClass_name(String class_name) {
+            this.class_name = class_name;
         }
 
         public String getText() {
@@ -107,12 +67,100 @@ public class SpecifiedXpathUtil extends XPathUtil {
             this.text = text;
         }
 
+        public String getContent_desc() {
+            return content_desc;
+        }
+
+        public void setContent_desc(String content_desc) {
+            this.content_desc = content_desc;
+        }
+    }
+
+    public static class ActionConfig {
+        private String res_id;
+        private String class_name;
+        private String text;
+        private String content_desc;
+        private String action;
+        private String value;
+
+        public String getRes_id() {
+            return res_id;
+        }
+
+        public void setRes_id(String res_id) {
+            this.res_id = res_id;
+        }
+
+        public String getClass_name() {
+            return class_name;
+        }
+
+        public void setClass_name(String class_name) {
+            this.class_name = class_name;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public String getContent_desc() {
+            return content_desc;
+        }
+
+        public void setContent_desc(String content_desc) {
+            this.content_desc = content_desc;
+        }
+
+        public String getAction() {
+            return action;
+        }
+
+        public void setAction(String action) {
+            this.action = action;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
+    public static class UIPathNode {
+        private String activityName;
+
+        private AdPopoutConfig adPopoutConfig;
+        private List<ActionConfig> actionConfigList;
+
+        public String getActivityName() {
+            return activityName;
+        }
+
+        public void setActivityName(String activityName) {
+            this.activityName = activityName;
+        }
+
         public AdPopoutConfig getAdPopoutConfig() {
             return adPopoutConfig;
         }
 
         public void setAdPopoutConfig(AdPopoutConfig adPopoutConfig) {
             this.adPopoutConfig = adPopoutConfig;
+        }
+
+        public List<ActionConfig> getActionConfigList() {
+            return actionConfigList;
+        }
+
+        public void setActionConfigList(List<ActionConfig> actionConfigList) {
+            this.actionConfigList = actionConfigList;
         }
     }
 
@@ -263,7 +311,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
             log.debug("----page source-----\n" + currentXML);
 
             int index = 1;
-            System.out.println(Driver.getCurrentActivity());
             if (!uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 log.info("enter the wrong activity: target activity name, " + uiPathNode.getActivityName() + "; current activity name, " + currentActivity);
             }
@@ -274,18 +321,29 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 Pattern pattern = Pattern.compile(uiPathNode.getAdPopoutConfig().getLayout_re(), Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
                 Matcher matcher = pattern.matcher(currentXML);
                 if (matcher.find()) {
-                    String resId = uiPathNode.getAdPopoutConfig().getWidget_res_id();
-                    String wClass = uiPathNode.getAdPopoutConfig().getWidget_class();
-                    String text = uiPathNode.getAdPopoutConfig().getWidget_text();
+                    String resId = uiPathNode.getAdPopoutConfig().getRes_id();
+                    String className = uiPathNode.getAdPopoutConfig().getClass_name();
+                    String text = uiPathNode.getAdPopoutConfig().getText();
 
                     MobileElement elem = null;
                     if (resId != null)
                         elem = Driver.findElemByIdWithoutException(resId);
                     else
-                        elem = Driver.findElementByClassAndTextWithoutException(wClass, text);
+                        elem = Driver.findElementByClassAndTextWithoutException(className, text);
 
                     if (elem != null) {
                         currentXML = clickElement(elem, currentXML);
+                    }
+                }
+            }
+
+            if (uiPathNode.getActionConfigList() != null
+                    && uiPathNode.getActionConfigList().size() > 0) {
+
+                for (ActionConfig actionConfig : uiPathNode.getActionConfigList()) {
+                    MobileElement element = Driver.findElement(By.id(actionConfig.res_id));
+                    if (element != null) {
+                        element.setValue(actionConfig.getValue());
                     }
                 }
             }
@@ -335,69 +393,98 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         showTabBarElement(currentXML, tabBarXpath);
 
-        MobileElement elem = null;
+        for (ActionConfig actionConfig : uiPathNode.getActionConfigList()) {
 
-        String resId = uiPathNode.getResourceId();
-        String className = uiPathNode.getClassName();
-        String text = uiPathNode.getText();
-        if (Strings.isNullOrEmpty(resId) && Strings.isNullOrEmpty(className)){
-            log.error("ui path node is invalid for missing resource id or class name: res id, " + resId + "; class name, "+ className);
-        }
-        else if (!Strings.isNullOrEmpty(resId)) {
-            List<MobileElement> mobileElements = Driver.findElements(By.id(resId));
-            if (mobileElements.size() == 1)
-                elem = mobileElements.get(0);
-            else {
-                for (MobileElement mobileElement : mobileElements) {
-                    if (mobileElement.getText().equalsIgnoreCase(text)) {
-                        elem = mobileElement;
-                        break;
+            MobileElement elem = null;
+
+            String resId = actionConfig.getRes_id();
+            String className = actionConfig.getClass_name();
+            String text = actionConfig.getText();
+            String content_desc = actionConfig.getContent_desc();
+
+            if (Strings.isNullOrEmpty(resId) && Strings.isNullOrEmpty(className)) {
+                log.error("ui path node is invalid for missing resource id or class name: res id, " + resId + "; class name, " + className);
+            } else {
+                if (!Strings.isNullOrEmpty(resId)) {
+                    List<MobileElement> mobileElements = Driver.findElements(By.id(resId));
+                    if (mobileElements.size() == 1)
+                        elem = mobileElements.get(0);
+                    else {
+                        for (MobileElement mobileElement : mobileElements) {
+                            if ((text != null ? text.equalsIgnoreCase(mobileElement.getText()) : false)
+                                    || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)) {
+                                elem = mobileElement;
+                                break;
+                            }
+                        }
                     }
                 }
-            }
-        }
-        else {
-            List<MobileElement> mobileElements = Driver.findElements(By.className(className));
-            for (MobileElement mobileElement : mobileElements) {
-                if (mobileElement.getText().equalsIgnoreCase(text)) {
-                    elem = mobileElement;
-                    break;
+
+                //即使resource id不为null，依然有可能找不到元素
+                // 例如：荣耀和p20设备的支付宝首页resource id不一样，p20的配置脚本在荣耀则找不到对应的控件元素
+                //换做class，text或content-desc寻找元素
+                if (elem == null
+                        && !Strings.isNullOrEmpty(className)) {
+                    List<MobileElement> mobileElements = Driver.findElements(By.className(className));
+                    for (MobileElement mobileElement : mobileElements) {
+                        if ((text != null ? text.equalsIgnoreCase(mobileElement.getText()) : false)
+                                || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)) {
+                            elem = mobileElement;
+                            break;
+                        }
+                    }
+
+//                    //if still failed to find elem, try to find by content-desc xpath
+//                    if (null == elem) {
+//                        String xpath = "//*[@class=\"" + className + "\" and @content-desc=\"" + text + "\"]";
+//                        try {
+//                            elem = Driver.findElement(By.xpath(xpath));
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                            log.error("failed to find element by desc text xpath: " + xpath);
+//                        }
+//                    }
                 }
             }
 
-            //if still failed to find elem, try to find by content-desc xpath
             if (null == elem) {
-                String xpath = "//*[@class=\"" + className + "\" and @content-desc=\""+ text +"\"]";
-                elem = Driver.findElement(By.xpath(xpath));
-            }
-        }
+                //元素未找到，重新遍历当前页面
+                log.error("---------Node not found in current UI!!!!!!! Stop.-----------");
+                log.info("ui path node:\n"
+                        + "res id, " + resId
+                        + "; class name, " + className
+                        + "; text, " + text);
 
-        if (null == elem) {
-            //元素未找到，重新遍历当前页面
-            log.error("---------Node not found in current UI!!!!!!! Stop.-----------");
-            log.info("ui path node:\n"
-                    + "res id, " + resId
-                    + "; class name, " + className
-                    + "; text, " + text);
-        } else {
-            String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
-            log.debug(previousPageStructure);
+                log.info("----page source-----\n" + currentXML);
 
-            currentXML = clickElement(elem, currentXML);
-            log.debug("------------page source after click-----------\n" +currentXML);
-
-            String afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
-
-            //点击后进入到了新的页面
-            if (!isSamePage(previousPageStructure, afterPageStructure)) {
-                log.info("========================================New Child UI================================");
-
-                String newActivity = Driver.getCurrentActivity();
-                log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
-
-                currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
             } else {
-                log.info("========================================Same UI");
+                if (actionConfig.getAction() != null
+                        && actionConfig.getAction().equalsIgnoreCase("input")) {
+                    elem.setValue(actionConfig.getValue());
+                }
+                else {
+                    String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
+                    log.debug(previousPageStructure);
+
+                    currentXML = clickElement(elem, currentXML);
+                    log.debug("------------page source after click-----------\n" + currentXML);
+
+                    String afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
+
+                    //点击后进入到了新的页面
+                    if (!isSamePage(previousPageStructure, afterPageStructure)) {
+                        log.info("========================================New Child UI================================");
+
+                        String newActivity = Driver.getCurrentActivity();
+                        log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
+
+                        currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
+                    } else {
+                        log.info("========================================Same UI");
+                    }
+
+                    break;
+                }
             }
         }
 

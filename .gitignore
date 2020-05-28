@@ -8,3 +8,4 @@ log/
 target/
 crawler_output/
 *.log
+ui.yml

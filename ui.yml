@@ -196,9 +196,9 @@ UI_PATH:
           value: '152 0108 0243'
 
         - resource_id: ''
-            class: 'android.widget.EditText'
-            text: '152 0108 0243'
-            action: click
+          class: 'android.widget.EditText'
+          text: '152 0108 0243'
+          action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 

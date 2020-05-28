@@ -985,7 +985,7 @@ UI_PATH:
 
     - activity_name: '.AlipayLogin'
 
-  17801:
+  1781:
     - activity_name: '.AlipayLogin'
       actions:
         - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'

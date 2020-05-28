@@ -17,15 +17,15 @@
 #       click： 点击（目前逻辑假定该动作一定引起跳转是，所以要将其的放在动作列表最后一位，否则其他输入操作无法执行）
 
 UI_PATH:
-  1:
+  0:
     - activity_name: '.AlipayLogin'
       ad:
         layout_re: "text=\"更多服务在这里\".*?</android.widget.LinearLayout>"
         clickable_widget:
           resource_id: "com.alipay.mobile.antui:id/closeButton"
-# 通常来说，resource_id 与 text class 数据秩序需要设置一组
-#          text: "关闭"
-#          class: "android.widget.FrameLayout"
+  # 通常来说，resource_id 与 text class 数据秩序需要设置一组
+  #          text: "关闭"
+  #          class: "android.widget.FrameLayout"
 
   #  location:
   #    - activity_name: '.AlipayLogin'
@@ -56,7 +56,6 @@ UI_PATH:
         - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
           text: "收钱"
 
-
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
 
   4201:
@@ -72,6 +71,10 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
 
+  ### 43:
+  ### 42和43均为收钱界面
+  ### 42是别人在扫码向我付款，43是别人付款完成，都在同一界面，由别人扫码付款完成
+
   47:
     - activity_name: '.AlipayLogin'
       actions:
@@ -84,6 +87,33 @@ UI_PATH:
           text: '设置金额'
 
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRSetMoneyActivity'
+
+  51:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+          text: "收钱"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.payee:id/payee_QRCodePayModifyMoney'
+          text: '设置金额'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRSetMoneyActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/input_edit'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.payee:id/payee_NextBtn'
+          text: '确定'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
 
   53:
     - activity_name: '.AlipayLogin'
@@ -186,16 +216,21 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
 
+  ### 67: 65 pull down is 67
+
   68:
     - activity_name: '.AlipayLogin'
       actions:
         - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          class: 'android.widget.TextView'
           text: "转账"
+          action: click
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
       actions:
         - resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
           text: "转到支付宝账户"
+          action: click
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
 
@@ -220,7 +255,35 @@ UI_PATH:
           action: click
 
     ########## need a friend account #########
+    - activity_name: 'com.alipay.mobile.socialcontactsdk.contact.select.biz.FriendsRelationSelectActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialcontactsdk:id/list_item_title' #select a friend
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'
+
+  74:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          class: 'android.widget.TextView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+          text: "转到支付宝账户"
+          action: click
+
     - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/input_right_icon' #click icon of friend
+          content_desc: "手机联系人"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialcontactsdk.contact.select.biz.FriendsRelationSelectActivity'
       actions:
         - resource_id: 'com.alipay.mobile.socialcontactsdk:id/list_item_title' #select a friend
           text: "磊"
@@ -233,7 +296,9 @@ UI_PATH:
           text: ''
           content_desc: '输入转账金额'
           action: input
-          value: '1361234567'
+          value: '0.01'
+        #          value: '1361234567'     #运行结果：转账金额较大，为避免转错帐，请补充用户全名，‘弹出输入框’
+        #                                      ####剩下更深的1层没运行出来！！！！
 
         - resource_id: 'com.alipay.mobile.ui:id/content'
           class: 'android.widget.EditText'
@@ -248,6 +313,24 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.msp.ui.views.MspContainerActivity'
 
+  78:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+
   93:
     - activity_name: '.AlipayLogin'
       actions:
@@ -255,6 +338,8 @@ UI_PATH:
           text: "充值中心"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  ### 96: 93 pull down is 96
 
   97:
     - activity_name: '.AlipayLogin'
@@ -282,18 +367,118 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
+  #  100:
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+  #          text: "充值中心"
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #      actions:
+  #        - class: 'android.view.View'
+  #          text: "充流量 充流量"
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.EditText'
+  #          text: '150 1094 7518'
+  #          action: click
+  #
+  #        - resource_id: ''
+  #          class: 'android.widget.EditText'
+  #          text: ''                         ### 需要把原来的号码删除掉，再输入新号码       怎么删除？？？！！！
+  #          action: input
+  #          value: '152 0135 0016'
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  ### 101:  ### 98 pull down is 101
+
+  102:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "充值中心"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: "充流量 充流量"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '1GB'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      ### 手册上是 com.alipay.mobile.nebulacore.ui.H5Activity
+
+  ### 108: 充值成功界面
+
   112:
     - activity_name: '.AlipayLogin'
       actions:
         - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
           text: "更多操作"
+          action: click
 
     - activity_name: '.AlipayLogin'
       actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
           text: "乘车码"
+          action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  114:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '北京地铁乘车码'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+    ######## 118，120，125，127，128，129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
+    ##### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
+
+  124:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '北京公交乘车码'
+          action: click
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
 
   134:
     - activity_name: '.AlipayLogin'
@@ -339,6 +524,218 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.BankSelectActivity_'
 
+  140: ###首页下拉的截图
+    - activity_name: '.AlipayLogin'
+
+  141:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/bankHolderName' #select a friend with bank Holder Name
+          text: "张磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'  ### 为什么没有弹出（服务费）收费提示？
+
+  143: ### 这个界面需要一个有转账历史的账号，页面展示排版会变化
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/bankHolderName'
+          text: "张磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+
+  146:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/bankHolderName' #select a friend with bank Holder Name
+          text: "张磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/btn_next'
+          class: 'android.widget.Button'
+          text: '下一步'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToCardConfirmActivity_'  ### ensure page
+
+  147:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/btnContainer'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.AccountSelectActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/bankHolderName' #select a friend with bank Holder Name
+          text: "张磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/btn_next'
+          class: 'android.widget.Button'
+          text: '下一步'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToCardConfirmActivity_'  ### ensure page
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: '备注'
+          action: input
+          value: '1361234567'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/tf_nextBtn'
+          class: 'android.widget.Button'
+          text: '确认转账'
+          action: click
+
+    - activity_name: 'com.alipay.android.msp.ui.views.MspContainerActivity' ### 弹出付款详情，点击立即付款，后需要输入密码
+
+  ### 150: 点击立即付款，输入密码后，支付成功界面
+
+  151: ### 151 是 70 的一个前置页面
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          class: 'android.widget.TextView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+          text: "转到支付宝账户"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/input_right_icon' #click icon of friend
+          content_desc: "手机联系人"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialcontactsdk.contact.select.biz.FriendsRelationSelectActivity'
+
+  153:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "充值中心"
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  ### 154 is same as 153 ？？？
+
+#  155:  ### 100和 102 的后置任务
+#    - activity_name: '.AlipayLogin'
+#      actions:
+#        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+#          text: "充值中心"
+#
+#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+#      actions:
+#        - class: 'android.view.View'
+#          text: "充流量 充流量"
+#
+#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.EditText'
+#          text: '150 1094 7518'
+#          action: click
+#
+#        - resource_id: ''
+#          class: 'android.widget.EditText'
+#          text: ''                                                  ### 需要把原来的号码删除掉，再输入新号码       怎么删除？？？！！！
+#          action: input
+#          value: '152 0135 0016'
+#
+#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.view.View'
+#          text: '1GB'
+#          action: click
+#
+#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.Button'
+#          text: "立即购买"
+#          action: click
+#
+#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'  ### 弹出提示窗口，确认给未知号码充值吗？
+
   157:
     - activity_name: '.AlipayLogin'
       actions:
@@ -351,6 +748,205 @@ UI_PATH:
           text: "优先使用此付款方式"
 
     - activity_name: '.AlipayLogin'
+
+  ### 158:点击付款输入密码后，支付成功界面
+
+  ##### 开始搜索输入查询功能 #####
+  159:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '乘车码'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: '乘车码'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  160:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '嗯'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: '嗯'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  161:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '饿了么'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_confirm'
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '搜索'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  ### 162 is 161 pull down
+
+  163:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '饿了么'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_confirm'
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '搜索'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/tab_tv'
+          class: 'android.widget.TextView'
+          text: '联系人'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  164:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '饿了么'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_confirm'
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '搜索'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/tab_tv'
+          class: 'android.widget.TextView'
+          text: '小程序'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  165:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '饿了么'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_confirm'
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '搜索'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/tab_tv'
+          class: 'android.widget.TextView'
+          text: '生活号'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+
+  166:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/search_container'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/search_input_box'
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '饿了么'
+
+        - resource_id: 'com.alipay.mobile.antui:id/search_confirm'
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '搜索'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/tab_tv'
+          class: 'android.widget.TextView'
+          text: '资讯'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.businesscommon.globalsearch.ui.MainSearchActivity'
 
   172:
     - activity_name: '.AlipayLogin'
@@ -425,16 +1021,21 @@ UI_PATH:
       actions:
         - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
           text: "收钱"
+          action: click
 
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
       actions:
         - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
           text: ''
+          content_desc: "更多"
 
     - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
       actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
           text: 'AA收款'
+          action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
@@ -460,6 +1061,420 @@ UI_PATH:
           text: '收款记录'
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+#  186: 卡片详情，需领取乘车公交卡
+
+#  187: 人脸识别，不知道在哪触发
+
+  188:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+          text: "收钱"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          content_desc: "更多"
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: 'AA收款'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.03'
+
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '3'
+
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: "发起收款"
+          action: click
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+      ### 手册上显示的是com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity这样，
+      ### 但是跑出来的日志显示com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main，根据日志的路径也能找到
+
+  189:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+          text: "收钱"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          content_desc: "更多"
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: 'AA收款'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.03'
+
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '3'
+
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: "发起收款"
+          action: click
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: "选择朋友收款"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
+
+  1891:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+          text: "收钱"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          content_desc: "更多"
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: 'AA收款'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.03'
+
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '3'
+
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: "发起收款"
+          action: click
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: "选择朋友收款"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialshare:id/list_item_title'
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+  190:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+          text: "收钱"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ''
+          content_desc: "更多"
+
+    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: 'AA收款'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '0.03'
+
+        - resource_id: ''
+          class: 'android.widget.EditText'
+          text: ''
+          action: input
+          value: '3'
+
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: "发起收款"
+          action: click
+
+    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: "选择朋友收款"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/table_left_text'
+          class: 'android.widget.TextView'
+          text: "分别发给多个联系人"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialcontactsdk.contact.select.page.FriendSelect'
+
+  191: ### 是74的后置界面？ 还是应该用另一种方式转账？
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          class: 'android.widget.TextView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+          text: "转到支付宝账户"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/input_right_icon' #click icon of friend
+          content_desc: "手机联系人"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.socialcontactsdk.contact.select.biz.FriendsRelationSelectActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialcontactsdk:id/list_item_title' #select a friend
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/amount_edit'
+          class: 'android.widget.EditText'
+          text: ''
+          content_desc: '输入转账金额'
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: '添加备注(50字以内)'
+          action: input
+          value: '1361234567'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/tf_nextBtn'
+          class: 'android.widget.Button'
+          text: '确认转账'
+          action: click
+
+    - activity_name: 'com.alipay.android.msp.ui.views.MspContainerActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: "立即付款"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity'  ###为什么没有弹出指纹验证？只有支付密码验证？
+
+  1911:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'
+          class: 'android.widget.TextView'
+          text: "朋友"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+
+  1912:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'
+          class: 'android.widget.TextView'
+          text: "朋友"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/item_name'
+          class: 'android.widget.TextView'
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.chatapp.ui.PersonalChatMsgActivity_' ### 聊天界面
+
+  1913:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'
+          class: 'android.widget.TextView'
+          text: "朋友"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/item_name'
+          class: 'android.widget.TextView'
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.chatapp.ui.PersonalChatMsgActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.chatapp:id/chat_quick_tr_btn'
+          class: 'android.widget.ImageView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'   ### 另一种进入转账界面的入口
+
+  1914:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'
+          class: 'android.widget.TextView'
+          text: "朋友"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/item_name'
+          class: 'android.widget.TextView'
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.chatapp.ui.PersonalChatMsgActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.chatapp:id/chat_quick_tr_btn'
+          class: 'android.widget.ImageView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/amount_edit'
+          class: 'android.widget.EditText'
+          text: ''
+          content_desc: '输入转账金额'
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: '添加备注(50字以内)'
+          action: input
+          value: '1361234567'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/tf_nextBtn'
+          class: 'android.widget.Button'
+          text: '确认转账'
+          action: click
+
+    - activity_name: 'com.alipay.android.msp.ui.views.MspContainerActivity'
+
+  1915:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/social_tab_text'
+          class: 'android.widget.TextView'
+          text: "朋友"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.socialwidget:id/item_name'
+          class: 'android.widget.TextView'
+          text: "磊"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.chatapp.ui.PersonalChatMsgActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.chatapp:id/chat_quick_tr_btn'
+          class: 'android.widget.ImageView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/amount_edit'
+          class: 'android.widget.EditText'
+          text: ''
+          content_desc: '输入转账金额'
+          action: input
+          value: '0.01'
+
+        - resource_id: 'com.alipay.mobile.ui:id/content'
+          class: 'android.widget.EditText'
+          text: '添加备注(50字以内)'
+          action: input
+          value: '1361234567'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/tf_nextBtn'
+          class: 'android.widget.Button'
+          text: '确认转账'
+          action: click
+
+    - activity_name: 'com.alipay.android.msp.ui.views.MspContainerActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: "立即付款"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity'  ###为什么没有弹出指纹验证？只有支付密码验证？
+
+  ### 193: 转账成功后，返回聊天界面
+
+  ### 197: 就是首页下拉的截图1
+  ### 198: 就是首页下拉的截图2
 
   1991:
     - activity_name: '.AlipayLogin'
@@ -652,26 +1667,14 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
       actions:
-        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_card_view_tv'
+          text: "转到银行卡"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferToCardFormActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.ui:id/title_bar_generic_button'
           text: ""
-
-    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-
-  2061:
-    - activity_name: '.AlipayLogin'
-      actions:
-        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
-          text: "转账"
-
-    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-      actions:
-        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-          text: ""
-
-    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-      actions:
-        - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          text: "使用帮助"
+          content_desc: "帮助"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
@@ -693,23 +1696,23 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-  208:
-    - activity_name: '.AlipayLogin'
-      actions:
-        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
-          text: "转账"
-
-    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-      actions:
-        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-          text: ""
-
-    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-      actions:
-        - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          text: "安全小贴士"
-
-    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+  #  208:
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+  #          text: "转账"
+  #
+  #    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #
+  #    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+  #          text: "安全小贴士"                                                   ###没有这个tag？？？ 消失了？？？
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
   209:
     - activity_name: '.AlipayLogin'
@@ -746,3 +1749,32 @@ UI_PATH:
           text: '向微信/QQ朋友收款'
 
     - activity_name: 'com.alipay.android.phone.wallet.sharetoken.ui.SendTextTokenActivity'
+
+  222:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          class: 'android.widget.TextView'
+          text: "转账"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.transferapp:id/to_account_view_tv'
+          text: "转到支付宝账户"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountInputActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/input_edit'
+          class: 'android.widget.EditText'
+          text: "支付宝账户/手机号码"
+          action: input
+          value: '15201080243'
+
+        - resource_id: 'com.alipay.mobile.transferapp:id/tf_toAccountNextBtn'
+          class: 'android.widget.Button'
+          text: "下一步"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmActivity_'   ### 此界面转账给个人账户？需要一个个人账户？

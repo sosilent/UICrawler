@@ -24,6 +24,8 @@ public class Crawler {
     private static String udid;
     private static String outputDir;
 
+    private static int specifiedUiPathTestSuccessCount = 0;
+
     //ui遍历模式： 1, loop; 2, specified
     private static int UI_LOOP_MODE = 1;
     private static int UI_SPECIFIED_MODE = 2;
@@ -175,6 +177,8 @@ public class Crawler {
             summaryMap.put("元素点击数量 - Element clicked count", String.valueOf(XPathUtil.getClickCount()));
         }
         summaryMap.put("系统日志 - System log", "<a href=\"" + logName + "\">" + logName + "</a>");
+        summaryMap.put("测试数量 - Test case count", String.valueOf(UIPathConfigUtil.getUIPath().size()));
+        summaryMap.put("成功数量 - Success count", String.valueOf(specifiedUiPathTestSuccessCount));
         summaryMap.put("Crash数量 - Crash count", String.valueOf(crashCount));
 
         if (isMonkey) {
@@ -582,7 +586,10 @@ public class Crawler {
                             SpecifiedXpathUtil.reset();
                             pageSource = Driver.getPageSource();
 
-                            SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
+                            long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
+                            if (nodeList.size() == depthWhenCompleting) {
+                                specifiedUiPathTestSuccessCount++;
+                            }
                         }
                     }
 

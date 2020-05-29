@@ -21,11 +21,14 @@ public class ReportUtil {
     public static void setDetailedList(List<ArrayList<String>> detailedList) {
         ReportUtil.detailedList = detailedList;
     }
-
     public static void setClickedList(List<ArrayList<String>> clickedList) {
         ReportUtil.clickedList = clickedList;
     }
+    public static void setChangedList(List<ArrayList<String>> changedList) {
+        ReportUtil.changedList = changedList;
+    }
 
+    private static List<ArrayList<String>> changedList = new ArrayList<>();
     private static List<ArrayList<String>> clickedList = new ArrayList<>();
     private static List<ArrayList<String>> detailedList = new ArrayList<>();
     private static StringBuilder builder;
@@ -46,9 +49,11 @@ public class ReportUtil {
 
         addSummaryTable();
         addDetailedTable();
+        addChangedTable();
 
         if(Util.isAndroid()) {
             addClickedTable();
+
         }
 
         builder.append("</body>\n" + "</html>\n");
@@ -86,7 +91,12 @@ public class ReportUtil {
         generateTable("Activity Clicked List",clickedList,"No Activity is clicked.");
     }
 
+    private static void addChangedTable(){
+        generateTable("Activity Changed List",changedList,"No Activity is Changed.");
+    }
+
     private static void generateTable(String header,List<ArrayList<String>> rowList, String info ){
+
         builder.append("<br/>\n<h2>" +header +"</h2>\n");
         builder.append("<table width=\"100%\" border=\"1\" align=\"center\" cellspacing=\"1\">\n");
         builder.append(" <tbody>\n");
@@ -109,8 +119,6 @@ public class ReportUtil {
         if(rowList.size()== 0){
             builder.append("        <td class=\"left\">"+info+"</td>\n");
         }
-
         builder.append(" </tbody>\n</table>\n");
     }
-
 }

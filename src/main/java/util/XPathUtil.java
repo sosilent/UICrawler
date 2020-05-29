@@ -21,6 +21,7 @@ public class XPathUtil {
 
     protected static Map<String, Map<String, Long>> monkeyClickedMap = new HashMap<>();
     protected static Map<String, Long> clickedActivityMap = new HashMap<>();
+    protected static Map<String, String> changedActivityMap = new HashMap<>();
     protected static HashSet<String> set = new LinkedHashSet<>();
     protected static DocumentBuilder builder;
     protected static boolean stop = false;
@@ -70,6 +71,9 @@ public class XPathUtil {
 
     public static HashSet<String> getSet() {
         return set;
+    }
+    public static Map<String, String> getChangedActivityMap() {
+        return changedActivityMap;
     }
     public static Map<String, Long> getClickedActivityMap() {
         return clickedActivityMap;

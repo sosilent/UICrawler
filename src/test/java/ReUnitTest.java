@@ -55,9 +55,21 @@ public class ReUnitTest {
     @Test
     public void smallPopoutReTest() throws IOException {
         File file = new File(SMALL_POPOUT_PATH);
-        InputStream is = new FileInputStream(file);
-        byte[] bytes = is.readAllBytes();
-        String xml = new String(bytes);
+        InputStream is ;
+        byte[] byt = null;
+        try {
+            is = new FileInputStream(file);
+            byt = new byte[is.available()];
+            is.read(byt);
+        } catch (FileNotFoundException e) {
+            System.out.println("file not find!");
+//        } finally {
+//            is.close();
+        }
+        String xml = new String(byt);
+
+//            byte[] bytes = is.readAllBytes();
+//            String xml = new String(bytes);
 
         String reg = "text=\"更多服务在这里\".*?</android.widget.LinearLayout>";
         String reg1 = "<android.widget.FrameLayout .* content-desc=\"关闭\" .*?displayed=\"true\">";
@@ -76,7 +88,6 @@ public class ReUnitTest {
 
             String target = xml.substring(start, end);
             System.out.println("target:\n" + target);
-
             System.out.println("group:\n" + group);
 
             Pattern pattern1 = Pattern.compile(reg1);

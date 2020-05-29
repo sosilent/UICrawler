@@ -462,7 +462,8 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-    ######## 118 - 129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
+    ###！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！########################################
+    ### 118 - 129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
     ##### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
 
   124:
@@ -1703,23 +1704,23 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-  #  208: ###实现不了
-  #    - activity_name: '.AlipayLogin'
-  #      actions:
-  #        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
-  #          text: "转账"
-  #
-  #    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-  #      actions:
-  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-  #          text: ""
-  #
-  #    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
-  #      actions:
-  #        - resource_id: 'com.alipay.mobile.antui:id/item_name'
-  #          text: "安全小贴士"                                                   ###没有这个tag？？？ 消失了？？？
-  #
-  #    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+  208: ### 支付宝88版本实现不了？ 授权什么功能以后按钮消失？
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
+          text: "转账"
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          text: ""
+
+    - activity_name: 'com.alipay.mobile.transferapp.ui.TransferMainHomeActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "安全小贴士"                                                   ###没有这个tag？？？ 消失了？？？
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
   209:
     - activity_name: '.AlipayLogin'

@@ -224,7 +224,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
             if (endPos > 0)
                 return path.substring(startPos + NODE_RESOURCE_ID.length(), endPos);
         }
-
         return null;
     }
 
@@ -245,13 +244,11 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     return path.substring(startPos + NODE_CONTENT_DESC.length(), endPos);
             }
         }
-
         return null;
     }
 
     public static long getNodesFromFile(String xml, int pathNodeIndex, List<UIPathNode> uiPathNodeList, long currentDepth) throws Exception {
         log.info("Method: getNodesFromFile");
-
         log.info("Context: " + Driver.driver.getContextHandles().toString());
 
         String currentActivity = Driver.getCurrentActivity();
@@ -311,8 +308,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
             log.debug("----page source-----\n" + currentXML);
 
             int index = 1;
+
             if (!uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
-                log.info("enter the wrong activity: target activity name, " + uiPathNode.getActivityName() + "; current activity name, " + currentActivity);
+                log.info("======================================== Wrong Activity Name =========================================");
+                log.info("Enter the wrong activity:  target activity name: " + uiPathNode.getActivityName() + "; current activity name: " + currentActivity);
+                changedActivityMap.put(uiPathNode.getActivityName(),currentActivity);
+                log.info("changedActivityMap = " + changedActivityMap);
             }
 
             //check if there is a ad pop out

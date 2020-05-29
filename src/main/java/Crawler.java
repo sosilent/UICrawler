@@ -80,13 +80,12 @@ public class Crawler {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            else {
+            } else {
                 for (File subFile : file.listFiles()) {
                     if (subFile.getName().toLowerCase().endsWith(".png")) {
                         try {
                             String fileName = subFile.getName();
-                            fileName = fileName.substring(fileName.indexOf(".")+1);
+                            fileName = fileName.substring(fileName.indexOf(".") + 1);
 
                             File destFile = new File(clickScreenShotDir + File.separator + fileName);
                             FileUtils.copyFile(subFile, destFile);
@@ -166,6 +165,7 @@ public class Crawler {
         int index = 0;
         List<ArrayList<String>> detailedList = new ArrayList<>();
         List<ArrayList<String>> clickedList = new ArrayList<>();
+        List<ArrayList<String>> changedList = new ArrayList<>();
         String crashDir = ConfigUtil.getRootDir() + File.separator + "crash" + File.separator;
         log.info("Crash dir is " + crashDir);
         //String crashDir = "./crash" + File.separator;
@@ -223,8 +223,26 @@ public class Crawler {
             detailedList.add(row);
         }
 
-        int clickedActivityCount = XPathUtil.getClickedActivityMap().size();
+        int changedActivityCount = XPathUtil.getChangedActivityMap().size();
+        if (changedActivityCount > 0) {
+            log.info("changed Activity count is " + changedActivityCount);
 
+            ArrayList<String> headerRow = new ArrayList<>();
+            headerRow.add("HEAD");
+            headerRow.add("Target Activity");
+            headerRow.add("Current Activity");
+            changedList.add(headerRow);
+
+            Map<String, String> map = XPathUtil.getChangedActivityMap();
+            for (String activity : map.keySet()) {
+                ArrayList<String> row = new ArrayList<>();
+                row.add(activity);
+                row.add(map.get(activity));
+                changedList.add(row);
+            }
+        }
+
+        int clickedActivityCount = XPathUtil.getClickedActivityMap().size();
         if (clickedActivityCount > 0) {
             log.info("Clicked Activity count is " + clickedActivityCount);
 
@@ -241,6 +259,19 @@ public class Crawler {
                 row.add(map.get(activity).toString());
                 clickedList.add(row);
             }
+
+//        Collections.sort( headerRow, new Comparator< ArrayList<String> >() {
+//            public int compare(String lhs, String rhs) {
+//                int i = lhs.compareTo(rhs);
+//                if ( i > 0 ) {
+//                    return 1;
+//                } else {
+//                    return -1;
+//                }
+//            }
+//        });
+//        log.info("After sorting：" + headerRow);
+
         }
 
         int monkeyClickCount = XPathUtil.getMonkeyClickedMap().size();
@@ -269,6 +300,7 @@ public class Crawler {
         ReportUtil.setSummaryMap(summaryMap);
         ReportUtil.setDetailedList(detailedList);
         ReportUtil.setClickedList(clickedList);
+        ReportUtil.setChangedList(changedList);
         ReportUtil.generateReport(report);
         log.info("\n\n------------------------------Test report : " + reportName + "\n\n");
     }
@@ -415,8 +447,7 @@ public class Crawler {
             log.info(uiPathConfigFile);
 
             loopMode = UI_SPECIFIED_MODE;
-        }
-        else
+        } else
             loopMode = UI_LOOP_MODE;
 
         if (commandLine.hasOption('n')) {
@@ -576,7 +607,7 @@ public class Crawler {
                                 return 1;
                         });
 
-                        for (int index : ids)  {
+                        for (int index : ids) {
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
 
                             log.info("\n\n-----------------start screenshot " + index + " --------------------");

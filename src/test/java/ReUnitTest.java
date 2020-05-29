@@ -55,7 +55,7 @@ public class ReUnitTest {
     @Test
     public void smallPopoutReTest() throws IOException {
         File file = new File(SMALL_POPOUT_PATH);
-        InputStream is ;
+        InputStream is = null;
         byte[] byt = null;
         try {
             is = new FileInputStream(file);
@@ -63,6 +63,8 @@ public class ReUnitTest {
             is.read(byt);
         } catch (FileNotFoundException e) {
             System.out.println("file not find!");
+//        } catch (IOException e) {
+//            System.out.println("IOException :" + e);
 //        } finally {
 //            is.close();
         }

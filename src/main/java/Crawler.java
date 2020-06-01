@@ -25,7 +25,7 @@ public class Crawler {
     private static String outputDir;
 
     private static int specifiedUiPathTestSuccessCount = 0;
-    private static List<Integer> specifiedUiPathTestFailed;
+    private static List<Integer> specifiedUiPathTestFailed = new ArrayList<>();
 
     //ui遍历模式： 1, loop; 2, specified
     private static int UI_LOOP_MODE = 1;

@@ -10,3 +10,4 @@ crawler_output/
 *.log
 ui.yml
 *.jar
+out/

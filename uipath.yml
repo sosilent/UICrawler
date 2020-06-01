@@ -486,7 +486,7 @@ UI_PATH:
           text: '北京公交乘车码'
           action: click
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
   134:
     - activity_name: '.AlipayLogin'
@@ -1114,7 +1114,7 @@ UI_PATH:
           text: "发起收款"
           action: click
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
       ### 手册上显示的是com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity这样，
       ### 但是跑出来的日志显示com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main，根据日志的路径也能找到
 
@@ -1158,7 +1158,7 @@ UI_PATH:
           text: "发起收款"
           action: click
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
       actions:
         - resource_id: ''
           class: 'android.view.View'
@@ -1207,7 +1207,7 @@ UI_PATH:
           text: "发起收款"
           action: click
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
       actions:
         - resource_id: ''
           class: 'android.view.View'
@@ -1262,7 +1262,7 @@ UI_PATH:
           text: "发起收款"
           action: click
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
       actions:
         - resource_id: ''
           class: 'android.view.View'
@@ -1771,7 +1771,7 @@ UI_PATH:
           class: 'android.widget.TextView'
           text: "领取收钱码贴纸"
 
-    - activity_name: 'com.eg.android.AlipayGphone/com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
   222: ### 此界面转账给个人账户？？？ 需要一个 个人账户？？？
     - activity_name: '.AlipayLogin'

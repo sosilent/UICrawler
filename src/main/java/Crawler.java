@@ -170,6 +170,7 @@ public class Crawler {
         //String crashDir = "./crash" + File.separator;
         crashFileList = Util.getFileList(crashDir);
         int crashCount = crashFileList.size();
+        int changedActivityCount = XPathUtil.getChangedActivityMap().size();
 
         summaryMap.put("总执行时间 - Total running time", Util.timeDifference(beginTime.getTime(), new Date().getTime()));
         if (!isMonkey) {
@@ -179,6 +180,7 @@ public class Crawler {
         summaryMap.put("测试数量 - Test case count", String.valueOf(UIPathConfigUtil.getUIPath().size()));
         summaryMap.put("成功数量 - Success count", String.valueOf(specifiedUiPathTestSuccessCount));
         summaryMap.put("Crash数量 - Crash count", String.valueOf(crashCount));
+        summaryMap.put("Changed Activity数量 - Changed Activity Count", String.valueOf(changedActivityCount));
 
         if (isMonkey) {
             summaryMap.put("测试类型 - Test type", "Monkey随机测试");
@@ -222,7 +224,7 @@ public class Crawler {
             detailedList.add(row);
         }
 
-        int changedActivityCount = XPathUtil.getChangedActivityMap().size();
+//        int changedActivityCount = XPathUtil.getChangedActivityMap().size();
         if (changedActivityCount > 0) {
             log.info("changed Activity count is " + changedActivityCount);
 

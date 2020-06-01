@@ -55,7 +55,6 @@ public class Crawler {
         if (ConfigUtil.isGenerateVideo()) {
             generateVideo();
         }
-
         isReported = true;
     }
 

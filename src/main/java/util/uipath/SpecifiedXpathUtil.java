@@ -206,7 +206,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
             if (id != null)
                 return nodes.containsKey(id);
         }
-
         return true;
     }
 
@@ -312,7 +311,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             if (!uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 log.info("======================================== Wrong Activity Name =========================================");
                 log.info("Enter the wrong activity:  target activity name: " + uiPathNode.getActivityName() + "; current activity name: " + currentActivity);
-                changedActivityMap.put(uiPathNode.getActivityName(),currentActivity);
+                changedActivityMap.put(uiPathNode.getActivityName(), currentActivity);
                 log.info("changedActivityMap = " + changedActivityMap);
             }
 
@@ -462,8 +461,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("input")) {
                     elem.setValue(actionConfig.getValue());
-                }
-                else {
+                } else {
                     String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
                     log.debug(previousPageStructure);
 
@@ -483,13 +481,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     } else {
                         log.info("========================================Same UI");
                     }
-
                     break;
                 }
             }
         }
 
-        log.info("\n\n-----------------------\ntarget depth: " + uiPathNodeList.size() + ", leaving depth, "+ currentDepth);
+        log.info("\n\n-----------------------\ntarget depth: " + uiPathNodeList.size() + ", leaving depth, " + currentDepth);
         return currentDepth;
     }
 }

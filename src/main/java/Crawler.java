@@ -180,7 +180,7 @@ public class Crawler {
         summaryMap.put("系统日志 - System log", "<a href=\"" + logName + "\">" + logName + "</a>");
         summaryMap.put("测试数量 - Test case count", String.valueOf(UIPathConfigUtil.getUIPath().size()));
         summaryMap.put("成功数量 - Success count", String.valueOf(specifiedUiPathTestSuccessCount));
-        summaryMap.put("未成功 - Failed", String.valueOf(specifiedUiPathTestFailed + ", "));
+        summaryMap.put("未成功 - Failed", String.valueOf(specifiedUiPathTestFailed));
         summaryMap.put("Crash数量 - Crash count", String.valueOf(crashCount));
         summaryMap.put("Changed Activity数量 - Changed Activity Count", String.valueOf(changedActivityCount));
 

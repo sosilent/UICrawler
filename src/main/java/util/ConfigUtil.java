@@ -27,6 +27,9 @@ public class ConfigUtil {
     private static boolean generateVideo = true;
     private static boolean videoVertical = true;
 
+    //appium
+    private static boolean skipServerIntallation = false;
+
     private static String appiumDockerId = null;
 
     private static boolean runInWechatMode = false;
@@ -58,6 +61,9 @@ public class ConfigUtil {
     public static final String IOS_LOGIN_ELEMENTS = "LOGIN_ELEMENTS_IOS";
     public static final String IOS_WDA_PORT = "IOS_WDA_PORT";
     public static final String IOS_BACK_KEY = "IOS_BACK_KEY";
+
+    //appium
+    public static final String SKIP_SERVER_INSTALLATION = "SKIP_SERVER_INSTALLATION";
 
     //General config item
     public static final String MAX_DEPTH = "MAX_DEPTH";
@@ -175,6 +181,9 @@ public class ConfigUtil {
             generateVideo = ConfigUtil.getBooleanValue(GENERATE_VIDEO,true);
             videoVertical = ConfigUtil.getBooleanValue(VIDEO_VERTICAL,true);
             //boolean runInWechatMode = ConfigUtil.getBooleanValue(RUN_IN_WECHAT_MINI_PROGRAM_MODE,false);
+
+            boolean skipServerInstallation = ConfigUtil.getBooleanValue(SKIP_SERVER_INSTALLATION, false);
+            setSkipServerIntallation(skipServerInstallation);
 
             if(runInWechatMode){
                 ANDROID_PACKAGE = "WECHAT_" + ANDROID_PACKAGE;
@@ -421,5 +430,14 @@ public class ConfigUtil {
 
     public static void setAppiumDockerId(String appiumDockerId) {
         ConfigUtil.appiumDockerId = appiumDockerId;
+    }
+
+    //appium config
+    public static boolean isSkipServerIntallation() {
+        return skipServerIntallation;
+    }
+
+    public static void setSkipServerIntallation(boolean skipServerIntallation) {
+        ConfigUtil.skipServerIntallation = skipServerIntallation;
     }
 }

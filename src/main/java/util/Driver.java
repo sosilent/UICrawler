@@ -92,7 +92,7 @@ public final class Driver {
             driver.quit();
 
             if(Util.isAndroid()) {
-                Driver.prepareForAppiumAndroid(ConfigUtil.getPackageName(), ConfigUtil.getActivityName(), ConfigUtil.getUdid(), ConfigUtil.getPort());
+                Driver.prepareForAppiumAndroid(ConfigUtil.getPackageName(), ConfigUtil.getActivityName(), ConfigUtil.getUdid(), ConfigUtil.getPort(), ConfigUtil.isSkipServerIntallation());
             }else{
                 Driver.prepareForAppiumIOS(ConfigUtil.getBundleId(), ConfigUtil.getUdid(), ConfigUtil.getPort(), ConfigUtil.getWdaPort());
             }
@@ -878,7 +878,7 @@ public final class Driver {
         return driver;
     }
 
-    public static AppiumDriver prepareForAppiumAndroid(String appPackage,String appActivity,String udid, String port) throws Exception {
+    public static AppiumDriver prepareForAppiumAndroid(String appPackage,String appActivity,String udid, String port, boolean skipServerInstallation) throws Exception {
         log.info(MyLogger.getMethodName());
 
         log.info("appPackage " + appPackage);
@@ -903,6 +903,7 @@ public final class Driver {
         capabilities.setCapability("unicodeKeyboard",true); //支持中文输入
         capabilities.setCapability("resetKeyboard",true); //重置输入法为系统默认
         capabilities.setCapability("noSign", true);
+        capabilities.setCapability("skipServerInstallation", skipServerInstallation);
 
         String url = "http://"+ ConfigUtil.getServerIp() +":" + port+"/wd/hub";
         log.info(url);

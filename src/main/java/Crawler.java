@@ -25,6 +25,7 @@ public class Crawler {
     private static String outputDir;
 
     private static int specifiedUiPathTestSuccessCount = 0;
+    private static List<Integer> specifiedUiPathTestSuccess = new ArrayList<>();
     private static List<Integer> specifiedUiPathTestFailed = new ArrayList<>();
 
     //ui遍历模式： 1, loop; 2, specified
@@ -180,7 +181,8 @@ public class Crawler {
         summaryMap.put("系统日志 - System log", "<a href=\"" + logName + "\">" + logName + "</a>");
         summaryMap.put("测试数量 - Test case count", String.valueOf(UIPathConfigUtil.getUIPath().size()));
         summaryMap.put("成功数量 - Success count", String.valueOf(specifiedUiPathTestSuccessCount));
-        summaryMap.put("未成功 - Failed", String.valueOf(specifiedUiPathTestFailed));
+        summaryMap.put("成功测试编号 - Success Test Case ", String.valueOf(specifiedUiPathTestSuccess));
+        summaryMap.put("未成功测试编号 - Failed Test Case ", String.valueOf(specifiedUiPathTestFailed));
         summaryMap.put("Crash数量 - Crash count", String.valueOf(crashCount));
         summaryMap.put("Changed Activity数量 - Changed Activity Count", String.valueOf(changedActivityCount));
 
@@ -622,8 +624,11 @@ public class Crawler {
                             long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                             if (nodeList.size() == depthWhenCompleting) {
                                 specifiedUiPathTestSuccessCount++;
+                                specifiedUiPathTestSuccess.add(index);
+                            } else {
                                 specifiedUiPathTestFailed.add(index);
                             }
+
                         }
                     }
 
@@ -658,7 +663,6 @@ public class Crawler {
         }
     }
 }
-
 
 //    private static void showClickedItems(){
 //        HashSet<String> clickedSet = XPathUtil.getSet();

@@ -1,4 +1,4 @@
-# 原来的uipath部分基于88版本，部分基于手册，此版本所有activity_name都基于88版本
+# 原来的uipath基于88版本，此版本所有activity_name都基于90版本
 
 UI_PATH:
   0:
@@ -188,7 +188,6 @@ UI_PATH:
     - activity_name: '.AlipayLogin'
       ### 开启付款码前：### target activity name: .AlipayLogin;
                      ### current activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity
-
       ### 开启付款码后：### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
                      ### current activity name: .AlipayLogin
 
@@ -1141,7 +1140,7 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
       ###target activity name: com.alipay.mobile.nebulacore.ui.H5Activity;
-      ###current activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main
+      ###current activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main  ###此处是每日AA收款上限20次，达到上限无法继续页面
       actions:
         - resource_id: ''
           class: 'android.view.View'
@@ -1318,10 +1317,10 @@ UI_PATH:
           action: click
 
     - activity_name: 'com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity'  ###为什么没有弹出指纹验证？只有支付密码验证？
-      ### com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity
-      ### com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdHalfActivity
-      ### 开启付款码后： target activity name: com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdHalfActivity;
-                   ###current activity name: com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity
+        ### 开启付款码前： ### com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity
+                        ### com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdHalfActivity
+      ### 开启付款码后： ### target activity name: com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdHalfActivity;
+                      ### current activity name: com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity
 
   1911: ### not necessary
     - activity_name: '.AlipayLogin'
@@ -1675,10 +1674,10 @@ UI_PATH:
           content_desc: "帮助"
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
-      ###target activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main;
-      ###current activity name: com.alipay.mobile.nebulacore.ui.H5Activity
-      ### 开启付款码后：target activity name: com.alipay.mobile.nebulacore.ui.H5Activity;
-                  ### current activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main
+        ### 开启付款码前： ### target activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main;
+                        ### current activity name: com.alipay.mobile.nebulacore.ui.H5Activity
+      ### 开启付款码后： ### target activity name: com.alipay.mobile.nebulacore.ui.H5Activity;
+                      ### current activity name: com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main
 
   207:
     - activity_name: '.AlipayLogin'

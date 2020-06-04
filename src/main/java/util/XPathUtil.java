@@ -931,11 +931,14 @@ public class XPathUtil {
         switch (action.toCharArray()[0]){
             case 'c'://click
                 element.click();
-
                 if(value != null){
                     Driver.sleep(Integer.parseInt(value.toString()));
                 }
                 break;
+//            case 's'://select
+//                element.clear();
+//                element.isSelected();
+//                break;
             case 'i'://input
                 element.clear();
                 element.setValue(value.toString());

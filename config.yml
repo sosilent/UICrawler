@@ -21,7 +21,7 @@ CRITICAL_ELEMENT:
   IOS_CLICK_XPATH_HEADER: '@visible="true" and string-length(@value)<30'
 
   #APPIUM
-  SKIP_SERVER_INSTALLATION: false
+  SKIP_SERVER_INSTALLATION: true
 
 #****************************************************Monkey测试时根据需要更改下面的值，调节事件发生概率****************************************************
 #每项为事件随机发生的次数，各项之和为100

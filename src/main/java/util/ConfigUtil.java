@@ -408,10 +408,10 @@ public class ConfigUtil {
     }
 
     public static boolean getBooleanValue(String key, boolean defaultValue) {
-        Boolean value = (Boolean) configItems.get(key);
+            Boolean value = (Boolean) configItems.get(key);
 
-        log.info("Config : " + key + " = " + value);
-        return value == null? defaultValue : value;
+            log.info("Config : " + key + " = " + value);
+            return value == null ? defaultValue : value;
     }
 
     public static boolean getBooleanValue(String key) {

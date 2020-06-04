@@ -1151,59 +1151,59 @@ UI_PATH:
     - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
 
 #  1891: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
-#          text: "收钱"
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          class: 'android.widget.RelativeLayout'
-#          text: ''
-#          content_desc: "更多"
-#
-#    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/item_name'
-#          class: 'android.widget.TextView'
-#          text: 'AA收款'
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.widget.EditText'
-#          text: ''
-#          action: input
-#          value: '0.03'
-#
-#        - resource_id: ''
-#          class: 'android.widget.EditText'
-#          text: ''
-#          action: input
-#          value: '3'
-#
-#        - resource_id: ''
-#          class: 'android.widget.Button'
-#          text: "发起收款"
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.view.View'
-#          text: "选择朋友收款"
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.socialshare:id/list_item_title'
-#          text: "磊"
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.openplatform:id/collect_tv'
+  #          text: "收钱"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          class: 'android.widget.RelativeLayout'
+  #          text: ''
+  #          content_desc: "更多"
+  #
+  #    - activity_name: 'com.alipay.mobile.payee.ui.PayeeQRActivity'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+  #          class: 'android.widget.TextView'
+  #          text: 'AA收款'
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.EditText'
+  #          text: ''
+  #          action: input
+  #          value: '0.03'
+  #
+  #        - resource_id: ''
+  #          class: 'android.widget.EditText'
+  #          text: ''
+  #          action: input
+  #          value: '3'
+  #
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: "发起收款"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: "选择朋友收款"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.socialshare.ui.ShareEntryActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.socialshare:id/list_item_title'
+  #          text: "磊"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
   190:
     - activity_name: '.AlipayLogin'

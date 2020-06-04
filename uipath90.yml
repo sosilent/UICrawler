@@ -1567,84 +1567,84 @@ UI_PATH:
     - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
 
 #  1991:  ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#
-#    - activity_name: '.AlipayLogin'
-#
-#  1992: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#
-#  1993: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
-#          text: "支付设置"
-#
-#    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
-#
-#  1994: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
-#          text: "支付设置"
-#
-#    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
-#
-#  1995:
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
-#          text: "支付设置"
-#
-#    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
-#      actions:
-#        - resource_id: 'com.alipay.android.app:id/layout_payment_order'
-#          text: "扣款顺序"
-#
-#    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #
+  #    - activity_name: '.AlipayLogin'
+  #
+  #  1992: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #
+  #  1993: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "支付设置"
+  #
+  #    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+  #
+  #  1994: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "支付设置"
+  #
+  #    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+  #
+  #  1995:
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "支付设置"
+  #
+  #    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.app:id/layout_payment_order'
+  #          text: "扣款顺序"
+  #
+  #    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
 
   200:
     - activity_name: '.AlipayLogin'

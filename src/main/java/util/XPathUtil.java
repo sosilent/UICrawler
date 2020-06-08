@@ -975,7 +975,7 @@ public class XPathUtil {
         //xpath中排除以下属性, 仅限android  小写字母
         //final List<String> nodeNameExcludeList = new ArrayList<>(Arrays.asList("selected","instance","checked","naf","content-desc"));
         //xpath中排除以下属性, android和iOS  小写字母
-        //inal List<String> structureNodeNameExcludeList = new ArrayList<>(Arrays.asList("value","lable","name" ,"text"));
+        //final List<String> structureNodeNameExcludeList = new ArrayList<>(Arrays.asList("value","lable","name" ,"text"));
 
         String bounds = "[" + deviceWidth + ","  + deviceHeight + "]";
 

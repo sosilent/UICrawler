@@ -34,6 +34,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         private String class_name;
         private String text;
         private String content_desc;
+        private String bounds;
 
         public String getLayout_re() {
             return layout_re;
@@ -74,6 +75,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
         public void setContent_desc(String content_desc) {
             this.content_desc = content_desc;
         }
+
+        public String getBounds() {
+            return bounds;
+        }
+
+        public void setBounds(String bounds) {
+            this.bounds = bounds;
+        }
     }
 
     public static class ActionConfig {
@@ -81,6 +90,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         private String class_name;
         private String text;
         private String content_desc;
+        private String bounds;
         private String action;
         private String value;
 
@@ -114,6 +124,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         public void setContent_desc(String content_desc) {
             this.content_desc = content_desc;
+        }
+
+        public String getBounds() {
+            return bounds;
+        }
+
+        public void setBounds(String bounds) {
+            this.bounds = bounds;
         }
 
         public String getAction() {
@@ -252,6 +270,13 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         String currentActivity = Driver.getCurrentActivity();
         log.info("++++++++++++++++++ Activity Name : " + currentActivity + "+++++++++++++++++++++++");
+
+        try {
+            Thread.sleep(2000);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if (ConfigUtil.isAutoLoginEnabled()) {
             try {
@@ -401,6 +426,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
             String className = actionConfig.getClass_name();
             String text = actionConfig.getText();
             String content_desc = actionConfig.getContent_desc();
+            String bounds = actionConfig.getBounds();
+
 
             if (Strings.isNullOrEmpty(resId) && Strings.isNullOrEmpty(className)) {
                 log.error("ui path node is invalid for missing resource id or class name: res id, " + resId + "; class name, " + className);
@@ -422,13 +449,15 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
                 //即使resource id不为null，依然有可能找不到元素
                 // 例如：荣耀和p20设备的支付宝首页resource id不一样，p20的配置脚本在荣耀则找不到对应的控件元素
-                //换做class，text或content-desc寻找元素
+                //换做class，text或content-desc甚至bounds寻找元素
                 if (elem == null
                         && !Strings.isNullOrEmpty(className)) {
                     List<MobileElement> mobileElements = Driver.findElements(By.className(className));
                     for (MobileElement mobileElement : mobileElements) {
                         if ((text != null ? text.equalsIgnoreCase(mobileElement.getText()) : false)
-                                || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)) {
+                                || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)
+                                || (bounds != null ? bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")) : false)
+                        ) {
                             elem = mobileElement;
                             break;
                         }
@@ -449,6 +478,13 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
             if (null == elem) {
                 //元素未找到，重新遍历当前页面
+                try {
+                    Thread.sleep(2000);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 log.error("---------Node not found in current UI!!!!!!! Stop.-----------");
                 log.info("ui path node:\n"
                         + "res id, " + resId
@@ -476,6 +512,13 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
                         String newActivity = Driver.getCurrentActivity();
                         log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
+
+                        try {
+                            Thread.sleep(1000);
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
                         currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
                     } else {

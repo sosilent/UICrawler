@@ -768,6 +768,16 @@ public final class Driver {
             log.info("failed to find element by: class, " + className + "; content desc, " + str);
         }
 
+        try {
+            String xpath = "//*[@class=\"" + className + "\" and @bounds=\""+ str +"\"]";
+            MobileElement element = findElement(By.xpath(xpath));
+            return element;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            log.info("failed to find element by: class, " + className + "; bounds, " + str);
+        }
+
         return null;
     }
 
@@ -1374,6 +1384,7 @@ public final class Driver {
             ((AndroidDriver)driver).pressKey(new KeyEvent(code));
         }else{
             //((IOSDriver)driver)
+            log.info("(IOSDriver)driver");
         }
     }
 

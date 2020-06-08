@@ -530,8 +530,8 @@ UI_PATH:
 
   ### 108: 充值成功界面
 
-  ### 111 - 129 是开启领卡乘公交功能的步骤，有些只能操作一次，无法重复测试 #####
-  ##### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
+  ## 111 - 129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
+  #### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
 
   111: ### not necessary #未开启乘车码就会跳转112页面，开启后路径变化会跳转到二维码界面
     - activity_name: '.AlipayLogin'
@@ -565,14 +565,22 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          class: 'android.widget.Button'
-          text: "全部卡片"
+          class: 'android.widget.TextView'
+          text: "添加新卡"
           action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-  #  113: ### not necessary #未开启乘车码就是114，开启后此路经无法覆盖
+  #  113: ### not necessary #未开启乘车码的114页面，开启后此路经无法覆盖
   #    - activity_name: '.AlipayLogin'
   #      actions:
   #        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
@@ -609,9 +617,17 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          class: 'android.widget.Button'
-          text: "全部卡片"
+          class: 'android.widget.TextView'
+          text: "添加新卡"
           action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
@@ -638,9 +654,17 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          class: 'android.widget.Button'
-          text: "全部卡片"
+          class: 'android.widget.TextView'
+          text: "添加新卡"
           action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
@@ -666,9 +690,17 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          class: 'android.widget.Button'
-          text: "全部卡片"
+          class: 'android.widget.TextView'
+          text: "添加新卡"
           action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
@@ -685,10 +717,254 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
-    ### 我已阅读并同意按钮怎么抓取 ？？？
-    ### 118 授权界面
-    ### 120 领卡成功界面
-    ### 121月卡充值界面
+  ### 我已阅读并同意按钮
+  117: ### not necessary 118的前置界面
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州通公交月卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[93,1382][159,1448]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '立即领卡'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+      ###找不到温馨提示弹出层
+      ### 118，120，121 是领杭州公交卡过程，如果领取了卡，就无法再次达到此页面 ###
+  118:     ### 118 授权界面
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州通公交月卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[93,1382][159,1448]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '立即领卡'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '继续'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  ## 120 领卡成功界面
+  120:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州通公交月卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[93,1382][159,1448]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '立即领卡'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '继续'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '确认授权'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  ## 121月卡充值界面
+  121:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '杭州通公交月卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[93,1382][159,1448]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '立即领卡'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          text: '继续'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '确认授权'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '立即充值'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
   124: ###124是有乘车码tag但是没有开启乘车码的授权页面，开启之后无法覆盖
     - activity_name: '.AlipayLogin'
@@ -727,9 +1003,17 @@ UI_PATH:
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
         - resource_id: 'com.alipay.mobile.antui:id/item_name'
-          class: 'android.widget.Button'
-          text: "全部卡片"
+          class: 'android.widget.TextView'
+          text: "添加新卡"
           action: click
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
@@ -752,10 +1036,252 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
-      ### 我已阅读并同意按钮怎么抓取 ？？？
-      ### 127 确定领卡
-      ### 128 卡片支付方式
-      ### 129 卡片详情
+      ### 126，127，128，129 是领西安地铁卡过程，路径已找对，但是已经领取了卡，就无法再次达到此页面 ###
+  126: ### not necessary 127的前置界面
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安电子地铁卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[42,1056][354,1128]'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  127: ### 127 确定领卡
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安电子地铁卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[42,1056][354,1128]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '立即领卡 '
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  128:  ### 128 卡片支付方式###自动跳转过去，如何捕捉
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安电子地铁卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[42,1056][354,1128]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '立即领卡 '
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '同意并领卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+  129: ### 129 卡片详情
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+          text: "更多操作"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          text: "乘车码"
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          class: 'android.widget.RelativeLayout'
+          text: ""
+          content_desc: '更多'
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+          class: 'android.widget.TextView'
+          text: "添加新卡"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: '西安电子地铁卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.view.View'
+          bounds: '[42,1056][354,1128]'
+          action: click
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '立即领卡 '
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+      actions:
+        - class: 'android.widget.Button'
+          text: '同意并领卡'
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+
+      ### 126，127，128，129 是领西安地铁卡过程，路径已找对，但是已经领取了卡，就无法再次达到此页面 ###
 
   134:
     - activity_name: '.AlipayLogin'

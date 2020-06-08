@@ -22,6 +22,7 @@ public class UIPathConfigUtil {
     private static String TEXT = "text";
     private static String CLASS = "class";
     private static String CONTENT_DESC = "content_desc";
+    private static String BOUNDS = "bounds";
 
     //fullscreen ad popout
     private static String AD = "ad";
@@ -86,6 +87,7 @@ public class UIPathConfigUtil {
                             actionConfig.setClass_name(actionMap.get(CLASS));
                             actionConfig.setText(actionMap.get(TEXT));
                             actionConfig.setContent_desc(actionMap.get(CONTENT_DESC));
+                            actionConfig.setBounds(actionMap.get(BOUNDS));
                             actionConfig.setAction(actionMap.get(ACTION));
                             actionConfig.setValue(actionMap.get(VALUE));
 

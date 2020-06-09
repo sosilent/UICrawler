@@ -20,8 +20,73 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.scan.as.main.MainCaptureActivity'
 
+
   ### 3 和 5 和 212 和 218 需要付款给一个扫描出来的账户 需要一个收款方账户
-  ### 8 帮助页面 猜你想问 找不到？ 推测与我的客服合并？
+
+  #  6: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #
+  #  7: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "求助反馈"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.about.ui.FeedbackGuideActivity'
+
+  8:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+          text: "我的"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          text: ""
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+          text: "求助反馈"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.about.ui.FeedbackGuideActivity'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+          text: "咨询求助"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+
+
   ### 14 - 32 用 认识的人 进行 身份验证 以及支付时候的 刷脸认证
   ### 33 - 40 重置 支付密码
 
@@ -160,9 +225,11 @@ UI_PATH:
         - resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
           text: "付钱"
 
-    - activity_name: '.AlipayLogin'
-      ### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
-      ### current activity name: .AlipayLogin
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
+      ### 开启付款码前：### target activity name: .AlipayLogin;
+      ################## current activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity
+      ### 开启付款码后：### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
+      ################## current activity name: .AlipayLogin
 
   60:
     - activity_name: '.AlipayLogin'
@@ -185,7 +252,7 @@ UI_PATH:
         - resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
           text: "付钱"
 
-    - activity_name: '.AlipayLogin'
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
       ### 开启付款码前：### target activity name: .AlipayLogin;
       ################## current activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity
       ### 开启付款码后：### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
@@ -254,7 +321,7 @@ UI_PATH:
     - activity_name: 'com.alipay.mobile.transferapp.ui.TFToAccountConfirmMainActivity'
 
 
-  73: ### 90版本转账页面变动，为截取变动界面，打印前置页面截图
+  73: ### 90版本转账页面变动，为截取变动界面，打印前置页面截图 ###此路经为90版本新增
     - activity_name: '.AlipayLogin'
       actions:
         - resource_id: 'com.alipay.android.phone.openplatform:id/app_text'
@@ -530,8 +597,8 @@ UI_PATH:
 
   ### 108: 充值成功界面
 
-  ## 111 - 129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
-  #### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
+    ## 111 - 129 是开启领卡乘公交功能的步骤，只能操作一次，无法重复测试 #####
+    #### 领卡步骤只能操作一次，领卡之后无法重复领卡，但是领卡之后就不能覆盖这些开启界面了 ########
 
   111: ### not necessary #未开启乘车码就会跳转112页面，开启后路径变化会跳转到二维码界面
     - activity_name: '.AlipayLogin'
@@ -580,27 +647,27 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
-  #  113: ### not necessary #未开启乘车码的114页面，开启后此路经无法覆盖
-  #    - activity_name: '.AlipayLogin'
-  #      actions:
-  #        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
-  #          text: "更多操作"
-  #          action: click
-  #
-  #    - activity_name: '.AlipayLogin'
-  #      actions:
-  #        - resource_id: 'com.alipay.mobile.antui:id/item_name'
-  #          text: "乘车码"
-  #          action: click
-  #
-  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
-  #      actions:
-  #        - resource_id: ''
-  #          class: 'android.view.View'
-  #          text: '北京地铁乘车码'
-  #          action: click
-  #
-  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+    #  113: ### not necessary #未开启乘车码的114页面，开启后此路经无法覆盖
+    #    - activity_name: '.AlipayLogin'
+    #      actions:
+    #        - resource_id: 'com.alipay.mobile.base.commonbiz:id/launcher_title_search_item_button'
+    #          text: "更多操作"
+    #          action: click
+    #
+    #    - activity_name: '.AlipayLogin'
+    #      actions:
+    #        - resource_id: 'com.alipay.mobile.antui:id/item_name'
+    #          text: "乘车码"
+    #          action: click
+    #
+    #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+    #      actions:
+    #        - resource_id: ''
+    #          class: 'android.view.View'
+    #          text: '北京地铁乘车码'
+    #          action: click
+    #
+    #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
 
   114:
     - activity_name: '.AlipayLogin'
@@ -717,7 +784,7 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
-  ### 我已阅读并同意按钮
+    ### 我已阅读并同意按钮
   117: ### not necessary 118的前置界面
     - activity_name: '.AlipayLogin'
       actions:
@@ -830,7 +897,7 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
-  ## 120 领卡成功界面
+    ## 120 领卡成功界面
   120:
     - activity_name: '.AlipayLogin'
       actions:
@@ -895,7 +962,7 @@ UI_PATH:
 
     - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
 
-  ## 121月卡充值界面
+    ## 121月卡充值界面
   121:
     - activity_name: '.AlipayLogin'
       actions:
@@ -1034,7 +1101,9 @@ UI_PATH:
           text: '西安电子地铁卡'
           action: click
 
-    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      ### 已经领取了卡 target activity name: com.alipay.mobile.nebulacore.ui.H5Activity;
+      ### 已经领取了卡 current activity name: com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity
 
       ### 126，127，128，129 是领西安地铁卡过程，路径已找对，但是已经领取了卡，就无法再次达到此页面 ###
   126: ### not necessary 127的前置界面
@@ -1958,6 +2027,7 @@ UI_PATH:
           action: click
 
     - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
+      ### com.alipay.mobile.verifyidentity.module.password.pay.ui.PayPwdDialogActivity 测试次数过多会要求输入支付密码
       actions:
         - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
           class: 'android.widget.RelativeLayout'
@@ -1983,6 +2053,85 @@ UI_PATH:
       ### 手册上是com.alipay.mobile.nebulacore.ui.H5Activity'
 
   #  187: 人脸识别，不知道在哪触发
+  #  18701: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "生物识别"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #
+  #  18702: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "生物识别"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+  #      actions:
+  #        - class: 'android.view.View'
+  #          text: "刷脸设置"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.msp.ui.views.MspSettingsActivity'
+
+  187:
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+          text: "我的"
+          action: click
+
+    - activity_name: '.AlipayLogin'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+          text: ""
+          action: click
+
+    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+      actions:
+        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+          text: "生物识别"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: "刷脸设置"
+          action: click
+
+    - activity_name: 'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main'
+      actions:
+        - class: 'android.view.View'
+          text: "体验刷脸"
+
+    - activity_name: 'com.alipay.zoloz.toyger.workspace.ToygerActivity'
 
   188:
     - activity_name: '.AlipayLogin'

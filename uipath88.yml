@@ -22,41 +22,41 @@ UI_PATH:
 
   ### 3 和 5 和 212 和 218 需要付款给一个扫描出来的账户 需要一个收款方账户
 
-#  6: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#          action: click
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#          action: click
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#
-#  7: ### not necessary
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
-#          text: "我的"
-#          action: click
-#
-#    - activity_name: '.AlipayLogin'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
-#          text: ""
-#          action: click
-#
-#    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
-#      actions:
-#        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
-#          text: "求助反馈"
-#          action: click
-#
-#    - activity_name: 'com.alipay.mobile.about.ui.FeedbackGuideActivity'
+  #  6: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #
+  #  7: ### not necessary
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.android.phone.wealth.home:id/tab_description'
+  #          text: "我的"
+  #          action: click
+  #
+  #    - activity_name: '.AlipayLogin'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/right_container_2'
+  #          text: ""
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.android.phone.home.setting.MySettingActivity_'
+  #      actions:
+  #        - resource_id: 'com.alipay.mobile.antui:id/item_left_text'
+  #          text: "求助反馈"
+  #          action: click
+  #
+  #    - activity_name: 'com.alipay.mobile.about.ui.FeedbackGuideActivity'
 
   8:
     - activity_name: '.AlipayLogin'
@@ -224,9 +224,11 @@ UI_PATH:
         - resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
           text: "付钱"
 
-    - activity_name: '.AlipayLogin'
-      ### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
-      ### current activity name: .AlipayLogin
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
+      ### 开启付款码前：### target activity name: .AlipayLogin;
+      ################## current activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity
+      ### 开启付款码后：### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
+      ################## current activity name: .AlipayLogin
 
   60:
     - activity_name: '.AlipayLogin'
@@ -249,7 +251,7 @@ UI_PATH:
         - resource_id: 'com.alipay.android.phone.openplatform:id/saomafu_tv'
           text: "付钱"
 
-    - activity_name: '.AlipayLogin'
+    - activity_name: 'com.alipay.mobile.onsitepay9.payer.InputPasswordActivity'
       ### 开启付款码前：### target activity name: .AlipayLogin;
       ################## current activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity
       ### 开启付款码后：### target activity name: com.alipay.mobile.onsitepay9.payer.InputPasswordActivity;
@@ -1050,7 +1052,7 @@ UI_PATH:
           text: '西安电子地铁卡'
           action: click
 
-    - activity_name: 'com.alipay.mobile.nebulacore.ui.H5Activity'
+    - activity_name: 'com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity'
       ### 已经领取了卡 target activity name: com.alipay.mobile.nebulacore.ui.H5Activity;
       ### 已经领取了卡 current activity name: com.alipay.android.phone.wallet.buscode.v50.BusCodeQrActivity
 

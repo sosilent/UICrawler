@@ -24,8 +24,8 @@ public class ConfigUtil {
     private static boolean showDomXML = false;
     private static boolean dbLogEnabled = false;
     private static boolean perLogEnabled = false;
-    private static boolean generateVideo = true;
-    private static boolean videoVertical = true;
+    private static boolean generateVideo = false;
+    private static boolean videoVertical = false;
 
     //appium
     private static boolean skipServerIntallation = false;
@@ -158,7 +158,7 @@ public class ConfigUtil {
 
             //初始化的顺序很重要
             //1.先设通用的值 GENERAL  2.设默认值 DEFAULT_VALUE 3.根据serial值去覆盖默认的属性值 4.然后其它值
-            List<String> keyList = new ArrayList(Arrays.asList("GENERAL","WECHAT_CONFIG","DEFAULT_VALUE","MONKEY",
+            List<String> keyList = new ArrayList<>(Arrays.asList("GENERAL","WECHAT_CONFIG","DEFAULT_VALUE","MONKEY",
                     "LIST","CRITICAL_ELEMENT","LOGIN_ELEMENTS","MONKEY_LIST","LOG","INFLUXDB",udid));
             if(map.get(udid)!=null){
                 keyList.add(udid);
@@ -199,7 +199,7 @@ public class ConfigUtil {
                 rootDir = outputDir ;
             }
 
-            rootDir = rootDir + File.separator+ "crawler_output" + File.separator + getDeviceName().replace(":","_").replace(" ","_") + "-" + Util.getCurrentTimeFormat();;
+            rootDir = rootDir + File.separator+ "crawler_output" + File.separator + getDeviceName().replace(":","_").replace(" ","_") + "-" + Util.getCurrentTimeFormat();
 
             //Create Root dir
             Util.createDirs(rootDir);
@@ -378,7 +378,7 @@ public class ConfigUtil {
 
     @SuppressWarnings("unchecked")
     public static ArrayList<String> getListValue(String key) {
-        ArrayList<String> list =(ArrayList) configItems.get(key);
+        ArrayList<String> list =(ArrayList<String>) configItems.get(key);
         log.info("Config : " + key + " = " + list);
 
         return list == null? new ArrayList<>():list;

@@ -74,7 +74,6 @@ public class UIPathConfigUtil {
                             adPopoutConfig.setText(widgetMap.get(TEXT));
                             adPopoutConfig.setClass_name(widgetMap.get(CLASS));
                         }
-
                         node.setAdPopoutConfig(adPopoutConfig);
                     }
 
@@ -95,19 +94,15 @@ public class UIPathConfigUtil {
                         }
                         node.setActionConfigList(actionConfigList);
                     }
-
                     nodes.add(node);
                 }
                 uiPath.put(indexNo, nodes);
             }
-
             return configUtil;
-
         }catch (Exception e){
             log.error("!!!!!!Fail to read config file");
             e.printStackTrace();
         }
-
         return null;
     }
 

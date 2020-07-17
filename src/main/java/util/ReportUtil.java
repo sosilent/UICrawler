@@ -58,7 +58,7 @@ public class ReportUtil {
         }
 
         builder.append("</body>\n" + "</html>\n");
-        System.out.println(builder.toString());
+        //System.out.println(builder.toString());
         Util.writeFile(file, builder.toString());
     }
 

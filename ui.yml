@@ -6,6 +6,59 @@ UI_PATH:
         - resource_id: ''
           class: 'android.widget.TextView'
           text: '天猫超市'
-          #content_desc: '天猫超市'
+          action: click
+    - activity_name: ''
+
+  2:
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '我'
+          action: click
+    - activity_name: ''
+
+  21:
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '我'
+          action: click
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '收藏夹'
+          action: click
+    - activity_name: ''
+
+  22:
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '我'
+          action: click
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '足迹'
+          action: click
+    - activity_name: ''
+
+  26:
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '我'
+          action: click
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '待付款'
           action: click
     - activity_name: ''

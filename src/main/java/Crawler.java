@@ -4,10 +4,15 @@ import org.apache.commons.collections.map.ListOrderedMap;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import util.*;
+import util.uipath.MetadataUtil;
 import util.uipath.SpecifiedXpathUtil;
 import util.uipath.UIPathConfigUtil;
 
+import javax.xml.xpath.XPathConstants;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -617,9 +622,18 @@ public class Crawler {
                             log.info("\n\n-----------------start screenshot " + index + " --------------------");
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
 
+                            String timeStr = index++ + "." + Util.getDatetime();
+                            Driver.snapshotScreen(Integer.toString(index), timeStr);
+                            Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
+
                             Driver.appRelaunch();
+
+                            String timeStr1 = index++ + "." + Util.getDatetime();
+                            Driver.snapshotScreen(Integer.toString(index), timeStr1);
+                            Driver.snapshotPageSource(Integer.toString(index), timeStr1, Driver.getPageSource());
+
                             SpecifiedXpathUtil.reset();
-                            pageSource = Driver.getPageSource();
+                            //pageSource = Driver.getPageSource();
 
                             long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                             if (nodeList.size() == depthWhenCompleting) {

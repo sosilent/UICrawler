@@ -325,7 +325,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth - 1));
-
+//        currentDepth++;
         // 2.如果是最后深度，截屏+保存page source
         if (currentDepth == uiPathNodeList.size()) {
             log.info("enter the target ui: depth, " + currentDepth);

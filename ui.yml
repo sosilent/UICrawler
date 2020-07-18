@@ -1,4 +1,11 @@
 UI_PATH:
 
   1:
-    - activity_name: 'com.taobao.fleamarket.home.activity.MainActivity'
+    - activity_name: '.maintab.module.TMMainTabActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '天猫超市'
+          #content_desc: '天猫超市'
+          action: click
+    - activity_name: ''

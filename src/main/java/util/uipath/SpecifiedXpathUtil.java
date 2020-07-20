@@ -350,7 +350,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     String className = uiPathNode.getAdPopoutConfig().getClass_name();
                     String text = uiPathNode.getAdPopoutConfig().getText();
 
-                    MobileElement elem = null;
+                    MobileElement elem;
                     if (resId != null)
                         elem = Driver.findElemByIdWithoutException(resId);
                     else
@@ -438,8 +438,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         elem = mobileElements.get(0);
                     else {
                         for (MobileElement mobileElement : mobileElements) {
-                            if ((text != null ? text.equalsIgnoreCase(mobileElement.getText()) : false)
-                                    || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)) {
+                            if ((text != null && text.equalsIgnoreCase(mobileElement.getText()))
+                                    || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))) {
                                 elem = mobileElement;
                                 break;
                             }
@@ -454,9 +454,9 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         && !Strings.isNullOrEmpty(className)) {
                     List<MobileElement> mobileElements = Driver.findElements(By.className(className));
                     for (MobileElement mobileElement : mobileElements) {
-                        if ((text != null ? text.equalsIgnoreCase(mobileElement.getText()) : false)
-                                || (content_desc != null ? content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")) : false)
-                                || (bounds != null ? bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")) : false)
+                        if ((text != null && text.equalsIgnoreCase(mobileElement.getText()))
+                                || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))
+                                || (bounds != null && bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")))
                         ) {
                             elem = mobileElement;
                             break;
@@ -529,7 +529,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             }
         }
 
-        log.info("\n\n-----------------------\ntarget depth: " + uiPathNodeList.size() + ", leaving depth, " + currentDepth);
+        log.info("-----------------------target depth: " + uiPathNodeList.size() + ", leaving depth, " + currentDepth);
         return currentDepth;
     }
 }

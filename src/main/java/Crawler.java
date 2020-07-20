@@ -59,9 +59,9 @@ public class Crawler {
     private static void executeTask() {
         generateReport();
 
-        if (ConfigUtil.isGenerateVideo()) {
-            generateVideo();
-        }
+//        if (ConfigUtil.isGenerateVideo()) {
+//            generateVideo();
+//        }
         isReported = true;
     }
 
@@ -109,7 +109,9 @@ public class Crawler {
         //Generate full video
         try {
             log.info("Generating full video file, please wait...");
-            PictureUtil.picToVideo(ConfigUtil.getScreenShotDir() + File.separator + "testing_steps.mp4", fullList);
+            if (fullList != null) {
+                PictureUtil.picToVideo(ConfigUtil.getScreenShotDir() + File.separator + "testing_steps.mp4", fullList);
+            }
 
             FileUtils.deleteDirectory(clickScreenShotDirFile);
         } catch (Exception e) {
@@ -126,16 +128,24 @@ public class Crawler {
                 log.info("Generating crash video file, please wait...");
                 int beginIndex = 0;
 
-                int size = fullListWithoutPath.size();
+                int size = 0;
+                if (fullListWithoutPath != null) {
+                    size = fullListWithoutPath.size();
+                }
                 for (String crashStep : crashFileList) {
-                    int endIndex = fullListWithoutPath.indexOf(crashStep);
+                    int endIndex = 0;
+                    if (fullListWithoutPath != null) {
+                        endIndex = fullListWithoutPath.indexOf(crashStep);
+                    }
                     //显示一张crash后的照片
                     if (-1 != endIndex && endIndex <= size) {
                         if (endIndex + 1 < size) {
                             endIndex++;
                         }
                         String fileName = ConfigUtil.getRootDir() + File.separator + "crash" + File.separator + fullListWithoutPath.get(endIndex - 1).replace(".png", ".mp4");
-                        PictureUtil.picToVideo(fileName, fullList.subList(beginIndex, endIndex + 1));
+                        if (fullList != null) {
+                            PictureUtil.picToVideo(fileName, fullList.subList(beginIndex, endIndex + 1));
+                        }
                         beginIndex = endIndex + 1;
                     }
                 }
@@ -216,7 +226,7 @@ public class Crawler {
         for (String item : crashFileList) {
             ArrayList<String> row = new ArrayList<>();
             index++;
-            row.add("<img width=\"100px\">" + String.valueOf(index) + "</img>");
+            row.add("<img width=\"100px\">" + index + "</img>");
             List<String> crashStepList = getCrashSteps(item);
 
             for (String step : crashStepList) {
@@ -319,7 +329,10 @@ public class Crawler {
 
         int picCount = (int) ConfigUtil.getLongValue(ConfigUtil.CRASH_PIC_COUNT);
         List<String> screenshotList = Util.getFileList(ConfigUtil.getScreenShotDir(), ".png", false);
-        int index = screenshotList.indexOf(crashName);
+        int index = 0;
+        if (screenshotList != null) {
+            index = screenshotList.indexOf(crashName);
+        }
 
         if (-1 == index) {
             log.error("Fail to find crash file " + crashName + " in screenshot folder");
@@ -609,43 +622,30 @@ public class Crawler {
                         log.info("\n\n-----------------ui crawler count: " + uiPathMap.size() + " --------------------");
 
                         List<Integer> ids = new ArrayList<>(uiPathMap.keySet());
-                        ids.sort((left, right) -> {
-                            if (left < right)
-                                return -1;
-                            else
-                                return 1;
-                        });
+                        ids.sort(Comparator.naturalOrder());
 
                         for (int index : ids) {
+                            Driver.appRelaunch();
+                            SpecifiedXpathUtil.reset();
+                            //pageSource = Driver.getPageSource();
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
 
                             log.info("\n\n-----------------start screenshot " + index + " --------------------");
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
-
-                            String timeStr = index++ + "." + Util.getDatetime();
-                            Driver.snapshotScreen(Integer.toString(index), timeStr);
-                            Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
-
-                            Driver.appRelaunch();
+                            long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
 
                             String timeStr1 = index++ + "." + Util.getDatetime();
                             Driver.snapshotScreen(Integer.toString(index), timeStr1);
                             Driver.snapshotPageSource(Integer.toString(index), timeStr1, Driver.getPageSource());
 
-                            SpecifiedXpathUtil.reset();
-                            //pageSource = Driver.getPageSource();
-
-                            long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
                             if (nodeList.size() == depthWhenCompleting) {
                                 specifiedUiPathTestSuccessCount++;
                                 specifiedUiPathTestSuccess.add(index);
                             } else {
                                 specifiedUiPathTestFailed.add(index);
                             }
-
                         }
                     }
-
                     //Driver.getPageSource();
                     //String xpath = "//android.widget.Button[@text=\"允许\" and @scrollable=\"false\" and @resource-id=\"android:id/button1\" and @password=\"false\" and @package=\"com.lbe.security.miui\" and @long-clickable=\"false\" and @index=\"1\" and @focused=\"false\" and @focusable=\"true\" and @enabled=\"true\" and @clickable=\"true\" and @class=\"android.widget.Button\" and @checkable=\"false\"]";
                     //Driver.findElement(By.xpath(xpath));

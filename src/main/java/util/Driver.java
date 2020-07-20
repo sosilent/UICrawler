@@ -125,8 +125,7 @@ public final class Driver {
     }
 
     protected static String getScreenShortName(){
-        String screenshotName = ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT + File.separator + Util.getDatetime() + ".png" ;
-        return  screenshotName;
+        return ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT + File.separator + Util.getDatetime() + ".png";
     }
 
     public static String takeScreenShot(){
@@ -135,16 +134,14 @@ public final class Driver {
 
     public static String snapshotScreen(String dir, String timeStr){
         String screenshotName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator +
-                dir + File.separator + timeStr + ".screenshot" + ".png" ;
+                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + timeStr + ".screenshot" + ".png" ;
 
         return takeScreenShot(screenshotName);
     }
 
     public static void snapshotPageSource(String dir, String timeStr, String pageSource) {
         String fileName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator +
-                dir + File.separator + timeStr + ".pagesource" + ".xml" ;
+                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + timeStr + ".pagesource" + ".xml" ;
 
         File file = new File(fileName);
         try {
@@ -156,8 +153,7 @@ public final class Driver {
 
     public static void snapshotCurStatus(String dir, String metadata) {
         String fileName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator +
-                dir + File.separator + "metadata.yml" ;
+                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + "metadata.yml" ;
 
         File file = new File(fileName);
         try {
@@ -171,7 +167,7 @@ public final class Driver {
         //等待1秒再截图，不然界面还在变化，载图不是完整初始化后的页面
         sleep(1);
 
-        File screenShot = null;
+        File screenShot;
 
         try {
 
@@ -448,7 +444,9 @@ public final class Driver {
             WebElement elem = null;
 
             try{
-                elem =  var1.findElement(by);
+                if (var1 != null) {
+                    elem =  var1.findElement(by);
+                }
             }catch (Exception e){
                 log.error("!!!!!!!!!!!!!!!!!!!!!!Element : " + by.toString() + " is not founded! Polling again...");
             }
@@ -486,7 +484,9 @@ public final class Driver {
             List<MobileElement> list = new ArrayList<>();
 
             try{
-                list = var1.findElements(by);
+                if (var1 != null) {
+                    list = var1.findElements(by);
+                }
 
                 //TODO: fix this for ios
 //                if(util.Util.isAndroid()) {
@@ -517,9 +517,7 @@ public final class Driver {
             return list;
         };
 
-        List<MobileElement> elemList = wait.until(waitFunction);
-
-        return elemList;
+        return wait.until(waitFunction);
     }
 
 //    public static List<MobileElement> findElementsById(String str){
@@ -750,8 +748,7 @@ public final class Driver {
     public static MobileElement findElementByClassAndTextWithoutException(String className, String str){
         try {
             String xpath = "//*[@class=\"" + className + "\" and @text=\"" + str + "\"]";
-            MobileElement element = findElement(By.xpath(xpath));
-            return element;
+            return findElement(By.xpath(xpath));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -760,8 +757,7 @@ public final class Driver {
 
         try {
             String xpath = "//*[@class=\"" + className + "\" and @content-desc=\""+ str +"\"]";
-            MobileElement element = findElement(By.xpath(xpath));
-            return element;
+            return findElement(By.xpath(xpath));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -770,8 +766,7 @@ public final class Driver {
 
         try {
             String xpath = "//*[@class=\"" + className + "\" and @bounds=\""+ str +"\"]";
-            MobileElement element = findElement(By.xpath(xpath));
-            return element;
+            return findElement(By.xpath(xpath));
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -1363,7 +1358,6 @@ public final class Driver {
             //注意！！！！iOS时 第二个point的X,Y 会加上第一个Point的X,Y的值 也就是说第二个Point的X,Y是第一个Point的要加的减值
             //iOS, X,Y的值  乘以一个系数才是屏幕上的坐标值
             if(leftToRight){
-                startX = 0;
                 endX = 750;//iphone 4-5的屏宽是640  iphone6 750
 
             } else{

@@ -1,46 +1,46 @@
 UI_PATH:
-
-  2:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '盒马小镇'
-          action: click
-    - activity_name: ''
-
-  3:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '盒区生活'
-          action: click
-    - activity_name: ''
-
-  30:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '盒区生活'
-          action: click
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '早安盒马'
-          action: click
-    - activity_name: ''
-
-  4:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '购物车'
-          action: click
-    - activity_name: ''
+#
+#  2:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '盒马小镇'
+#          action: click
+#    - activity_name: ''
+#
+#  3:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '盒区生活'
+#          action: click
+#    - activity_name: ''
+#
+#  30:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '盒区生活'
+#          action: click
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '早安盒马'
+#          action: click
+#    - activity_name: ''
+#
+#  4:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '购物车'
+#          action: click
+#    - activity_name: ''
 
   41:
     - activity_name: '.launcher.splash.SplashActivity'
@@ -49,22 +49,22 @@ UI_PATH:
           class: 'android.widget.FrameLayout'
           content_desc: '购物车'
           action: click
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.cart.container.CartMainActivity'
       actions:
         - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '去逛逛'
+          class: 'android.widget.TextView'
+          text: '去逛逛'
           action: click
     - activity_name: ''
-
-  5:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '我的'
-          action: click
-    - activity_name: ''
+#
+#  5:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '我的'
+#          action: click
+#    - activity_name: ''
 
   #  51:
   #    - activity_name: '.launcher.splash.SplashActivity'
@@ -81,20 +81,20 @@ UI_PATH:
   #          action: click
   #    - activity_name: ''
 
-  #  52:
-  #    - activity_name: '.launcher.splash.SplashActivity'
-  #      actions:
-  #        - resource_id: ''
-  #          class: 'android.widget.FrameLayout'
-  #          content_desc: '我'
-  #          action: click
-  #    - activity_name: '.launcher.splash.SplashActivity'
-  #      actions:
-  #        - resource_id: ''
-  #          class: 'android.widget.FrameLayout'
-  #          content_desc: '足迹'
-  #          action: click
-  #    - activity_name: ''
+  52:
+    - activity_name: '.launcher.splash.SplashActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.FrameLayout'
+          content_desc: '我的'
+          action: click
+    - activity_name: '.mine.MinePageActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.TextView'
+          text: '足迹'
+          action: click
+    - activity_name: ''
 
   56:
     - activity_name: '.launcher.splash.SplashActivity'
@@ -103,11 +103,11 @@ UI_PATH:
           class: 'android.widget.FrameLayout'
           content_desc: '我的'
           action: click
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.mine.MinePageActivity'
       actions:
         - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '待付款'
+          class: 'android.widget.TextView'
+          text: '待付款'
           action: click
     - activity_name: ''
 
@@ -118,10 +118,10 @@ UI_PATH:
           class: 'android.widget.FrameLayout'
           content_desc: '我的'
           action: click
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.mine.MinePageActivity'
       actions:
         - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '客服小蜜'
+          class: 'android.widget.TextView'
+          text: '客服小蜜'
           action: click
     - activity_name: ''

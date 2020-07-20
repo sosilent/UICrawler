@@ -79,7 +79,7 @@ public class Crawler {
         String clickScreenShotDir = ConfigUtil.getScreenShotDir() + File.separator + "click-screenshot";
         File clickScreenShotDirFile = new File(clickScreenShotDir);
 
-        for (File file : screenShotDir.listFiles()) {
+        for (File file : Objects.requireNonNull(screenShotDir.listFiles())) {
             if (file.isFile() && file.getName().toLowerCase().endsWith(PNG_SUFFIX)) {
                 try {
                     FileUtils.moveFileToDirectory(file, clickScreenShotDirFile, true);
@@ -87,7 +87,7 @@ public class Crawler {
                     e.printStackTrace();
                 }
             } else {
-                for (File subFile : file.listFiles()) {
+                for (File subFile : Objects.requireNonNull(file.listFiles())) {
                     if (subFile.getName().toLowerCase().endsWith(".png")) {
                         try {
                             String fileName = subFile.getName();
@@ -142,7 +142,10 @@ public class Crawler {
                         if (endIndex + 1 < size) {
                             endIndex++;
                         }
-                        String fileName = ConfigUtil.getRootDir() + File.separator + "crash" + File.separator + fullListWithoutPath.get(endIndex - 1).replace(".png", ".mp4");
+                        String fileName = null;
+                        if (fullListWithoutPath != null) {
+                            fileName = ConfigUtil.getRootDir() + File.separator + "crash" + File.separator + fullListWithoutPath.get(endIndex - 1).replace(".png", ".mp4");
+                        }
                         if (fullList != null) {
                             PictureUtil.picToVideo(fileName, fullList.subList(beginIndex, endIndex + 1));
                         }
@@ -339,7 +342,10 @@ public class Crawler {
             return stepList;
         }
 
-        int length = screenshotList.size();
+        int length = 0;
+        if (screenshotList != null) {
+            length = screenshotList.size();
+        }
 
         int startIndex = index - picCount + 2;
         int endIndex = index + 2;
@@ -637,6 +643,7 @@ public class Crawler {
                             String timeStr1 = index++ + "." + Util.getDatetime();
                             Driver.snapshotScreen(Integer.toString(index), timeStr1);
                             Driver.snapshotPageSource(Integer.toString(index), timeStr1, Driver.getPageSource());
+                            log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
 
                             if (nodeList.size() == depthWhenCompleting) {
                                 specifiedUiPathTestSuccessCount++;

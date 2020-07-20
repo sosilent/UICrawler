@@ -407,7 +407,7 @@ public class XPathUtil {
             int x = elem.getCenter().getX();
             int y = elem.getCenter().getY();
 
-            pic = PictureUtil.takeAndModifyScreenShot(x*scale,y*scale);
+//            pic = PictureUtil.takeAndModifyScreenShot(x*scale,y*scale);
 
             //String appName;
             clickCount++;
@@ -540,7 +540,7 @@ public class XPathUtil {
         Document document = builder.parse(new ByteArrayInputStream(xml.getBytes()));
         NodeList nodes = (NodeList) xpath.evaluate(clickXpath, document, XPathConstants.NODESET);
 
-        log.info(String.valueOf("UI nodes length : " + nodes.getLength()));
+        log.info("UI nodes length : " + nodes.getLength());
 
         int length = nodes.getLength();
 
@@ -1047,7 +1047,7 @@ public class XPathUtil {
                 //TODO:do it for ios, 太小的元素 或webview中 屏幕没有显示出来的元素排队在外
                 int tolerance = 5;
                 if(Math.abs(endX - startX) < tolerance || Math.abs(endY - startY) < tolerance){
-                    log.info("Removed due to exceed tolerance : " + tolerance + " StartX: " + String.valueOf(startX) + " StartY: "  + String.valueOf(startY) + " EndX: " + String.valueOf(endX) + "EndY: " + String.valueOf(endY));
+                    log.info("Removed due to exceed tolerance : " + tolerance + " StartX: " + startX + " StartY: "  + startY + " EndX: " + endX + "EndY: " + endY);
                     return null;
                 }
             }
@@ -1100,7 +1100,7 @@ public class XPathUtil {
         Document document = builder.parse(new ByteArrayInputStream(xml.getBytes()));
         NodeList nodes = (NodeList) xpath.evaluate(expression, document, XPathConstants.NODESET);
 
-        log.info(String.valueOf("TabBar nodes length : " + nodes.getLength()));
+        log.info("TabBar nodes length : " + nodes.getLength());
 
         int length = nodes.getLength();
 
@@ -1131,7 +1131,7 @@ public class XPathUtil {
                 newXml = clickElement(elem,xml);
 
                 //TODO: Remove this
-                PictureUtil.takeAndModifyScreenShot(400,400,600,"click-tabbar");
+//                PictureUtil.takeAndModifyScreenShot(400,400,600,"click-tabbar");
                 break;
             }
         }
@@ -1157,7 +1157,7 @@ public class XPathUtil {
         Document document = builder.parse(new ByteArrayInputStream(xml.getBytes()));
         NodeList nodes = (NodeList) xpath.evaluate(expression, document, XPathConstants.NODESET);
 
-        log.info(String.valueOf("tab bar nodes length : " + nodes.getLength()));
+        log.info("tab bar nodes length : " + nodes.getLength());
 
         int length = nodes.getLength();
 
@@ -1451,8 +1451,7 @@ public class XPathUtil {
 
         int length = nodes.getLength();
 
-        log.info(String.valueOf("UI nodes length : " + length));
-        String temp = oldNodePath;
+        log.info("UI nodes length : " + length);
 
         while(--length >=0){
             Node node = nodes.item(length);
@@ -1462,8 +1461,8 @@ public class XPathUtil {
             }
         }
 
-        log.info("!!!!! " + temp);
-        return temp;
+        log.info("!!!!! " + oldNodePath);
+        return oldNodePath;
     }
 }
 

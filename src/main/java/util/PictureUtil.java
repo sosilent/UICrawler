@@ -35,11 +35,11 @@ class PictureRunnable implements Runnable{
     }
 
     public void run(){
-        if(list !=null){
-            PictureUtil.takeAndModifyScreenShot(list,gesture);
-        }else{
-            PictureUtil.takeAndModifyScreenShot(mX,mY);
-        }
+//        if(list !=null){
+//            PictureUtil.takeAndModifyScreenShot(list,gesture);
+//        }else{
+//            PictureUtil.takeAndModifyScreenShot(mX,mY);
+//        }
     }
 }
 
@@ -64,41 +64,41 @@ public class PictureUtil {
         new Thread(new PictureRunnable(list,ext)).start();
     }
 
-    static String takeAndModifyScreenShot(List<Point> list,String ext){
-        return takeAndModifyScreenShot(list,100,ext);
-    }
+//    static String takeAndModifyScreenShot(List<Point> list,String ext){
+//        return takeAndModifyScreenShot(list,100,ext);
+//    }
+//
+//    static String takeAndModifyScreenShot(int x, int y){
+//        return takeAndModifyScreenShot(x,y,10);
+//    }
 
-    static String takeAndModifyScreenShot(int x, int y){
-        return takeAndModifyScreenShot(x,y,10);
-    }
+//    static String takeAndModifyScreenShot(int x, int y,int radius){
+//
+//        return takeAndModifyScreenShot(x,y,radius,"click");
+//    }
 
-    static String takeAndModifyScreenShot(int x, int y,int radius){
+//    static String takeAndModifyScreenShot(int x, int y,int radius,String ext){
+//        List<Point> list = new ArrayList<>();
+//        list.add(new Point(x,y));
+//        return takeAndModifyScreenShot(list,radius,ext);
+//    }
 
-        return takeAndModifyScreenShot(x,y,radius,"click");
-    }
-
-    static String takeAndModifyScreenShot(int x, int y,int radius,String ext){
-        List<Point> list = new ArrayList<>();
-        list.add(new Point(x,y));
-        return takeAndModifyScreenShot(list,radius,ext);
-    }
-
-    static String takeAndModifyScreenShot(List<Point> pointList,int radius,String ext){
-
-        String img = Driver.takeScreenShot();
-        drawPoint(img,pointList,radius,radius,Color.RED);
-        File file = new File(img);
-        if(pointList.size() > 1) {
-            img = img.replace(".png", "_" + ext + ".png");
-        }else{
-            Point point = pointList.get(0);
-            img = img.replace(".png", "_X-" + point.x + "-Y-" + point.y + "-" + ext + ".png");
-        }
-        File newFile = new File(img);
-        file.renameTo(newFile);
-        log.info("Screen shot is renamed to: " + newFile.getAbsolutePath());
-        return img;
-    }
+//    static String takeAndModifyScreenShot(List<Point> pointList,int radius,String ext){
+//
+//        String img = Driver.takeScreenShot();
+//        drawPoint(img,pointList,radius,radius,Color.RED);
+//        File file = new File(img);
+//        if(pointList.size() > 1) {
+//            img = img.replace(".png", "_" + ext + ".png");
+//        }else{
+//            Point point = pointList.get(0);
+//            img = img.replace(".png", "_X-" + point.x + "-Y-" + point.y + "-" + ext + ".png");
+//        }
+//        File newFile = new File(img);
+//        file.renameTo(newFile);
+//        log.info("Screen shot is renamed to: " + newFile.getAbsolutePath());
+//        return img;
+//    }
 
     private static void drawPoint(String srcImagePath,List<Point> pointList,int width,int height,Color color){
         FileOutputStream fos = null;
@@ -187,7 +187,7 @@ public class PictureUtil {
      * 修改图片,返回修改后的图片缓冲区（只输出一行文本）
      */
     private BufferedImage modifyImage(BufferedImage img, String content) {
-        Graphics2D g = null;
+        Graphics2D g;
 
         try {
             int w = img.getWidth();
@@ -266,7 +266,9 @@ public class PictureUtil {
             e.printStackTrace();
         } finally {
             try {
-                encoder.finish();
+                if (encoder != null) {
+                    encoder.finish();
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -324,12 +326,12 @@ public class PictureUtil {
     }
 
 
-    public static synchronized void jpgToGif(String pic[], String newPic, int delay) {
+    public static synchronized void jpgToGif(String[] pic, String newPic, int delay) {
         try {
             AnimatedGifEncoder e = new AnimatedGifEncoder();
             e.setRepeat(0);
             e.start(newPic);
-            BufferedImage src[] = new BufferedImage[pic.length];
+            BufferedImage[] src = new BufferedImage[pic.length];
             for (int i = 0; i < src.length; i++) {
                 e.setDelay(delay); //设置播放的延迟时间
                 src[i] = ImageIO.read(new File(pic[i])); // 读入需要播放的jpg文件

@@ -363,7 +363,9 @@ public class Crawler {
         }
 
         log.info("StartIndex " + startIndex + " EndIndex " + endIndex);
-        stepList = screenshotList.subList(startIndex, endIndex);
+        if (screenshotList != null) {
+            stepList = screenshotList.subList(startIndex, endIndex);
+        }
 
         log.info(stepList.toString());
 
@@ -630,20 +632,21 @@ public class Crawler {
                         List<Integer> ids = new ArrayList<>(uiPathMap.keySet());
                         ids.sort(Comparator.naturalOrder());
 
+                        int j = 0;
                         for (int index : ids) {
                             Driver.appRelaunch();
                             SpecifiedXpathUtil.reset();
-                            //pageSource = Driver.getPageSource();
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
-
-                            log.info("\n\n-----------------start screenshot " + index + " --------------------");
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
+
+                            j++;
+                            log.info("\n\n-----------------start screenshot " + index + " (" + j + "/" + uiPathMap.size() + ") --------------------");
                             long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
 
-                            String timeStr1 = index++ + "." + Util.getDatetime();
-                            Driver.snapshotScreen(Integer.toString(index), timeStr1);
-                            Driver.snapshotPageSource(Integer.toString(index), timeStr1, Driver.getPageSource());
-                            log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
+                            String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
+                            Driver.snapshotScreen(Integer.toString(index), timeStr);
+                            Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
+                            //log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
 
                             if (nodeList.size() == depthWhenCompleting) {
                                 specifiedUiPathTestSuccessCount++;

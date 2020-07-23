@@ -273,8 +273,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         try {
             Thread.sleep(2000);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -325,13 +324,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth - 1));
-//        currentDepth++;
+        //currentDepth++;
         // 2.如果是最后深度，截屏+保存page source
+        //logis error
         if (currentDepth == uiPathNodeList.size()) {
             log.info("enter the target ui: depth, " + currentDepth);
             log.debug("----page source-----\n" + currentXML);
 
-            int index = 1;
+            //int index = 1;
 
             if (!uiPathNode.getActivityName().equalsIgnoreCase(currentActivity)) {
                 log.info("======================================== Wrong Activity Name =========================================");
@@ -375,15 +375,15 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
             Driver.snapshotCurStatus(Integer.toString(pathNodeIndex), MetadataUtil.genMetadata(currentActivity));
 
-            String timeStr = index++ + "." + Util.getDatetime();
+            String timeStr = Driver.getCurrentActivity() + "_" + Util.getDatetime();
             Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
             Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
 
             Document document = builder.parse(new ByteArrayInputStream(currentXML.getBytes()));
             NodeList nodes = (NodeList) xpath.evaluate(clickXpath, document, XPathConstants.NODESET);
 
-            //screenshot 5 screens at most
-            for (int i = 0; i < 5; i++) {
+            //screenshot 3 screens at most
+            for (int i = 0; i < 3; i++) {
                 Driver.swipeVertical(false);
 
                 String pageSource = Driver.getPageSource();
@@ -401,7 +401,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 nodes = newNodes;
                 currentXML = pageSource;
 
-                timeStr = index++ + "." + Util.getDatetime();
+                timeStr = Driver.getCurrentActivity() + "." + Util.getDatetime();
                 Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
                 Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
             }
@@ -480,8 +480,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 //元素未找到，重新遍历当前页面
                 try {
                     Thread.sleep(2000);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -507,7 +506,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     String afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
 
                     //点击后进入到了新的页面
-                    if (!isSamePage(previousPageStructure, afterPageStructure)) {
+                    if (!xml.equals(currentXML)) {
                         log.info("========================================New Child UI================================");
 
                         String newActivity = Driver.getCurrentActivity();
@@ -515,12 +514,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
                         try {
                             Thread.sleep(1000);
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
                         currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
+                        //currentDepth = Long.parseLong(getNodesFromFile(currentXML, currentDepth));
                     } else {
                         log.info("========================================Same UI");
                     }

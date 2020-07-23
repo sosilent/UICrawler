@@ -1,67 +1,97 @@
 UI_PATH:
 
+  0:
+    - activity_name: '.host.activity.MainActivity'
+
   2:
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.host.activity.MainActivity'
       actions:
         - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '盒马小镇'
+          class: 'android.widget.TextView'
+          text: '儿童'
           action: click
     - activity_name: ''
 
   3:
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.host.activity.MainActivity'
       actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '盒区生活'
+        - resource_id: 'com.ximalaya.ting.android:id/main_lottie_view_edit_tab'
+          class: 'android.widget.ImageView'
+          content_desc: '所有分类'
           action: click
     - activity_name: ''
 
   4:
-    - activity_name: '.launcher.splash.SplashActivity'
+    - activity_name: '.host.activity.MainActivity'
       actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '购物车'
+        - resource_id: 'com.ximalaya.ting.android:id/main_item_finding_title'
+          class: 'android.widget.TextView'
+          text: '助眠解压'
           action: click
     - activity_name: ''
-#
-#  5:
-#    - activity_name: '.launcher.splash.SplashActivity'
+
+  5:
+    - activity_name: '.host.activity.MainActivity'
+      actions:
+        - resource_id: 'com.ximalaya.ting.android:id/main_item_finding_title'
+          class: 'android.widget.TextView'
+          text: '英语学习'
+          action: click
+    - activity_name: ''
+
+  11:
+    - activity_name: '.host.activity.MainActivity'
+      actions:
+        - resource_id: 'com.ximalaya.ting.android:id/tab_listen'
+          class: 'android.widget.RadioButton'
+          content_desc: '我听'
+          action: click
+    - activity_name: ''
+
+  13:
+    - activity_name: '.host.activity.MainActivity'
+      actions:
+        - resource_id: 'com.ximalaya.ting.android:id/tab_finding'
+          class: 'android.widget.RadioButton'
+          content_desc: '发现'
+          action: click
+    - activity_name: ''
+
+  20:
+    - activity_name: '.host.activity.MainActivity'
+      actions:
+        - resource_id: 'com.ximalaya.ting.android:id/tab_myspace'
+          class: 'android.widget.RadioButton'
+          content_desc: '未登录'
+          action: click
+    - activity_name: ''
+
+#  56:
+#    - activity_name: '.host.activity.MainActivity'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'
-#          content_desc: '我的'
+#          content_desc: '我的淘宝'
+#          action: click
+#    - activity_name: '.mine.MinePageActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.TextView'
+#          text: '待付款'
 #          action: click
 #    - activity_name: ''
-
-  56:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '我的'
-          action: click
-    - activity_name: '.mine.MinePageActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.TextView'
-          text: '待付款'
-          action: click
-    - activity_name: ''
-
-  59:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '我的'
-          action: click
-    - activity_name: '.mine.MinePageActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.TextView'
-          text: '客服小蜜'
-          action: click
-    - activity_name: ''
+#
+#  59:
+#    - activity_name: '.host.activity.MainActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '我的淘宝'
+#          action: click
+#    - activity_name: '.mine.MinePageActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.TextView'
+#          text: '客服小蜜'
+#          action: click
+#    - activity_name: ''

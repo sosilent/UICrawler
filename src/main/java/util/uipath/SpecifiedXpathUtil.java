@@ -375,7 +375,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
             Driver.snapshotCurStatus(Integer.toString(pathNodeIndex), MetadataUtil.genMetadata(currentActivity));
 
-            String timeStr = Driver.getCurrentActivity() + "_" + Util.getDatetime();
+            String timeStr = pathNodeIndex + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
             Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
             Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
 

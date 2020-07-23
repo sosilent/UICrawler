@@ -26,15 +26,15 @@ UI_PATH:
           content_desc: '购物车'
           action: click
     - activity_name: ''
-
-  5:
-    - activity_name: '.launcher.splash.SplashActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '我的'
-          action: click
-    - activity_name: ''
+#
+#  5:
+#    - activity_name: '.launcher.splash.SplashActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.FrameLayout'
+#          content_desc: '我的'
+#          action: click
+#    - activity_name: ''
 
   56:
     - activity_name: '.launcher.splash.SplashActivity'

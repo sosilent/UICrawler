@@ -3,8 +3,8 @@ CRITICAL_ELEMENT:
 
   #Android
   #Android App测试时，需指定App包名和启动的Activity
-  ANDROID_PACKAGE: com.sdu.didi.psnger
-  ANDROID_MAIN_ACTIVITY: com.didi.sdk.app.MainActivity
+  ANDROID_PACKAGE: com.taobao.trip
+  ANDROID_MAIN_ACTIVITY: .home.HomeActivity
   #.application.ui.home.HomeActivity
   #.application.ui.splash.SplashActivity
   #.application.ui.Launcher.LauncherActivity

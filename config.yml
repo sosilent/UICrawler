@@ -3,9 +3,10 @@ CRITICAL_ELEMENT:
 
   #Android
   #Android App测试时，需指定App包名和启动的Activity
-  ANDROID_PACKAGE: com.taobao.trip
-  ANDROID_MAIN_ACTIVITY: .home.HomeActivity
-  #.application.ui.home.HomeActivity
+  ANDROID_PACKAGE: com.taobao.mobile.dipei
+  ANDROID_MAIN_ACTIVITY: com.eg.android.AlipayGphone.AlipayLogin
+
+  #com.taobao.mobile.dipei/com.eg.android.AlipayGphone.AlipayLogin
   #.application.ui.splash.SplashActivity
   #.application.ui.Launcher.LauncherActivity
 #  #通过xpath指定要点击的元素的属性要求， 注意值两侧要加单引号''

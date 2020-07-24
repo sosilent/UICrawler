@@ -1,47 +1,36 @@
 UI_PATH:
 
   0:
-    - activity_name: '.home.HomeActivity'
+    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
 
-  2:
-    - activity_name: '.home.HomeActivity'
+  5:
+    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
       actions:
-        - resource_id: ''
+        - resource_id: 'com.alipay.android.phone.o2o.purchase:id/tab_content_description'
           class: 'android.widget.TextView'
-          text: '门票'
+          text: '订单'
           action: click
     - activity_name: ''
 
-
-  12:
-    - activity_name: '.home.HomeActivity'
+  6:
+    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
       actions:
-        - resource_id: ''
-          class: 'android.widget.TextView'
-          content_desc: '消息'
-          action: click
-    - activity_name: ''
-
-  15:
-    - activity_name: '.home.HomeActivity'
-      actions:
-        - resource_id: ''
+        - resource_id: 'com.koubei.mobile.o2o.personal:id/tab_description'
           class: 'android.widget.TextView'
           text: '我的'
           action: click
     - activity_name: ''
-
-  16:
-    - activity_name: '.home.HomeActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.TextView'
-          text: '我的'
-          action: click
-    - activity_name: '.home.HomeActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.TextView'
-          text: '待付款'
-          action: click
-    - activity_name: ''
+#  7:
+#    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.TextView'
+#          text: '我的'
+#          action: click
+#    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.widget.TextView'
+#          text: '待付款'
+#          action: click
+#    - activity_name: ''

@@ -276,9 +276,11 @@ public class ConfigUtil {
     }
 
     public static String getScreenShotDir(){
-        return rootDir + File.separator + SCREEN_SHOT + File.separator;
+        return rootDir + File.separator + SCREEN_SHOT + "_" +Driver.getCurrentPackage() + "_" + getPackageName() + File.separator;
     }
-
+    public static String ScreenShotDir(){
+        return File.separator + SCREEN_SHOT + "_" + getPackageName() + File.separator;
+    }
     public static long getDefaultWaitSec() {
         return getLongValue("DEFAULT_WAIT_SEC");
     }

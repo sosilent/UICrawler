@@ -3,8 +3,8 @@ CRITICAL_ELEMENT:
 
   #Android
   #Android App测试时，需指定App包名和启动的Activity
-  ANDROID_PACKAGE: com.ximalaya.ting.android
-  ANDROID_MAIN_ACTIVITY: .host.activity.MainActivity
+  ANDROID_PACKAGE: com.autonavi.minimap
+  ANDROID_MAIN_ACTIVITY: com.autonavi.map.activity.NewMapActivity
 #  #通过xpath指定要点击的元素的属性要求， 注意值两侧要加单引号''
 #  ANDROID_CLICK_XPATH_HEADER: ' ( string-length(@text)<30  or contains(@text,"允许") ) '
 #  #若App顶、底UI含有TabBar ,需指定TabBar的id, 多个id时用or拼接: 如'@resource-id="id1" or @resource-id="id2"'

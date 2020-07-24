@@ -1,73 +1,70 @@
 UI_PATH:
 
   0:
-    - activity_name: '.host.activity.MainActivity'
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
 
   2:
-    - activity_name: '.host.activity.MainActivity'
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
       actions:
         - resource_id: ''
           class: 'android.widget.TextView'
-          text: '儿童'
+          text: '打车'
           action: click
     - activity_name: ''
 
   3:
-    - activity_name: '.host.activity.MainActivity'
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
       actions:
-        - resource_id: 'com.ximalaya.ting.android:id/main_lottie_view_edit_tab'
-          class: 'android.widget.ImageView'
-          content_desc: '所有分类'
-          action: click
-    - activity_name: ''
-
-  4:
-    - activity_name: '.host.activity.MainActivity'
-      actions:
-        - resource_id: 'com.ximalaya.ting.android:id/main_item_finding_title'
+        - resource_id: ''
           class: 'android.widget.TextView'
-          text: '助眠解压'
-          action: click
-    - activity_name: ''
-
-  5:
-    - activity_name: '.host.activity.MainActivity'
-      actions:
-        - resource_id: 'com.ximalaya.ting.android:id/main_item_finding_title'
-          class: 'android.widget.TextView'
-          text: '英语学习'
+          content_desc: '更多工具'
           action: click
     - activity_name: ''
 
   11:
-    - activity_name: '.host.activity.MainActivity'
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
       actions:
-        - resource_id: 'com.ximalaya.ting.android:id/tab_listen'
-          class: 'android.widget.RadioButton'
-          content_desc: '我听'
+        - resource_id: 'com.autonavi.minimap:id/tab_name'
+          class: 'android.widget.TextView'
+          text: '附近'
           action: click
     - activity_name: ''
 
-  13:
-    - activity_name: '.host.activity.MainActivity'
+  12:
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
       actions:
-        - resource_id: 'com.ximalaya.ting.android:id/tab_finding'
-          class: 'android.widget.RadioButton'
-          content_desc: '发现'
+        - resource_id: 'com.autonavi.minimap:id/tab_name'
+          class: 'android.widget.TextView'
+          text: '我的'
           action: click
     - activity_name: ''
 
-  20:
-    - activity_name: '.host.activity.MainActivity'
+  21:
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
       actions:
-        - resource_id: 'com.ximalaya.ting.android:id/tab_myspace'
-          class: 'android.widget.RadioButton'
-          content_desc: '未登录'
+        - resource_id: 'com.autonavi.minimap:id/tab_name'
+          class: 'android.widget.TextView'
+          text: '我的'
           action: click
-    - activity_name: ''
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '收藏'
+          action: click
+    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+
+#  20:
+#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+#      actions:
+#        - resource_id: 'com.ximalaya.ting.android:id/tab_myspace'
+#          class: 'android.widget.RadioButton'
+#          content_desc: '未登录'
+#          action: click
+#    - activity_name: ''
 
 #  56:
-#    - activity_name: '.host.activity.MainActivity'
+#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'
@@ -82,7 +79,7 @@ UI_PATH:
 #    - activity_name: ''
 #
 #  59:
-#    - activity_name: '.host.activity.MainActivity'
+#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'

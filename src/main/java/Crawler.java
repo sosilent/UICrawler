@@ -237,7 +237,7 @@ public class Crawler {
                         + " <img width=\"50%\" src=\"" + crashDir + step + "\"/>"
                         + "</a>");
                 String dest = crashDir + step;
-                String src = ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT + File.separator + step;
+                String src = ConfigUtil.getScreenShotDir() + step;
                 Util.copyFile(new File(src), new File(dest));
             }
 

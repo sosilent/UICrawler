@@ -125,7 +125,7 @@ public final class Driver {
     }
 
     protected static String getScreenShortName(){
-        return ConfigUtil.getRootDir() + File.separator + ConfigUtil.SCREEN_SHOT + File.separator + Util.getDatetime() + ".png";
+        return ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir()+ Util.getDatetime() + ".png";
     }
 
     public static String takeScreenShot(){
@@ -133,15 +133,12 @@ public final class Driver {
     }
 
     public static String snapshotScreen(String dir, String timeStr){
-        String screenshotName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + timeStr + ".screenshot" + ".png" ;
-
+        String screenshotName = ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir() + timeStr + ".screenshot" + ".png" ;
         return takeScreenShot(screenshotName);
     }
 
     public static void snapshotPageSource(String dir, String timeStr, String pageSource) {
-        String fileName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + timeStr + ".pagesource" + ".xml" ;
+        String fileName = ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir() + timeStr + ".pagesource" + ".xml" ;
 
         File file = new File(fileName);
         try {
@@ -152,8 +149,7 @@ public final class Driver {
     }
 
     public static void snapshotCurStatus(String dir, String metadata) {
-        String fileName = ConfigUtil.getRootDir() + File.separator +
-                ConfigUtil.SCREEN_SHOT + File.separator + File.separator + "metadata.yml" ;
+        String fileName = ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir() + "metadata.yml" ;
 
         File file = new File(fileName);
         try {
@@ -340,9 +336,8 @@ public final class Driver {
 
     public static Dimension getScreenSize() {
         log.info(MyLogger.getMethodName());
-        Dimension dimensions = driver.manage().window().getSize();
 
-        return dimensions;
+        return driver.manage().window().getSize();
     }
 
     public static void clickElementCenter(MobileElement elem){
@@ -400,7 +395,7 @@ public final class Driver {
         log.info("scroll from : startX " +startX + ", startY "+ startY+ ", to  endX "+ endX+ ",endY "+ endY);
         TouchAction touchAction = new TouchAction(driver);
         PointOption pointStart = PointOption.point(startX,startY);
-        PointOption pointEnd = PointOption.point(endX,endX);
+        PointOption pointEnd = PointOption.point(endX,endY);
         touchAction.press(pointStart).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(pointEnd).release().perform();
         log.info("scroll over" );
     }
@@ -1106,7 +1101,7 @@ public final class Driver {
     }
 
     public static String getPlatformName() {
-        return driver.getPlatformName().toUpperCase();
+        return Objects.requireNonNull(driver.getPlatformName()).toUpperCase();
     }
 
     public static String getPlatformVersion(){

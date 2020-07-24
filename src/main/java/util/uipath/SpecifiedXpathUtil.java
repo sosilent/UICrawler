@@ -504,12 +504,11 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     log.debug("------------page source after click-----------\n" + currentXML);
 
                     String afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
+                    String newActivity = Driver.getCurrentActivity();
 
                     //点击后进入到了新的页面
-                    if (!xml.equals(currentXML)) {
+                    if (!xml.equals(currentXML) && !currentActivity.equals(newActivity)) {
                         log.info("========================================New Child UI================================");
-
-                        String newActivity = Driver.getCurrentActivity();
                         log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
 
                         try {

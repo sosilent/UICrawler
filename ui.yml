@@ -1,70 +1,88 @@
 UI_PATH:
 
 #  0:
-#    - activity_name: '.Launcher'
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
 
   2:
-    - activity_name: '.Launcher'
+    - activity_name: 'com.didi.sdk.app.MainActivity'
       actions:
-        - resource_id: ''
-          class: 'android.view.ViewGroup'
-          content_desc: '快速自取'
+        - resource_id: 'com.sdu.didi.psnger:id/default_safety_center_txt'
+          class: 'android.widget.TextView'
+          text: '安全中心'
+          action: click
+    - activity_name: ''
+
+  3:
+    - activity_name: 'com.didi.sdk.app.MainActivity'
+      actions:
+        - resource_id: 'com.sdu.didi.psnger:id/oc_form_scene_item_title'
+          class: 'android.widget.TextView'
+          text: '预约'
+          action: click
+    - activity_name: ''
+
+  4:
+    - activity_name: 'com.didi.sdk.app.MainActivity'
+      actions:
+        - resource_id: 'com.sdu.didi.psnger:id/text'
+          class: 'android.widget.TextView'
+          text: '顺风车'
           action: click
     - activity_name: ''
 
   5:
-    - activity_name: '.Launcher'
+    - activity_name: 'com.didi.sdk.app.MainActivity'
       actions:
-        - resource_id: ''
-          class: 'android.view.ViewGroup'
-          content_desc: '全部分类'
+        - resource_id: 'com.sdu.didi.psnger:id/title_bar_img_btn_left'
+          class: 'android.widget.ImageButton'
+          content_desc: '个人中心'
           action: click
     - activity_name: ''
-
-  11:
-    - activity_name: '.Launcher'
-      actions:
-        - resource_id: 'me.ele:id/a92'
-          class: 'android.widget.TextView'
-          text: '真香'
-          action: click
-    - activity_name: ''
-
-  12:
-    - activity_name: '.Launcher'
-      actions:
-        - resource_id: 'me.ele:id/a9_'
-          class: 'android.widget.ImageView'
-          content_desc: '订单'
-          action: click
-    - activity_name: ''
-
-  13:
-    - activity_name: '.Launcher'
-      actions:
-        - resource_id: 'me.ele:id/a94'
-          class: 'android.widget.TextView'
-          text: '我的'
-          action: click
-    - activity_name: ''
-
-  16:
-    - activity_name: '.Launcher'
-      actions:
-        - resource_id: 'me.ele:id/a94'
-          class: 'android.widget.TextView'
-          text: '我的'
-          action: click
-    - activity_name: '.Launcher'
-      actions:
-        - resource_id: ''
-          class: 'android.view.ViewGroup'
-          content_desc: '购物车'
-          action: click
-    - activity_name: '.Launcher'
+#
+#  11:
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
+#      actions:
+#        - resource_id: 'me.ele:id/a92'
+#          class: 'android.widget.TextView'
+#          text: '真香'
+#          action: click
+#    - activity_name: ''
+#
+#  12:
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
+#      actions:
+#        - resource_id: 'me.ele:id/a9_'
+#          class: 'android.widget.ImageView'
+#          content_desc: '订单'
+#          action: click
+#    - activity_name: ''
+#
+#  13:
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
+#      actions:
+#        - resource_id: 'me.ele:id/a94'
+#          class: 'android.widget.TextView'
+#          text: '我的'
+#          action: click
+#    - activity_name: ''
+#
+#  16:
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
+#      actions:
+#        - resource_id: 'me.ele:id/a94'
+#          class: 'android.widget.TextView'
+#          text: '我的'
+#          action: click
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
+#      actions:
+#        - resource_id: ''
+#          class: 'android.view.ViewGroup'
+#          content_desc: '购物车'
+#          action: click
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
 
 #  20:
-#    - activity_name: '.Launcher'
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
 #      actions:
 #        - resource_id: 'com.ximalaya.ting.android:id/tab_myspace'
 #          class: 'android.widget.RadioButton'
@@ -73,7 +91,7 @@ UI_PATH:
 #    - activity_name: ''
 
 #  56:
-#    - activity_name: '.Launcher'
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'
@@ -88,7 +106,7 @@ UI_PATH:
 #    - activity_name: ''
 #
 #  59:
-#    - activity_name: '.Launcher'
+#    - activity_name: 'com.didi.sdk.app.MainActivity'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'

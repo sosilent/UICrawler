@@ -1,61 +1,70 @@
 UI_PATH:
 
-  0:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+#  0:
+#    - activity_name: '.Launcher'
 
   2:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+    - activity_name: '.Launcher'
       actions:
         - resource_id: ''
-          class: 'android.widget.TextView'
-          text: '打车'
+          class: 'android.view.ViewGroup'
+          content_desc: '快速自取'
           action: click
     - activity_name: ''
 
-  3:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+  5:
+    - activity_name: '.Launcher'
       actions:
         - resource_id: ''
-          class: 'android.widget.TextView'
-          content_desc: '更多工具'
+          class: 'android.view.ViewGroup'
+          content_desc: '全部分类'
           action: click
     - activity_name: ''
 
   11:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+    - activity_name: '.Launcher'
       actions:
-        - resource_id: 'com.autonavi.minimap:id/tab_name'
+        - resource_id: 'me.ele:id/a92'
           class: 'android.widget.TextView'
-          text: '附近'
+          text: '真香'
           action: click
     - activity_name: ''
 
   12:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+    - activity_name: '.Launcher'
       actions:
-        - resource_id: 'com.autonavi.minimap:id/tab_name'
+        - resource_id: 'me.ele:id/a9_'
+          class: 'android.widget.ImageView'
+          content_desc: '订单'
+          action: click
+    - activity_name: ''
+
+  13:
+    - activity_name: '.Launcher'
+      actions:
+        - resource_id: 'me.ele:id/a94'
           class: 'android.widget.TextView'
           text: '我的'
           action: click
     - activity_name: ''
 
-  21:
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+  16:
+    - activity_name: '.Launcher'
       actions:
-        - resource_id: 'com.autonavi.minimap:id/tab_name'
+        - resource_id: 'me.ele:id/a94'
           class: 'android.widget.TextView'
           text: '我的'
           action: click
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+    - activity_name: '.Launcher'
       actions:
         - resource_id: ''
-          class: 'android.view.View'
-          text: '收藏'
+          class: 'android.view.ViewGroup'
+          content_desc: '购物车'
           action: click
-    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+    - activity_name: '.Launcher'
 
 #  20:
-#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+#    - activity_name: '.Launcher'
 #      actions:
 #        - resource_id: 'com.ximalaya.ting.android:id/tab_myspace'
 #          class: 'android.widget.RadioButton'
@@ -64,7 +73,7 @@ UI_PATH:
 #    - activity_name: ''
 
 #  56:
-#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+#    - activity_name: '.Launcher'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'
@@ -79,7 +88,7 @@ UI_PATH:
 #    - activity_name: ''
 #
 #  59:
-#    - activity_name: 'com.autonavi.map.activity.NewMapActivity'
+#    - activity_name: '.Launcher'
 #      actions:
 #        - resource_id: ''
 #          class: 'android.widget.FrameLayout'

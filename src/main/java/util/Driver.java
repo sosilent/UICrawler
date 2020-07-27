@@ -149,7 +149,7 @@ public final class Driver {
     }
 
     public static void snapshotCurStatus(String dir, String metadata) {
-        String fileName = ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir() + "metadata.yml" ;
+        String fileName = ConfigUtil.getRootDir() + ConfigUtil.ScreenShotDir() + dir + "_metadata.yml" ;
 
         File file = new File(fileName);
         try {

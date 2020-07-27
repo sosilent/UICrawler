@@ -439,7 +439,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     else {
                         for (MobileElement mobileElement : mobileElements) {
                             if ((text != null && text.equalsIgnoreCase(mobileElement.getText()))
-                                    || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))) {
+                                    || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))
+                                    || (bounds != null && bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")))) {
                                 elem = mobileElement;
                                 break;
                             }

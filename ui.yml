@@ -1,36 +1,18 @@
 UI_PATH:
 
   0:
-    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
-
-  5:
-    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
+    - activity_name: 'com.taobao.tao.TBMainActivity'
       actions:
-        - resource_id: 'com.alipay.android.phone.o2o.purchase:id/tab_content_description'
-          class: 'android.widget.TextView'
-          text: '订单'
+        - resource_id: ''
+          class: 'android.widget.FrameLayout'
+          text: ''
+          bounds: '[905,1883][977,1955]'
+          action: click
+    - activity_name: 'com.taobao.tao.TBMainActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '我的淘宝'
           action: click
     - activity_name: ''
-
-  6:
-    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
-      actions:
-        - resource_id: 'com.koubei.mobile.o2o.personal:id/tab_description'
-          class: 'android.widget.TextView'
-          text: '我的'
-          action: click
-    - activity_name: ''
-#  7:
-#    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.widget.TextView'
-#          text: '我的'
-#          action: click
-#    - activity_name: 'com.eg.android.AlipayGphone.AlipayLogin'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.widget.TextView'
-#          text: '待付款'
-#          action: click
-#    - activity_name: ''

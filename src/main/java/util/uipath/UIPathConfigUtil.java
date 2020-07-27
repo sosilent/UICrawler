@@ -3,6 +3,7 @@ package util.uipath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
+import util.Driver;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,7 @@ public class UIPathConfigUtil {
     public static Logger log = LoggerFactory.getLogger(UIPathConfigUtil.class);
 
     private static String UI_PATH = "UI_PATH";
+    private static String URL = "scheme_url";
 
     private static String ACTIVITY_NAME = "activity_name";
     private static String RESOURCE_ID = "resource_id";
@@ -61,7 +63,16 @@ public class UIPathConfigUtil {
                 List<SpecifiedXpathUtil.UIPathNode> nodes = new ArrayList<>();
                 for (Map nodeMap : nodeMapList) {
                     SpecifiedXpathUtil.UIPathNode node = new SpecifiedXpathUtil.UIPathNode();
-                    node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
+                    if (nodeMap.containsKey(ACTIVITY_NAME)) {
+                        node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
+                    }
+                    if (nodeMap.containsKey(ACTIVITY_NAME)) {
+                        node.setActivityURL((String) nodeMap.get(URL));
+                        log.info("getActivityURL:" + node.getActivityURL());
+                        Driver.driver.get(node.getActivityURL()); // CAN GO
+                    }
+
+                    //log.info("nodeMap.values:"+nodeMap.values());
 
                     if (nodeMap.containsKey(AD)) {
                         SpecifiedXpathUtil.AdPopoutConfig adPopoutConfig = new SpecifiedXpathUtil.AdPopoutConfig();

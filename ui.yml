@@ -1,18 +1,31 @@
 UI_PATH:
 
-  0:
+  11:
     - activity_name: 'com.taobao.tao.TBMainActivity'
       actions:
         - resource_id: ''
           class: 'android.widget.FrameLayout'
           text: ''
-          bounds: '[905,1883][977,1955]'
+          content_desc: '天猫新品'
           action: click
+    - activity_name: ''
+
+  21:
     - activity_name: 'com.taobao.tao.TBMainActivity'
       actions:
         - resource_id: ''
           class: 'android.widget.FrameLayout'
           text: ''
-          content_desc: '我的淘宝'
+          content_desc: '领淘金币'
+          action: click
+    - activity_name: ''
+
+  31:
+    - activity_name: 'com.taobao.tao.TBMainActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.FrameLayout'
+          text: ''
+          content_desc: '芭芭农场'
           action: click
     - activity_name: ''

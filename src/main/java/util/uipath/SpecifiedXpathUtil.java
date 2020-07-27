@@ -153,6 +153,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
     public static class UIPathNode {
         private String activityName;
+        private String screenshot;
+        private String activityURL;
 
         private AdPopoutConfig adPopoutConfig;
         private List<ActionConfig> actionConfigList;
@@ -163,6 +165,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         public void setActivityName(String activityName) {
             this.activityName = activityName;
+        }
+
+        public String getActivityURL() {
+            return activityURL;
+        }
+
+        public void setActivityURL(String activityURL) {
+            this.activityURL = activityURL;
         }
 
         public AdPopoutConfig getAdPopoutConfig() {

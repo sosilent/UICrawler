@@ -37,7 +37,7 @@ UI_PATH:
     - activity_name: 'com.taobao.browser.BrowserActivity'
       actions:
         - resource_id: ''
-          class: 'class="android.widget.Button'
+          class: 'android.widget.Button'
           text: '去完成'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
@@ -54,7 +54,7 @@ UI_PATH:
     - activity_name: 'com.taobao.browser.BrowserActivity'
       actions:
         - resource_id: ''
-          class: 'class="android.widget.Button'
+          class: 'android.widget.Button'
           text: '去逛逛'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'

@@ -633,24 +633,25 @@ public class Crawler {
 
                         int j = 0;
                         for (int index : ids) {
-                            Driver.appRelaunch();
+                            //Driver.appRelaunch();
                             SpecifiedXpathUtil.reset();
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
 
                             j++;
                             log.info("\n\n-----------------start screenshot " + index + " (" + j + "/" + uiPathMap.size() + ") --------------------");
                             Driver.driver.get(nodeList.get(0).getActivityURL());
-                            Driver.sleep(10);
+                            Driver.sleep(5);
 
                             //for (SpecifiedXpathUtil.UIPathNode actionNode : nodeList) {
-                                SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
-                                SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
+                            SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
+                            Driver.sleep(3);
+                            SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
 
-                                String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
-                                Driver.snapshotScreen(Integer.toString(index), timeStr);
-                                Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
-                                log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
-                                //log.info("++++++++++++++++++ actionNode : " + actionNode);
+                            Driver.sleep(15);
+                            String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
+                            Driver.snapshotScreen(Integer.toString(index), timeStr);
+                            Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
+                            log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
                             //}
                         }
                     }

@@ -59,8 +59,7 @@ UI_PATH:
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
 
-  #  做水滴任务
-  23:
+  29:
     - activity_name: 'com.taobao.browser.BrowserActivity'
       scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
       actions:
@@ -95,24 +94,24 @@ UI_PATH:
 #  #      actions:
 #  #    - activity_name: 'com.taobao.browser.BrowserActivity'
 #
-#  # 农场助力得肥料
-#  51:
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.widget.Button'
-#          text: '关闭'
-#          action: click
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#
-##  53:
-##    - activity_name: 'com.taobao.browser.BrowserActivity'
-##      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
-##      actions:
-##        - resource_id: ''
-##          class: 'android.view.View'
-##          text: '去种果树'
-##          action: click
-##    - activity_name: 'com.taobao.browser.BrowserActivity'
+  # 农场助力得肥料
+  51:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: '关闭'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  53:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '去种果树'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
 

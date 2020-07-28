@@ -934,6 +934,9 @@ public class XPathUtil {
                 element.clear();
                 element.setValue(value.toString());
                 break;
+            case 'w'://wait
+                Driver.sleep(10);
+                break;
             case 'd'://drag
                 List<String> pointsList = Arrays.asList(value.toString().split(","));
                 Driver.drag(pointsList);

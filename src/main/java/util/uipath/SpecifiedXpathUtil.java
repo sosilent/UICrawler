@@ -422,7 +422,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
         for (ActionConfig actionConfig : uiPathNode.getActionConfigList()) {
 
             MobileElement elem = null;
-            currentXML = Driver.getPageSource();
 
             String resId = actionConfig.getRes_id();
             String className = actionConfig.getClass_name();
@@ -430,6 +429,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             String content_desc = actionConfig.getContent_desc();
             String bounds = actionConfig.getBounds();
 
+            currentXML = Driver.getPageSource();
 
             if (Strings.isNullOrEmpty(resId) && Strings.isNullOrEmpty(className)) {
                 log.error("ui path node is invalid for missing resource id or class name: res id, " + resId + "; class name, " + className);
@@ -489,10 +489,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("input")) {
                     elem.setValue(actionConfig.getValue());
+                } else if (actionConfig.getAction() != null
+                        && actionConfig.getAction().equalsIgnoreCase("wait")) {
+                    Driver.sleep(10);
                 } else {
                     String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
                     log.debug(previousPageStructure);
-
                     currentXML = clickElement(elem, currentXML);
                     log.debug("------------page source after click-----------\n" + currentXML);
 
@@ -500,7 +502,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     String newActivity = Driver.getCurrentActivity();
 
                     //点击后进入到了新的页面
-                    if (!xml.equals(currentXML) && !currentActivity.equals(newActivity)) {
+                    if (!xml.equals(currentXML) || !currentActivity.equals(newActivity)) {
                         log.info("========================================New Child UI================================");
                         log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
 

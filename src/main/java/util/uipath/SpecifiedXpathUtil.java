@@ -440,7 +440,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         elem = mobileElements.get(0);
                     else {
                         for (MobileElement mobileElement : mobileElements) {
-                            if ((text != null && text.equalsIgnoreCase(mobileElement.getText()))
+                            if ((text != null && mobileElement.getText().contains(text))
                                     || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))
                                     || (bounds != null && bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")))) {
                                 elem = mobileElement;
@@ -457,7 +457,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         && !Strings.isNullOrEmpty(className)) {
                     List<MobileElement> mobileElements = Driver.findElements(By.className(className));
                     for (MobileElement mobileElement : mobileElements) {
-                        if ((text != null && text.equalsIgnoreCase(mobileElement.getText()))
+                        if ((text != null && mobileElement.getText().contains(text))
                                 || (content_desc != null && content_desc.equalsIgnoreCase(mobileElement.getAttribute("content-desc")))
                                 || (bounds != null && bounds.equalsIgnoreCase(mobileElement.getAttribute("bounds")))
                         ) {

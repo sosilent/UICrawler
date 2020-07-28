@@ -20,29 +20,59 @@ UI_PATH:
   #    - activity_name: 'com.taobao.browser.BrowserActivity'
 
   #  做水滴任务
-  23:
-    #          class: 'android.view.View'
-    #          bounds: '[879,1025][1047,1217]'
-    #          class: 'android.view.View'
-    #          bounds: '[315,578][801,647]'
+  #          class: 'android.view.View'
+  #          bounds: '[879,1025][1047,1217]'
+  #          class: 'android.view.View'
+  #          bounds: '[315,578][801,647]'
+
+  #  做水滴任务
+  21:
     - activity_name: 'com.taobao.browser.BrowserActivity'
       scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
       actions:
         - resource_id: ''
           class: 'android.view.View'
-          text: '做水滴任务加金币收益'
+          text: '金币收益'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
       actions:
         - resource_id: ''
+          class: 'class="android.widget.Button'
+          text: '去完成'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #  做水滴任务
+  22:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+      actions:
+        - resource_id: ''
           class: 'android.view.View'
-          text: '一键领取'
+          text: '金币收益'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
       actions:
         - resource_id: ''
           class: 'class="android.widget.Button'
           text: '去逛逛'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #  做水滴任务
+  23:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '金币收益'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '一键领取'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
 

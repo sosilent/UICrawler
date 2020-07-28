@@ -599,7 +599,7 @@ public class Crawler {
 
             try {
                 //等待App完全启动,否则遍历不到元素
-                Driver.sleep(5);
+                Driver.sleep(1);
 
                 if (commandLine.hasOption("e") && Util.isAndroid()) {
                     PerfUtil.writeDataToFileAsync(writeToDB);
@@ -611,7 +611,6 @@ public class Crawler {
 
                 //初始化Xpath内容
                 XPathUtil.initialize(udid);
-
                 String pageSource = Driver.getPageSource();
 
                 if (commandLine.hasOption("m")) {
@@ -637,22 +636,21 @@ public class Crawler {
                             Driver.appRelaunch();
                             SpecifiedXpathUtil.reset();
                             List<SpecifiedXpathUtil.UIPathNode> nodeList = uiPathMap.get(index);
-                            SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
 
                             j++;
                             log.info("\n\n-----------------start screenshot " + index + " (" + j + "/" + uiPathMap.size() + ") --------------------");
-                            long depthWhenCompleting = SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
+                            Driver.driver.get(nodeList.get(0).getActivityURL());
+                            Driver.sleep(10);
 
-                            String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
-                            Driver.snapshotScreen(Integer.toString(index), timeStr);
-                            Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
-                            //log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
+                            for (SpecifiedXpathUtil.UIPathNode actionNode : nodeList) {
+                                SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
+                                SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
 
-                            if (nodeList.size() == depthWhenCompleting) {
-                                specifiedUiPathTestSuccessCount++;
-                                specifiedUiPathTestSuccess.add(index);
-                            } else {
-                                specifiedUiPathTestFailed.add(index);
+                                String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
+                                Driver.snapshotScreen(Integer.toString(index), timeStr);
+                                Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
+                                log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
+                                log.info("++++++++++++++++++ actionNode : " + actionNode);
                             }
                         }
                     }

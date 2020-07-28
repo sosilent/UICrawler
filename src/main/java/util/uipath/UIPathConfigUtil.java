@@ -17,9 +17,10 @@ public class UIPathConfigUtil {
     public static Logger log = LoggerFactory.getLogger(UIPathConfigUtil.class);
 
     private static String UI_PATH = "UI_PATH";
-    private static String URL = "scheme_url";
 
     private static String ACTIVITY_NAME = "activity_name";
+    private static String URL = "scheme_url";
+
     private static String RESOURCE_ID = "resource_id";
     private static String TEXT = "text";
     private static String CLASS = "class";
@@ -63,16 +64,11 @@ public class UIPathConfigUtil {
                 List<SpecifiedXpathUtil.UIPathNode> nodes = new ArrayList<>();
                 for (Map nodeMap : nodeMapList) {
                     SpecifiedXpathUtil.UIPathNode node = new SpecifiedXpathUtil.UIPathNode();
-                    if (nodeMap.containsKey(ACTIVITY_NAME)) {
-                        node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
-                    }
-                    if (nodeMap.containsKey(ACTIVITY_NAME)) {
+                    node.setActivityName((String) nodeMap.get(ACTIVITY_NAME));
+                    if (nodeMap.containsKey(URL)) {
                         node.setActivityURL((String) nodeMap.get(URL));
                         log.info("getActivityURL:" + node.getActivityURL());
-                        Driver.driver.get(node.getActivityURL()); // CAN GO
                     }
-
-                    //log.info("nodeMap.values:"+nodeMap.values());
 
                     if (nodeMap.containsKey(AD)) {
                         SpecifiedXpathUtil.AdPopoutConfig adPopoutConfig = new SpecifiedXpathUtil.AdPopoutConfig();

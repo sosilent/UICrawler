@@ -153,7 +153,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
     public static class UIPathNode {
         private String activityName;
-        private String screenshot;
         private String activityURL;
 
         private AdPopoutConfig adPopoutConfig;
@@ -166,7 +165,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
         public void setActivityName(String activityName) {
             this.activityName = activityName;
         }
-
         public String getActivityURL() {
             return activityURL;
         }
@@ -283,7 +281,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         try {
             Thread.sleep(2000);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -334,9 +333,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
         }
 
         UIPathNode uiPathNode = uiPathNodeList.get((int) (currentDepth - 1));
-        //currentDepth++;
+
         // 2.如果是最后深度，截屏+保存page source
-        //logis error
         if (currentDepth == uiPathNodeList.size()) {
             log.info("enter the target ui: depth, " + currentDepth);
             log.debug("----page source-----\n" + currentXML);
@@ -392,8 +390,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
             Document document = builder.parse(new ByteArrayInputStream(currentXML.getBytes()));
             NodeList nodes = (NodeList) xpath.evaluate(clickXpath, document, XPathConstants.NODESET);
 
-            //screenshot 3 screens at most
-            for (int i = 0; i < 3; i++) {
+            //screenshot 5 screens at most
+            for (int i = 0; i < 5; i++) {
                 Driver.swipeVertical(false);
 
                 String pageSource = Driver.getPageSource();
@@ -491,7 +489,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 //元素未找到，重新遍历当前页面
                 try {
                     Thread.sleep(2000);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
 

@@ -590,15 +590,6 @@ public class XPathUtil {
         // 3.是否有可遍历的元素,如果没有遍历TabBar,如果无TabBar
         String packageName = getAppName(currentXML);
 
-        if (packageName.equals("com.tencent.mm") || packageName.equals("com.tencent.xin")){
-            if(currentXML.contains("附近的小程序")){
-                log.info("已遍历完小程序，跳转到了小程序主页面，遍历停止");
-                stop = true;
-
-                return currentXML;
-            }
-        }
-
         log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity() +"+++++++++++++++++++++++");
 
         //1.检查当前UI的包名是否正确，一定要先查包名！因为其内部控制了stop的值, 包名不合法，-是否应该重启app?--
@@ -674,7 +665,7 @@ public class XPathUtil {
                     log.info("---------Node not found in current UI!!!!!!! Stop current iteration.-----------" );
                     break;
                 }
-
+                currentXML = Driver.getPageSource();
                 currentXML = clickElement(elem,currentXML);
                 afterPageStructure = Driver.getPageStructure(currentXML,clickXpath);
 
@@ -691,6 +682,7 @@ public class XPathUtil {
                         break;
                     }
 
+                    currentXML = Driver.getPageSource();
                     //遍历子UI
                     getNodesFromFile(currentXML,currentDepth);
 
@@ -704,7 +696,6 @@ public class XPathUtil {
                     }
 
                     //从子UI返回后，检查包名
-                    currentXML = Driver.getPageSource();
                     packageName = getAppName(currentXML);
                     if(PackageStatus.VALID != isValidPackageName(packageName,false)){
                         break;

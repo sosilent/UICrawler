@@ -348,6 +348,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 log.info("changedActivityMap = " + changedActivityMap);
             }
 
+            currentXML = Driver.getPageSource();
             //check if there is a ad pop out
             //and close the pop out by clicking it
             if (uiPathNode.getAdPopoutConfig() != null) {
@@ -385,7 +386,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
             String timeStr = pathNodeIndex + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
             Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
-            Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
+            Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, Driver.getPageSource());
 
             Document document = builder.parse(new ByteArrayInputStream(currentXML.getBytes()));
             NodeList nodes = (NodeList) xpath.evaluate(clickXpath, document, XPathConstants.NODESET);
@@ -407,21 +408,13 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     break;
 
                 nodes = newNodes;
-                currentXML = pageSource;
 
                 timeStr = Driver.getCurrentActivity() + "." + Util.getDatetime();
                 Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
-                Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
+                Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, Driver.getPageSource());
             }
 
             return currentDepth;
-        }
-
-        if (packageName.equals("com.tencent.mm") || packageName.equals("com.tencent.xin")) {
-            if (currentXML.contains("附近的小程序")) {
-                log.info("已遍历完小程序，跳转到了小程序主页面，遍历停止");
-                return currentDepth;
-            }
         }
 
         showTabBarElement(currentXML, tabBarXpath);
@@ -429,6 +422,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         for (ActionConfig actionConfig : uiPathNode.getActionConfigList()) {
 
             MobileElement elem = null;
+            currentXML = Driver.getPageSource();
 
             String resId = actionConfig.getRes_id();
             String className = actionConfig.getClass_name();
@@ -471,17 +465,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
                             break;
                         }
                     }
-
-//                    //if still failed to find elem, try to find by content-desc xpath
-//                    if (null == elem) {
-//                        String xpath = "//*[@class=\"" + className + "\" and @content-desc=\"" + text + "\"]";
-//                        try {
-//                            elem = Driver.findElement(By.xpath(xpath));
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                            log.error("failed to find element by desc text xpath: " + xpath);
-//                        }
-//                    }
                 }
             }
 

@@ -2,10 +2,10 @@ UI_PATH:
   #
   #  ###经检验，http与https两种传输方式都可以
 
-  #红包签到
-  10:
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      scheme_url: 'taobao://market.m.taobao.com/app/tmall-def/daily-welfare/pages/index'
+#  #红包签到
+#  10:
+#    - activity_name: 'com.taobao.browser.BrowserActivity'
+#      scheme_url: 'taobao://market.m.taobao.com/app/tmall-def/daily-welfare/pages/index'
 
   #  #  我的淘金币
   #  20:

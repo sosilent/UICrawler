@@ -642,7 +642,7 @@ public class Crawler {
                             Driver.driver.get(nodeList.get(0).getActivityURL());
                             Driver.sleep(10);
 
-                            for (SpecifiedXpathUtil.UIPathNode actionNode : nodeList) {
+                            //for (SpecifiedXpathUtil.UIPathNode actionNode : nodeList) {
                                 SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
                                 SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
 
@@ -650,8 +650,8 @@ public class Crawler {
                                 Driver.snapshotScreen(Integer.toString(index), timeStr);
                                 Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());
                                 log.info("++++++++++++++++++ Activity Name : " + Driver.getCurrentActivity());
-                                log.info("++++++++++++++++++ actionNode : " + actionNode);
-                            }
+                                //log.info("++++++++++++++++++ actionNode : " + actionNode);
+                            //}
                         }
                     }
                     //Driver.getPageSource();

@@ -290,10 +290,10 @@ public class XPathUtil {
 
         log.info("clickable elements xpath: " + clickXpath);
 
-        //Get screen scale
-        scale = Driver.getScreenScale();
-        deviceHeight = Driver.getDeviceHeight();
-        deviceWidth = Driver.getDeviceWidth();
+//        //Get screen scale
+//        scale = Driver.getScreenScale();
+//        deviceHeight = Driver.getDeviceHeight();
+//        deviceWidth = Driver.getDeviceWidth();
 
         ignoreCrash = ConfigUtil.getBooleanValue(ConfigUtil.IGNORE_CRASH);
         //xpath中排除以下属性, 仅限android  小写字母

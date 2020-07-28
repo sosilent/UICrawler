@@ -165,6 +165,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
         public void setActivityName(String activityName) {
             this.activityName = activityName;
         }
+
         public String getActivityURL() {
             return activityURL;
         }
@@ -281,8 +282,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
 
         try {
             Thread.sleep(2000);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -434,6 +434,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             if (Strings.isNullOrEmpty(resId) && Strings.isNullOrEmpty(className)) {
                 log.error("ui path node is invalid for missing resource id or class name: res id, " + resId + "; class name, " + className);
             } else {
+
                 if (!Strings.isNullOrEmpty(resId)) {
                     List<MobileElement> mobileElements = Driver.findElements(By.id(resId));
                     if (mobileElements.size() == 1)
@@ -449,7 +450,6 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         }
                     }
                 }
-
                 //即使resource id不为null，依然有可能找不到元素
                 // 例如：荣耀和p20设备的支付宝首页resource id不一样，p20的配置脚本在荣耀则找不到对应的控件元素
                 //换做class，text或content-desc甚至bounds寻找元素
@@ -468,12 +468,12 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 }
             }
 
+
             if (null == elem) {
                 //元素未找到，重新遍历当前页面
                 try {
                     Thread.sleep(2000);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -492,10 +492,14 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 } else if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("wait")) {
                     Driver.sleep(10);
+                } else if (actionConfig.getAction() != null
+                        && actionConfig.getAction().equalsIgnoreCase("drag")) {
+                    Driver.scrollUp(elem, 500);
                 } else {
                     String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
                     log.debug(previousPageStructure);
                     currentXML = clickElement(elem, currentXML);
+                    log.info("========================================clickElement: " + elem);
                     log.debug("------------page source after click-----------\n" + currentXML);
 
                     String afterPageStructure = Driver.getPageStructure(currentXML, clickXpath);
@@ -504,18 +508,24 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     //点击后进入到了新的页面
                     if (!xml.equals(currentXML) || !currentActivity.equals(newActivity)) {
                         log.info("========================================New Child UI================================");
-                        log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
-
+                        //log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
+                        Driver.swipe(540, 2000, 540, 1500); //drug
                         try {
                             Thread.sleep(1000);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
+                        //Driver.sleep(3);
+                        currentXML = Driver.getPageSource();
                         currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
                         //currentDepth = Long.parseLong(getNodesFromFile(currentXML, currentDepth));
                     } else {
                         log.info("========================================Same UI");
+                        try {
+                            Driver.scrollUp(elem, 500);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                     break;
                 }

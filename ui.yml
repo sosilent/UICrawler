@@ -213,8 +213,9 @@ UI_PATH:
           class: 'android.view.View'
           text: '下次再试试'
           action: click
+
       #天猫榜单
-  41:
+  40:
     - activity_name: 'com.taobao.browser.BrowserActivity'
       scheme_url: 'https://m.tb.cn/h.VHu3XMN?sm=353916'
       actions:
@@ -228,10 +229,18 @@ UI_PATH:
           class: 'android.widget.Button'
           text: '去完成'
           action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      #天猫榜单
+  41:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VHu3XMN?sm=353916'
+      actions:
         - resource_id: ''
-          class: 'android.widget.Button'
-          text: '去看看'
+          class: 'android.view.View'
+          text: '收集V币'
           action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
         - resource_id: ''
           class: 'android.widget.Button'
           text: '去看看'

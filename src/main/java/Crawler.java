@@ -651,7 +651,7 @@ public class Crawler {
                             String newpageSource = Driver.getPageSource();
                             try {
                                 SpecifiedXpathUtil.getNodesFromFile(newpageSource, index, nodeList, 0);
-                                //Driver.sleep(15);
+                                Driver.sleep(15);
                                 String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
                                 Driver.snapshotScreen(Integer.toString(index), timeStr);
                                 Driver.snapshotPageSource(Integer.toString(index), timeStr, Driver.getPageSource());

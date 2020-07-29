@@ -5,20 +5,169 @@ UI_PATH:
   #    - activity_name: 'com.taobao.browser.BrowserActivity'
   #      scheme_url: 'taobao://market.m.taobao.com/app/tmall-def/daily-welfare/pages/index'
 
-  #  做水滴任务
+  #  #  做水滴任务
+  #  21:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+  #      actions:
+  #        - resource_id: ''
   #          class: 'android.view.View'
-  #          bounds: '[879,1025][1047,1217]'
+  #          text: '金币收益'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #  #  做水滴任务
+  #  22:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+  #      actions:
+  #        - resource_id: ''
   #          class: 'android.view.View'
-  #          bounds: '[315,578][801,647]'
+  #          text: '金币收益'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去逛逛'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
 
-  #  做水滴任务
-  21:
+  #  #  做水滴任务
+  #  23:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: '金币收益'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: drag
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #  #  做水滴任务
+  #  25:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: '金币收益'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: drag
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.ImageButton'
+  #          content_desc: '转到上一层级'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '去完成'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #
+  #  29:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: '金币收益'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: '一键领取'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+
+  #  # 开盒有惊喜
+  #  30:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VtjkOBN?sm=d840aa'
+  #    #      actions:
+  #    ##        - resource_id: ''
+  #    ##          class: 'android.widget.FrameLayout'
+  #    ##          text: ''
+  #    ##          content_desc: '天猫新品'
+  #    ##          action: click
+  #    #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #
+  #天猫榜单
+  40:
     - activity_name: 'com.taobao.browser.BrowserActivity'
-      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
+      scheme_url: 'https://m.tb.cn/h.VHu3XMN?sm=353916'
       actions:
         - resource_id: ''
           class: 'android.view.View'
-          text: '金币收益'
+          text: '收集V币'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: '去浏览'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.ImageButton'
+          action: wait
+        - resource_id: ''
+          class: 'android.view.View'
+          content_desc: '立即返回 》'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.Button'
+          text: '去看看'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.widget.ImageButton'
+          action: wait
+        - resource_id: ''
+          class: 'android.view.View'
+          content_desc: '立即返回 》'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
       actions:
@@ -27,104 +176,26 @@ UI_PATH:
           text: '去完成'
           action: click
     - activity_name: 'com.taobao.browser.BrowserActivity'
-
-  #  做水滴任务
-  22:
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '金币收益'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.Button'
-          text: '去逛逛'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-
-  #  做水滴任务
-  23:
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '金币收益'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.Button'
-          text: '去完成'
-          action: drag
-        - resource_id: ''
-          class: 'android.widget.Button'
-          text: '去完成'
-          action: click
-        - resource_id: ''
-          class: 'android.widget.Button'
-          text: '去完成'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-
-
-  29:
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      scheme_url: 'https://m.tb.cn/h.VskpZAZ?sm=0fb7c6'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '金币收益'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '一键领取'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-
-#  # 开盒有惊喜
-#  30:
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#      scheme_url: 'https://m.tb.cn/h.VtjkOBN?sm=d840aa'
-#    #      actions:
-#    ##        - resource_id: ''
-#    ##          class: 'android.widget.FrameLayout'
-#    ##          text: ''
-#    ##          content_desc: '天猫新品'
-#    ##          action: click
-#    #    - activity_name: 'com.taobao.browser.BrowserActivity'
-#
-#    #天猫榜单
-#  40:
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#      scheme_url: 'https://m.tb.cn/h.VHu3XMN?sm=353916'
-#  #      actions:
-#  #    - activity_name: 'com.taobao.browser.BrowserActivity'
-#
-  # 农场助力得肥料
-#  51:
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.widget.Button'
-#          text: '关闭'
-#          action: click
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#
-#  52:
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
-#      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
-#      actions:
-#        - resource_id: ''
-#          class: 'android.view.View'
-#          text: '去种果树'
-#          action: click
-#    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #
+  #  #农场助力得肥料
+  #  51:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.widget.Button'
+  #          text: '关闭'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #
+  #  52:
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
+  #      scheme_url: 'https://m.tb.cn/h.VskLJeO?sm=29c60e'
+  #      actions:
+  #        - resource_id: ''
+  #          class: 'android.view.View'
+  #          text: '去种果树'
+  #          action: click
+  #    - activity_name: 'com.taobao.browser.BrowserActivity'
 
 

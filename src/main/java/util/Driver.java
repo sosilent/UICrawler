@@ -396,7 +396,11 @@ public final class Driver {
         TouchAction touchAction = new TouchAction(driver);
         PointOption pointStart = PointOption.point(startX,startY);
         PointOption pointEnd = PointOption.point(endX,endY);
-        touchAction.press(pointStart).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(pointEnd).release().perform();
+        try {
+            touchAction.press(pointStart).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(pointEnd).release().perform();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         log.info("scroll over" );
     }
 

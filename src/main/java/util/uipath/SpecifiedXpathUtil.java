@@ -500,8 +500,8 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     log.info("========================================input : " + actionConfig.getValue() );
                 } else if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("wait")) {
-                    Driver.sleep(10);
-                    log.info("========================================sleep: 10 " );
+                    Driver.sleep(20);
+                    log.info("========================================sleep: 20 " );
                 } else if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("drag")) {
                     Driver.scrollUp(elem, 500);
@@ -532,16 +532,20 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         String timeStr = pathNodeIndex + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
                         Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
                         Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
-
-                        currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
-                        //currentDepth = Long.parseLong(getNodesFromFile(currentXML, currentDepth));
-                    } else {
-                        log.info("========================================Same UI");
                         try {
-                            Driver.scrollUp(elem, 500);
+                            currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
+                            //currentDepth = Long.parseLong(getNodesFromFile(currentXML, currentDepth));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+
+                    } else {
+                        log.info("========================================Same UI");
+//                        try {
+//                            Driver.scrollUp(elem, 500);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
                     }
                     break;
                 }

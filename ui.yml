@@ -165,79 +165,6 @@ UI_PATH:
           class: 'android.view.View'
           text: '下次再试试'
           action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '返回'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '今日还可抽'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '开盒1次'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '进店领取'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '下次再试试'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '今日还可抽'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '开盒1次'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '进店领取'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '下次再试试'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '返回'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '今日还可抽'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '开盒1次'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '进店领取'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '下次再试试'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
 
   # 开盒有惊喜
   31:
@@ -262,54 +189,30 @@ UI_PATH:
           class: 'android.view.View'
           text: '下次再试试'
           action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '今日还可抽'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '开盒1次'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '进店领取'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '下次再试试'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.widget.FrameLayout'
-          content_desc: '返回'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '今日还可抽'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '开盒1次'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
-      actions:
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '进店领取'
-          action: click
-        - resource_id: ''
-          class: 'android.view.View'
-          text: '下次再试试'
-          action: click
-    - activity_name: 'com.taobao.browser.BrowserActivity'
 
+  # 开盒有惊喜
+  33:
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      scheme_url: 'https://m.tb.cn/h.VtjkOBN?sm=d840aa'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '今日还可抽'
+          action: click
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '开盒1次'
+          action: click
+    - activity_name: 'com.taobao.browser.BrowserActivity'
+      actions:
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '进店领取'
+          action: click
+        - resource_id: ''
+          class: 'android.view.View'
+          text: '下次再试试'
+          action: click
       #天猫榜单
   41:
     - activity_name: 'com.taobao.browser.BrowserActivity'

@@ -617,12 +617,12 @@ public class XPathUtil {
             log.error("========!!!!!!!No UI node found in current page!!!!! Begin to find tab bar element... =====");
         }
 
-        showTabBarElement(currentXML,tabBarXpath);
-
-        //处理黑名单xpath
-        nodeXpathBlackSet =  getBlackNodeXpathSet(document);
-        int blackNodeXpathSize = nodeXpathBlackSet.size();
-        log.info("black node Xpath size is " + blackNodeXpathSize);
+//        //showTabBarElement(currentXML,tabBarXpath);
+//
+//        //处理黑名单xpath
+//        nodeXpathBlackSet =  getBlackNodeXpathSet(document);
+//        int blackNodeXpathSize = nodeXpathBlackSet.size();
+//        log.info("black node Xpath size is " + blackNodeXpathSize);
 
         //遍历UI内的Node元素
         while(--length >= 0 && !stop){
@@ -636,12 +636,12 @@ public class XPathUtil {
                 continue;
             }
 
-            if(blackNodeXpathSize != 0){
-                if(nodeXpathBlackSet.contains(nodeXpath)){
-                    log.info("Ignore black xpath item : " + nodeXpath);
-                    continue;
-                }
-            }
+//            if(blackNodeXpathSize != 0){
+//                if(nodeXpathBlackSet.contains(nodeXpath)){
+//                    log.info("Ignore black xpath item : " + nodeXpath);
+//                    continue;
+//                }
+//            }
 
             //Comment this if not in test mode
             //nodeXpath = showNodes(currentXML,nodeXpath);

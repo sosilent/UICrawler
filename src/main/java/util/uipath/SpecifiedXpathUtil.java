@@ -417,7 +417,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
             return currentDepth;
         }
 
-        showTabBarElement(currentXML, tabBarXpath);
+//        showTabBarElement(currentXML, tabBarXpath);
 
         for (ActionConfig actionConfig : uiPathNode.getActionConfigList()) {
 
@@ -448,6 +448,10 @@ public class SpecifiedXpathUtil extends XPathUtil {
                                 break;
                             }
                         }
+                        if (null == elem) {
+                            //元素未找到
+                            Driver.swipe(540, 2100, 540, 2000); //drug
+                        }
                     }
                 }
                 //即使resource id不为null，依然有可能找不到元素
@@ -464,6 +468,10 @@ public class SpecifiedXpathUtil extends XPathUtil {
                             elem = mobileElement;
                             break;
                         }
+                    }
+                    if (null == elem) {
+                        //元素未找到
+                        Driver.swipe(540, 2100, 540, 2000); //drug
                     }
                 }
             }
@@ -489,12 +497,16 @@ public class SpecifiedXpathUtil extends XPathUtil {
                 if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("input")) {
                     elem.setValue(actionConfig.getValue());
+                    log.info("========================================input : " + actionConfig.getValue() );
                 } else if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("wait")) {
                     Driver.sleep(10);
+                    log.info("========================================sleep: 10 " );
                 } else if (actionConfig.getAction() != null
                         && actionConfig.getAction().equalsIgnoreCase("drag")) {
                     Driver.scrollUp(elem, 500);
+                    Driver.scrollUp(elem, 300);
+                    log.info("========================================Scroll Up: 800 " );
                 } else {
                     String previousPageStructure = Driver.getPageStructure(xml, clickXpath);
                     log.debug(previousPageStructure);
@@ -509,7 +521,7 @@ public class SpecifiedXpathUtil extends XPathUtil {
                     if (!xml.equals(currentXML) || !currentActivity.equals(newActivity)) {
                         log.info("========================================New Child UI================================");
                         //log.info("previous activity: " + currentActivity + "; current activity: " + newActivity);
-                        Driver.swipe(540, 2000, 540, 1500); //drug
+                        Driver.swipe(540, 2100, 540, 1800); //drug
                         try {
                             Thread.sleep(1000);
                         } catch (Exception e) {
@@ -517,6 +529,10 @@ public class SpecifiedXpathUtil extends XPathUtil {
                         }
                         //Driver.sleep(3);
                         currentXML = Driver.getPageSource();
+                        String timeStr = pathNodeIndex + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
+                        Driver.snapshotScreen(Integer.toString(pathNodeIndex), timeStr);
+                        Driver.snapshotPageSource(Integer.toString(pathNodeIndex), timeStr, currentXML);
+
                         currentDepth = getNodesFromFile(currentXML, pathNodeIndex, uiPathNodeList, currentDepth);
                         //currentDepth = Long.parseLong(getNodesFromFile(currentXML, currentDepth));
                     } else {

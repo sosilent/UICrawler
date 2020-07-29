@@ -645,7 +645,8 @@ public class Crawler {
                             //for (SpecifiedXpathUtil.UIPathNode actionNode : nodeList) {
                             SpecifiedXpathUtil.setInitialActivity(nodeList.get(0).getActivityName());
                             Driver.sleep(3);
-                            SpecifiedXpathUtil.getNodesFromFile(pageSource, index, nodeList, 0);
+                            String newpageSource = Driver.getPageSource();
+                            SpecifiedXpathUtil.getNodesFromFile(newpageSource, index, nodeList, 0);
 
                             Driver.sleep(15);
                             String timeStr = index + "_" + Driver.getCurrentActivity() + "_" + Util.getDatetime();
